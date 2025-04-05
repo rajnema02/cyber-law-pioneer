@@ -1,0 +1,10 @@
+﻿question,risk,suggestion
+Board approved Cyber Security Policy ,Medium,"Start by clearly communicating the policy to all relevant stakeholders. This includes not only board members but also executives, managers, and employees. Make sure they understand the importance of the policy and how it affects their roles. Develop a detailed implementation plan that includes specific actions, timelines, and responsibilities. This plan should outline how the policy will be enforced and how compliance will be monitored."
+Form an Information Security Steering Committee (ISSC) chaired by the CEO/Managing Director/Secretary.,High,"Develop and maintain the organization’s information security policies and procedures.
+Provide strategic direction for information security initiatives.
+Oversee the implementation of security measures and incident response strategies.
+Ensure compliance with legal, regulatory, and contractual requirements.
+Monitor and report on the effectiveness of information security programs."
+Clear Desk and clear screen policy,Low,Encourage users to save their work and shut down systems as part of their end-of-day routine. Consider implementing energy-saving policies for systems that do not need to be shut down.
+"Organization should not store sensitive information like Aadhar number & Fingerprints of employees or other personnel, or if required for business continuity then prepare and implement reasonable security practice and procedure and policy as per applicable laws like Information Technology Act, 2000 and Digital Data Personal Act, 2023",Medium,"To address the sensitive issue of storing sensitive information such as Aadhar numbers and fingerprints, your organization should adopt a clear policy and implement robust security practices to comply with applicable laws, including the Information Technology Act, 2000, and the Digital Data Protection Act, 2023."
+Ensure Exit/Termination documents and procedure for employees and third party service provider,Medium,Establish a clear asset return process and conduct regular audits to ensure compliance. Use tracking systems to monitor the allocation and retrieval of assets effectively.

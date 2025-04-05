@@ -1,0 +1,175 @@
+<div class="header bg-gradient-danger pb-8 pt-3" *ngIf="!userSubmit && !submitFinalExam">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row px-4">
+        <div class="col-8">
+          <h1 style="color: white">
+            Exam Name: {{ exam?.exam_name }}<br />
+            Exam Code: {{ exam?.exam_code }}<br />
+            <!-- Exam Date: {{ exam?.exam_date | date : "fullDate" }} -->
+          </h1>
+        </div>
+        <!-- <div class="col-4">
+          <div class="row">
+              <span class="avatar rounded-circle">
+                <img alt="" src="{{ env.url }}/file/download/{{
+                    user_image || 'no-image'
+                  }}" class="border" style="height: 50px; object-fit: cover" />
+              </span>
+          </div>
+            <div class="row">
+              <span class="mb-2 font-weight-bold text-white">
+                {{ user_name }}
+              </span>
+            </div>
+        </div> -->
+      </div>
+
+      <!-- <div class="media align-items-center rounded-circle">
+        <span class="avatar rounded-circle">
+          <img
+            alt=""
+            src="{{ env.url }}/file/download/{{ user_image || 'no-image' }}"
+            class="border"
+            style="height: 50px; object-fit: cover"
+          />
+        </span>
+        <div class="media-body mx-5 d-none d-lg-block">
+          <div class="mb-2 text-sm font-weight-bold">
+            {{ user_name }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="card mt-7" *ngIf="!userSubmit && !submitFinalExam">
+    <div>
+
+      <div class="card-header">
+        <div class="row text-center">
+          <div class="col-6"><b>Questions</b></div>
+          <div class="col-6"><b>Reply</b></div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <!-- {{questionList|json}} -->
+        <!-- <form (ngSubmit)="" #form="ngForm"> -->
+
+        <div class="card mb-4" *ngFor="let ques of questionList; let n = index">
+          <div class="card-body my-3">
+            <div class="row">
+              <div class="col-6">
+               <span class="font-weight-bold">{{n+1}}.</span> <div id="question" class="font-weight-bold" [innerHTML]=" ques.question"></div>
+              </div>
+              <div class="col-3 text-center">
+                <div class="form-group">
+                  <label for="">Answer<span class="badge text-red" style="font-size: medium;">*</span></label>
+                  <select class="form-control" name="userAnswer{{n}}" (change)="setUserAnswer($event, ques)" id="">
+                    <option value="" selected disabled>Choose Your Answer</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="NA">Not Applicable</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-3 text-center">
+                <div class="form-group">
+                  <label for="">Attach Evidence</label>
+                  <input class="form-control" type="file" name="userEvidence{{n}}"
+                    (change)="setUserEvidence($event, ques)" id="">
+                </div>
+                <small class="text-success" *ngIf="ques.userEvidence">Evidence uploaded successfully  </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6"></div>
+              <div class="col-6">
+                <label>Description</label>
+                <textarea class="form-control" name="userDescription{{n}}"
+                  (change)="setUserDescription($event, ques)"></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button type="submit" (click)="examSubmit()" class="btn btn-success">
+          Submit
+        </button>
+        <!-- </form> -->
+      </div>
+    </div>
+  </div>
+  <div class="submit" *ngIf="userSubmit">
+    <div class="container-fluid mt-7 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-dark text-white py-4">
+              Are you sure you want to submit Assessment?
+            </div>
+            <div class="card-body">
+              <ul class="list-group mb-2 text-center">
+                <li class="list-group-item">Assessment Name: <b>{{ exam?.exam_name }}</b></li>
+                <li class="list-group-item">Assessment Code: <b>{{ exam?.exam_code }}</b></li>
+                <!-- <li class="list-group-item">Exam Date: {{ exam?.exam_date | date : "fullDate" }}</li> -->
+              </ul>
+              <hr />
+              <div class="row">
+                <div class="col text-left">
+                  <button class="btn btn-primary" *ngIf="goBackButton" (click)="goBack()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Go Back
+                  </button>
+                </div>
+                <div class="col-4 text-right">
+                  <button class="btn btn-danger" (click)="backToHome()">
+                    Submit Assessment
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="" *ngIf="submitFinalExam">
+    <div class="header bg-gradient-danger pb-8 pt-3">
+      <div class="container-fluid"></div>
+    </div>
+    <div class="container mt--5 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent">
+              <h1 class="text-red">
+                Your Assessment Has Been Successfully Submitted!!<br />
+                <!-- Your Result will be Announced within next 2 Working days!! -->
+              </h1>
+              <br />
+              <!-- <h2>
+              It does not have any impact on the actual exams which will be
+              conducted in future.
+            </h2> -->
+            </div>
+            <div class="card-body">
+              <!-- <hr /> -->
+              <div class="row">
+                <div class="col text-left">
+                  <button class="btn btn-secondary" (click)="goBackToHome()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Go Back
+                    To Home
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

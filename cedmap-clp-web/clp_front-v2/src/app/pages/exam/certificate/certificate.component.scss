@@ -1,0 +1,137 @@
+.outer{
+  border: 5px solid black;
+  max-height: 750px;
+
+}
+
+.certificate-header{
+  margin-bottom: 30px;
+}
+
+.about-certificate {
+  font-family: Arial Rounded MT Bold;
+}
+
+.rowClass{
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+@media print{
+  @page { size :landscape; max-height:800px;}
+}
+// .certificate-container {
+//   padding: 50px;
+//   width: 1800px;
+// }
+// .certificate {
+//   border: 20px solid #0C5280;
+//   padding: 25px;
+//   height: 1574px;
+//   position: relative;
+// }
+
+// .certificate:after {
+//   content: '';
+//   top: 0px;
+//   left: 0px;
+//   bottom: 0px;
+//   right: 0px;
+//   position: absolute;
+//   background-size: 100%;
+//   z-index: -1;
+// }
+
+// .certificate-header > .logo {
+//   width: 1755px;
+//   height: 433px;
+//   margin-left: -22px;
+//   margin-top: -22px;
+// }
+
+// .certificate-title {
+//   text-align: center;
+// }
+
+// .certificate-body {
+//   text-align: center;
+// }
+
+// h1 {
+
+//   font-weight: 800;
+//   margin-top: 3px;
+//   font-size: 80px;
+//   color: black;
+//   font-style: italic;
+// }
+
+// .student-name {
+//   font-size: 24px;
+// }
+
+// .certificate-content {
+//   margin: 0 auto;
+//   width: 750px;
+// }
+
+// .about-certificate {
+//   width: 380px;
+//   margin: 0 auto;
+// }
+
+// .topic-description {
+
+//   text-align: center;
+// }
+
+// h4{
+//   margin-left: -1395px;
+//   font-size: 25px;
+
+// }
+// p{
+//   font-size: 25px;
+//   margin-top: -23px;
+// }
+
+// h3{
+//   font-size: 30px;
+//   width: 976px;
+//   margin-top: -20px;
+//   margin-left: -290px;
+// }
+// .container{
+//   float: left;
+//   width: 25%;
+//   padding: 10px;
+//   height: 50px;
+// }
+
+// .row{
+//   display: flex;
+//   clear: both;
+//   margin-top: 155px;
+//   font-weight: bold;
+//   margin-left: -113px;
+// }
+
+// .col{
+//   margin-left: 230px;
+//   text-align: center;
+
+// }
+
+// h2{
+//   font-size: medium;
+// }
+// .center{
+//   display: block;
+// }
+
+
+
+
+
+
+

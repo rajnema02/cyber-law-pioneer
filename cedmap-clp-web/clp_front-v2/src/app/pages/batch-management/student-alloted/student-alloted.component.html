@@ -1,0 +1,125 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="">
+            <h1 class="card-title">Student Allotment List</h1>
+            <div class="row my-4">
+              <!-- <button [routerLink]="['/batch/batch-create']" routerLinkActive="router-link-active"
+              class="btn btn-success ">+ New Batch</button>  -->
+              <div class="col">
+                <h2 class="">Batch name : {{ this.BatchList?.batch_name }}</h2>
+
+
+              </div>
+              <div class="col">
+                <a (click)="exportAsCsv()" class="btn btn-sm btn-info">
+                  <i class="fa fa-download" aria-hidden="true"></i> Export To CSV
+                </a>
+                <a class="mx-2 btn btn-warning btn-sm" routerLink="/batch/batch-detail/{{ this.BatchList?._id }}"
+                  target="_blank"> <i class="fa fa-download mx-2" aria-hidden="true"></i>Export to PDF</a>
+                <a class="mx-2 btn btn-primary btn-sm" routerLink="/batch/batch-address/{{ this.BatchList?._id }}"
+                  target="_blank"> <i class="fa fa-download mx-2" aria-hidden="true"></i>Address Details</a>
+                <a (click)="getExamReport()" class="btn btn-primary btn-sm"
+                  *ngIf="processResultButton && certificationExam"><i class="fa fa-circle-notch" aria-hidden="true"></i>
+                  Process
+                  Results [{{ resultCount }}]
+                  Results [{{ resultCount }}/{{ count }}]
+                </a>
+                <a *ngIf="generateCertificateButton && certificationExam" (click)="generateCertificates()"
+                  class="btn btn-warning btn-sm"><i class="fa fa-circle-notch" aria-hidden="true"></i>
+                  Generate Certificates</a>
+                <a *ngIf="downloadCertificateButton" (click)="downloadCertificates()" class="btn btn-warning btn-sm"><i
+                    class="fa fa-download" aria-hidden="true"></i> Download
+                  Certificates</a>
+                <a *ngIf="uploadCertificateButton" (click)="uploadCertificates()" class="btn btn-success btn-sm"><i
+                    class="fa fa-upload" aria-hidden="true"></i> Upload
+                  Certificates</a>
+              </div>
+              <!-- <div class="col text-right justify-content-end">
+              <span class=" mx-3" *ngIf="selectedStudent.length"><b>{{selectedStudent.length}}</b> Students Selected</span>
+              <div class="btn btn-success btn-sm text-right" *ngIf="selectedStudent.length" (click)="allotToBatch()">Allot Students to the Batch</div>
+            </div> -->
+            </div>
+            <div class="row" *ngIf="!uploadCertificateForm">
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr class="text-center">
+                      <th scope="col"></th>
+                      <th scope="col">User Name</th>
+                      <th scope="col">Registration date</th>
+                      <th scope="col">Form Submitted</th>
+                      <th scope="col">Verification status</th>
+
+                      <!-- <th scope="col">Image</th -->
+                      <th scope="col-4">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center" *ngFor="let item of userList; let i = index">
+                      <!-- <tr *ngFor="let item of batchList"> -->
+                      <!-- <td>{{item.batch_name}}</td> -->
+                      <!-- <td> <button [routerLink]="['/batch/batch-allotment']" routerLinkActive="router-link-active"
+                        class="btn btn-success ">Batch Allotment</button>
+                    </td> -->
+
+                      <!-- <td>
+                      <input type="checkbox" id="myCheckbox" name="stdId" placeholder="StudentId" (change)="selectStud(item._id)">
+                    </td> -->
+                      <td>{{i+1}}</td>
+                      <td class="col-3">{{ item.full_name }}</td>
+                      <td class="col-3">{{ item.created_at | date : "short" }}</td>
+                      <td class="col-3">{{ item.formStatus ? "Yes" : "No" }} </td>
+                      <td class="col-3">
+                        {{ item.is_profileVerified ? "Yes" : "No" }}
+                      </td>
+                      <td class="text-center">
+                        <a *ngIf="item.auditType=='Individual'" class="btn btn-sm btn-secondary" (click)="makeAssessor(item._id)"> Make Assessor</a>
+                        <a *ngIf="item.auditType" class="badge badge-pill badge-success"> {{item.auditType}}</a>
+                        <!-- <a *ngIf="item.auditType=='Assessor'" class="badge badge-pill badge-success"> Assessor</a> -->
+                        <a class="btn btn-warning btn-sm" routerLink="/audit/individual-query-list/{{ item._id }}">
+                          Reply Query
+                        </a>
+                        <a class="btn btn-primary btn-sm" routerLink="/profile/{{ item._id }}">
+                          View profile
+                        </a>
+                        <a class="btn btn-danger btn-sm" (click)="removeFromBatch(item._id)">
+                          Remove
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div *ngIf="uploadCertificateForm">
+              <div class="row">
+                <div class="card-body">
+                  <h2>Upload Certificates:</h2>
+
+                  <form #certForm="ngForm" class="p-3 mt-3">
+                    <div class="row mt-2">
+                      <div class="col-lg-6">
+                        <input type="file" (change)="onFileSelected($event)" multiple />
+                        <button (click)="onSubmit()">Upload</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

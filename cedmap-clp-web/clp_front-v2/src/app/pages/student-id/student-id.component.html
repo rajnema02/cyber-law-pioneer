@@ -1,0 +1,200 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="container bg-secondary shadow" id="print-component">
+        <div class="card-body">
+
+          <div class="card" style="overflow: hidden;  border: 3px solid  #0071B3 ;border-radius: 4%;">
+            <style>
+              .card {
+
+                margin: auto;
+                text-align: center;
+                border-radius: 4%;
+                -webkit-border-radius: 4%;
+                -moz-border-radius: 4%;
+                -ms-border-radius: 4%;
+                -o-border-radius: 4%;
+              }
+
+              .profile img {
+                width: 155px;
+                height: 180px;
+                border-radius: 10px;
+                border: 1px solid black;
+              }
+
+              .Qr img {
+                width: 120px;
+                height: 100px;
+                border-radius: 10px;
+                border: 1px solid black;
+              }
+
+
+
+              button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+              }
+
+              a {
+                text-decoration: none;
+                font-size: 22px;
+              }
+
+              button:hover,
+              a:hover {
+                opacity: 0.7;
+              }
+
+              .info {
+                margin-bottom: 10px;
+                text-align: left;
+
+              }
+
+              .label {
+                font-weight: bold;
+                display: inline-block;
+                width: 150px;
+                margin-right: 10px;
+
+
+              }
+
+              .label2 {
+                font-weight: bold;
+                display: inline-block;
+                margin-right: 10px;
+
+
+              }
+
+              .value2 {
+                font-weight: bold;
+
+              }
+
+              .value {
+                display: inline-block;
+                font-weight: normal;
+                justify-content: start;
+
+              }
+
+              .info2 {
+                margin-bottom: 5px;
+                text-align: left;
+
+              }
+
+              @media print {
+                body {
+                  -webkit-print-color-adjust: exact;
+                  /* For Chrome and Safari */
+                  print-color-adjust: exact;
+                  /* For other browsers */
+                }
+              }
+            </style>
+            <div class="header">
+              <img src="../../../assets/img/MPCON-landscape.jpeg" width="100%" height="150px" alt="cyberlawpioneers">
+            </div>
+
+            <div class="container px-0 pt-3">
+              <div class="row">
+                <div class="col-4">
+                  <div class="profile py-4">
+                    <img src="{{ env.production ? env.url : 'https://mpced.cyberlawpioneers.org' }}/file/download/{{
+                      user.profile_photo || 'no-image'
+                    }}" alt="" style="object-fit: cover">
+                  </div>
+                </div>
+                <div class="col-8">
+
+                  <h1 class="label2">{{user?.full_name}}</h1>
+                  <div class="info">
+                    <span class="label">Registration Date : </span>
+                    <span class="value">{{user?.created_at | date:"d-M-y"}}</span>
+                    <!-- M/d/yy, h:mm a -->
+                  </div>
+                  <div class="info">
+                    <span class="label">Student ID : </span>
+                    <span class="value">{{user?._id}}</span>
+                  </div>
+                  <div class="info">
+                    <span class="label">Course Name : </span>
+                    <span class="value">{{batch?.course_name}}</span>
+                  </div>
+                  <div class="info">
+                    <span class="label">Course code : </span>
+                    <span class="value">{{batch?.course_code}}</span>
+                  </div>
+                  <div class="info">
+                    <span class="label">Course type : </span>
+                    <span class="value">{{batch?.course_type}}</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="row mt-2" style="background-color: #0071B3; color: aliceblue;">
+                <div class="col-9">
+                  <div class="card-body">
+
+                    <div class="info2">
+                      <span class="label2">Address: </span>
+                      <span class="value2">MPCON Ltd. Ground Flooor, Rajiv Gandhi Bhawan-2 35, Shyamla Hills Bhopal,
+                        Madhya Pradesh, 462002</span>
+                    </div>
+                    <div class="info2">
+                      <span class="label2">Contact No. : </span>
+                      <span class="value2">0775-4077271 (MPCON), 0755-3528599, 8770303862 (MPCED)</span>
+                    </div>
+                    <div class="info2">
+                      <span class="label2">Website : </span>
+                      <span class="value2">www.mpced.mpconsultancy.org</span>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+                <div class="col-3 align-self-end ">
+                  <div class="signature mb-4">
+                    <p class="p-0 m-0">Knowledge partner</p>
+                    <img src="../../../assets/img/logo.png" width="80%" alt="">
+                  </div>
+                  <!-- <div class="div ">
+                    Authorized Signature
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn btn-primary " (click)="printComponent('print-component')"> <i class="fa fa-print"
+          aria-hidden="true"></i> Print </div>
+    </div>
+  </div>
+</div>

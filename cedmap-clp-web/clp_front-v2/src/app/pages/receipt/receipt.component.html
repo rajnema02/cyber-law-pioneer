@@ -1,0 +1,232 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 60px; ">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+
+</div>
+<div class="container-fluid mt--6">
+
+
+  <div class="row " *ngIf="profileVerified && action!='view'">
+    <div class="col-12">
+      <div class="card card-profil  py-5" id="component1">
+        <div id="invoice-POS">
+
+          <div class="text-center" id="top">
+            <div class="">
+              <img src="assets/img/cedmap.png" alt="cedmap_logo" class="w-100">
+            </div>
+            <div class="info">
+              <h2 class="border-bottom">Receipt</h2>
+              <!-- <h2>SBISTechs Inc</h2> -->
+            </div><!--End Info-->
+          </div><!--End InvoiceTop-->
+
+          <div class="px-4" id="">
+            <div class="row font-weight-bold">
+              <div class="col-5">
+
+                <!-- <h2>Contact Info</h2> -->
+                <p class="font-weight-bold text-capitalize">
+                  {{user?.userData?.full_name}},<br>
+                  {{user?.userData?.mobile}}<br>
+                  <!-- {{user  | json }} -->
+                </p>
+              </div>
+              <div class="col">
+                <p class="font-weight-bold">
+                  Transaction Id: {{user?.orderId}}<br>
+                  Date: {{user?.created_at | date }}
+                </p>
+
+              </div>
+            </div>
+          </div><!--End Invoice Mid-->
+
+          <div id="bot">
+
+            <div id="table">
+              <table class="text-center">
+                <tr class="tabletitle">
+                  <td class="">
+                    <h2>Description</h2>
+                  </td>
+                  <td class="">
+                    <h2></h2>
+                  </td>
+                  <td class="">
+                    <h2>Sub Total</h2>
+                  </td>
+                </tr>
+
+
+                <tr class="service">
+                  <td class="tableitem">
+                    <p class="font-weight-bold mb-0">{{payment?.addField3}}</p>
+                    <p>{{user?.userData?.course_code}}</p>
+                  </td>
+                  <td class="tableitem">
+                    <p class=""></p>
+                  </td>
+                  <td class="tableitem">
+                    <p class="">Rs {{(payment?.trnAmt)/100 }}</p>
+                  </td>
+                </tr>
+
+
+                <!-- <tr class="tabletitle">
+                      <td></td>
+                      <td class="Rate"><h2>tax</h2></td>
+                      <td class="payment"><h2>$419.25</h2></td>
+                    </tr> -->
+
+                <tr class="tabletitle">
+                  <td></td>
+                  <td class="Rate">
+                    <h2>Total</h2>
+                  </td>
+                  <td class="payment font-weight-bold">
+                    <h2>Rs {{(payment?.trnAmt)/100 }}</h2>
+                  </td>
+                </tr>
+
+              </table>
+            </div><!--End Table-->
+
+            <!-- <div id="legalcopy">
+                  <p class="legal"><strong>Thank you for your business!</strong>  Payment is expected within 31 days; please process this invoice within that time. There will be a 5% interest charge per month on late invoices.
+                  </p>
+                </div> -->
+
+          </div><!--End InvoiceBot-->
+        </div>
+        <!--End Invoice-->
+
+      </div>
+    </div>
+    <div class="col-12 text-center">
+
+      <button class="btn btn-primary" (click)="printComponent('component1')"> <i class="fa fa-print"
+          aria-hidden="true"></i> print</button>
+    </div>
+  </div>
+  <div class="row " *ngIf="profileVerified && action=='view'">
+    <div class="col-12">
+      <div class="card card-profil  py-5" id="component1">
+        <div id="invoice-POS" class="p-0">
+
+          <div class="text-center" id="top">
+            <div class="">
+              <img src="assets/img/cedmap.png" alt="cedmap_logo" class="w-100">
+            </div>
+            <div class="info">
+              <h2 class="border-bottom">Receipt</h2>
+              <!-- <h2>SBISTechs Inc</h2> -->
+            </div><!--End Info-->
+          </div><!--End InvoiceTop-->
+
+          <div class="px-4" id="">
+            <div class="row font-weight-bold">
+              <div class="col-5">
+
+                <!-- <h2>Contact Info</h2> -->
+                <p class="">
+                  {{user?.full_name}},<br>
+                  <!-- Email: {{user?.email}}<br> -->
+                  {{user?.mobile}}<br>
+                  <!-- {{user  | json }} -->
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  Transaction Id: {{user?.transaction_id}}<br>
+                  Date: {{user.updated_at | date }}
+                </p>
+
+              </div>
+            </div>
+          </div><!--End Invoice Mid-->
+
+          <div id="bot">
+
+            <div id="table">
+              <table class="text-center">
+                <tr class="tabletitle">
+                  <td class="">
+                    <h2>Description</h2>
+                  </td>
+                  <td class="">
+                    <h2></h2>
+                  </td>
+                  <td class="">
+                    <h2>Sub Total</h2>
+                  </td>
+                </tr>
+
+
+                <tr class="service">
+                  <td class="tableitem">
+                    <p class="">Registration Fees</p>
+                    <!-- <p class="font-weight-bold mb-0">{{payment?.addField3}}</p>
+                    <p>{{user?.userData?.course_code}}</p> -->
+                  </td>
+                  <td class="tableitem">
+                    <p class=""></p>
+                  </td>
+                  <td class="tableitem">
+                    <p class="">Rs {{user?.amount}}
+                      <!-- <p class="">Rs {{(payment?.trnAmt)/100 }}</p> -->
+                  </td>
+                </tr>
+
+
+                <!-- <tr class="tabletitle">
+                      <td></td>
+                      <td class="Rate"><h2>tax</h2></td>
+                      <td class="payment"><h2>$419.25</h2></td>
+                    </tr> -->
+
+                <tr class="tabletitle">
+                  <td></td>
+                  <td class="Rate">
+                    <h2>Total</h2>
+                  </td>
+                  <td class="payment font-weight-bold">
+                    <p class="">Rs {{user?.amount}}</p>
+                    <!-- <h2>Rs {{(payment?.trnAmt)/100 }}</h2> -->
+                  </td>
+                </tr>
+
+              </table>
+            </div><!--End Table-->
+
+            <!-- <div id="legalcopy">
+                  <p class="legal"><strong>Thank you for your business!</strong>  Payment is expected within 31 days; please process this invoice within that time. There will be a 5% interest charge per month on late invoices.
+                  </p>
+                </div> -->
+
+          </div><!--End InvoiceBot-->
+        </div>
+        <!--End Invoice-->
+
+      </div>
+    </div>
+    <div class="col-12 text-center">
+
+      <button class="btn btn-primary" (click)="printComponent('component1')"> <i class="fa fa-print"
+          aria-hidden="true"></i> print</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="!profileVerified ">
+    <div class="col-12">
+      <div class="card text-center h-100">
+        <div class="card-body text-center">
+          <h4 class="card-title">
+            <p class="card-text text-danger">
+              !!!! Your Profile is to be verified by Admin !!!!
+            </p>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

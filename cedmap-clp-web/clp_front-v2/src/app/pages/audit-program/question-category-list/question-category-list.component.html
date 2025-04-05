@@ -1,0 +1,113 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="card-title">Question Category List</h3>
+            </div>
+            <!-- <div class="col-2 d-flex">
+              <a
+                [routerLink]="['/course/course-create']"
+                routerLinkActive="router-link-active"
+                class="btn btn-success btn-sm"
+                >+ New Course</a
+              >
+            </div> -->
+          </div>
+        </div>
+        <div class="card-body">
+          <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Question Category</label>
+                  <input
+                    ngModel
+                    required
+                    name="title"
+                    type="text"
+                    class="form-control"
+                    placeholder="Question Category"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Description</label>
+                  <input
+                    ngModel
+                    required
+                    name="description"
+                    type="text"
+                    class="form-control"
+                    placeholder="Description"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button
+                type="submit"
+                name="submit"
+                class="btn btn-success mt-2 justify-content-center"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+          <hr class="mb-2" />
+          <div class="table-responsive">
+            <h4>Category List</h4>
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              [responsive]="true"
+              (pageChange)="page = $event; getList()"
+              id="question-paginator"
+            ></pagination-controls>
+            <div>Total : {{ listCount }}</div>
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th>Question Category</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let question of questionList
+                      | paginate
+                        : {
+                            id: 'question-paginator',
+                            itemsPerPage: limit,
+                            currentPage: page,
+                            totalItems: listCount
+                          };
+                    let i = index
+                  "
+                >
+                  <td>
+                    {{ question.title }}
+                  </td>
+                  <td>
+                    {{ question.description }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

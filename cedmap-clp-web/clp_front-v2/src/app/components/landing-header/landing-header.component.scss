@@ -1,0 +1,95 @@
+.custom-carousel {
+  height: 400px; /* Set this to your desired fixed height */
+}
+
+.custom-carousel img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-carousel {
+  /* Add any custom styles for your carousel here */
+}
+
+.custom-carousel .item {
+  /* Ensure proper styling for items */
+}
+
+.custom-carousel .testimonial-img img {
+  /* Make sure the images are styled correctly */
+  max-width: 100px; /* Adjust size as needed */
+  margin: 0 auto;
+}
+
+.card-practice {
+  border: 1px dashed;
+  border-color: #f35353;
+  height: 355px;
+  //   border-style: dashed;
+}
+
+.featured-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 1px;
+  border-radius: 50%;
+  color: #0035d0; /* Adjust color if needed */
+}
+.practice-icon {
+  width: 60px;
+  height: auto;
+  //   display: flex;
+  //   align-items: center;
+  justify-content: center;
+}
+
+.hd2 {
+  color: #d80650;
+  text-transform: uppercase;
+  text-align: left;
+}
+.text-theme2 {
+  color: #d80650;
+  font-size: 22px;
+}
+.font-italic {
+  font-size: 20px bold;
+  color: white;
+}
+.bg-team {
+  background-color: #0d0f33;
+}
+
+.light-bg {
+  background-color: #e4fcfa;
+}
+.btn.btn-theme {
+  background: #d80650;
+  color: #ffffff;
+}
+.btn {
+  background: none;
+  padding: 16px 35px;
+  overflow: hidden;
+  border-radius: 0;
+  position: relative;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-weight: 700;
+}
+.nav-logo {
+  height: 60px;
+  width: auto;
+}
+.bg-fullnav {
+  background-color: #0d0f33;
+  position: fixed;
+}

@@ -1,0 +1,87 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row">
+            <h4 class="card-title col">Audit Exam List</h4>
+          </div>
+          <div class="table-responsive">
+            <!-- {{updatedExamList|json}} -->
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Exam Name</th>
+                  <!-- <th scope="col">Exam Code</th> -->
+                  <!-- <th scope="col">Course Type</th> -->
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Exam Start Date</th>
+                  <th scope="col">Exam Start Date</th>
+                  <!-- <th scope="col">Exam Status</th> -->
+                  <!-- <th scope="col">Exam Creation Date</th> -->
+
+                  <th scope="col">Actions</th>
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let exam of examList">
+                  <!-- {{exam|json}} -->
+                  <td>{{exam.exam_name}}</td>
+                  <!--  <td>{{exam.exam_code}}</td>
+                  <td>{{exam.course_type}}</td> -->
+                  <td>{{ exam.course_name }}</td>
+                  <td>{{ exam?.exam_date_from | date : "dd-MM-YYYY":'UTC' }}</td>
+                  <!-- <td>{{ exam?.exam_date_from | date : "dd-MM-YYYY" }}</td> -->
+                  <td>{{ exam?.exam_date_to | date : "dd-MM-YYYY":'UTC'}}</td>
+                  <!-- <td>{{exam.exam_status}}</td> -->
+                  <td>
+                    <span *ngIf="exam.exam_status == 'Upcoming'" class="badge badge-pill badge-warning">{{
+                      exam.exam_status }}</span>
+                    <span *ngIf="exam.exam_status == 'Exam Over'" class="badge badge-pill badge-danger">{{
+                      exam.exam_status }}</span>
+                    <span *ngIf="exam.exam_status == 'Ongoing'" class="badge badge-pill badge-primary">{{
+                      exam.exam_status }}</span>
+                    <span *ngIf="exam.exam_status == 'Submitted'" class="badge badge-pill badge-success">{{
+                      exam.exam_status }}</span>
+                    <a *ngIf="exam?.reportStatus " class="btn btn-sm mx-4"
+                      href="{{env.url}}/file/download/{{exam?.report}}"> <i class="fas fa-file-download"></i>
+                      Assessment Report </a>
+                    <!-- </td>
+
+
+                  <td > -->
+                    <!-- <a class="mx-3 btn btn-sm btn-outline-info " routerLink='/exam/question-paper/{{exam._id}}'>Start Exam</a> -->
+                    <a *ngIf="exam.exam_status == 'Ongoing'" class="mx-3 btn btn-sm btn-outline-info"
+                      (click)="saveExamId(exam._id)" routerLink="/audit/exams/{{exam._id}}">Start Exam</a>
+                    <!-- <span
+                      *ngIf="exam.exam_status == 'Submitted'"
+                      class="badge badge-pill badge-danger"
+                      >{{ exam.exam_status }}</span
+                     > -->
+                    <!-- <span *ngIf="exam.exam_status && exam.exam_status != 'Ongoing'" class="text-danger">Exam Over</span> -->
+                    <!-- <span *ngIf="!exam.exam_status" class="text-danger">Exam Over</span> -->
+                    <!-- <a class="mx-3 btn btn-sm btn-outline-primary" routerLink='/batch/batch-alloted/{{item._id}}'>Allot Batch </a>
+                   <a class="mx-3 btn btn-sm btn-warning" routerLink='/batch/batch-update/{{item._id}}'><i class="fas fa-edit"></i> </a>
+                   <a class="mx-3 btn btn-sm btn-danger" (click)="deleteBatch(item._id)"><i class="fas fa-trash"></i> </a> -->
+                  </td>
+
+                  <!-- <td>{{item.full_name}}</td> -->
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7 ">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body ">
+          <div class="row">
+            <h4 class="card-title col">Batch</h4>
+            <div class="col-2 ">
+              <span class="d-flex">
+
+                <a [routerLink]="['/batch/batch-create']"  class=" btn btn-success btn-sm ">+ New Batch</a>
+              </span>
+            </div>
+
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Batch Name</th>
+                  <th scope="col">Course Type</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Batch Start Time</th>
+                  <th scope="col">Batch End Time</th>
+                  <th scope="col">Batch Days</th>
+                  <th scope="col">Total Questions</th>
+                  <th scope="col">% of Course Questions</th>
+
+                  <th scope="col">Actions</th>
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of batchList">
+                  <td>{{item.batch_name}}</td>
+                  <td>{{item.course_type}}</td>
+                  <td>{{item.course_name}}</td>
+                  <td>{{item.startTime}}</td>
+                  <td>{{item.endTime}}</td>
+                  <td >{{item.days}}</td>
+                  <td >{{item.total_no_of_questions}}</td>
+                  <td >{{item.percent_of_course_questions}}<span *ngIf="item.percent_of_course_questions" >%</span></td>
+                  <td>
+                     <a class="mx-3 btn btn-sm btn-outline-info " routerLink='/batch/view-students/{{item._id}}'>View Alloted Student</a>
+                   <a class="mx-3 btn btn-sm btn-outline-primary" routerLink='/batch/batch-alloted/{{item._id}}'>Allot Batch </a>
+                   <a class="mx-3 btn btn-sm btn-warning" routerLink='/batch/batch-update/{{item._id}}'><i class="fas fa-edit"></i> </a>
+                   <a class="mx-3 btn btn-sm btn-danger" (click)="deleteBatch(item._id)"><i class="fas fa-trash"></i> </a>
+                  </td>
+
+
+
+                  <!-- <td>{{item.full_name}}</td> -->
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

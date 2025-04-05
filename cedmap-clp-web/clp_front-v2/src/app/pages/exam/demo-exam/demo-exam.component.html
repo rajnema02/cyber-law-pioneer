@@ -1,0 +1,476 @@
+<div class="header bg-gradient-danger pb-8 pt-3">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row px-4">
+        <div class="col-10">
+          <h1 style="color: white">
+            Exam Name: Demo Exam<br />
+            Exam Code: --<br />
+          </h1>
+        </div>
+        <!-- <div class="col-2">
+          <div class="row">
+            <div class="col-3">
+              <span class="avatar rounded-circle">
+                <img
+                  alt=""
+                  src="{{ env.url }}/file/download/{{
+                    user_image || 'no-image'
+                  }}"
+                  class="border"
+                  style="height: 50px; object-fit: cover"
+                />
+              </span>
+            </div>
+            <div class="col">
+              <span class="mb-2 font-weight-bold text-white">
+                {{ user_name }}
+              </span>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- <div class="media align-items-center rounded-circle">
+        <span class="avatar rounded-circle">
+          <img
+            alt=""
+            src="{{ env.url }}/file/download/{{ user_image || 'no-image' }}"
+            class="border"
+            style="height: 50px; object-fit: cover"
+          />
+        </span>
+        <div class="media-body mx-5 d-none d-lg-block">
+          <div class="mb-2 text-sm font-weight-bold">
+            {{ user_name }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row mt--7" *ngIf="!userSubmit && !demoExam && !submitFinalExam">
+    <div class="col-12 col-lg-8">
+      <div class="container">
+        <!-- Table -->
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-8 mb-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-transparent">
+                <div class="row">
+                  <div class="col-4 text-left text-danger">
+                    Question No. : {{ getQuestionIndex() }}
+                  </div>
+                  <div class="col-4">
+                    Time Remaining: {{ remainingTime }}
+                    <!-- {{ getTimer() }} -->
+
+                    <!-- <app-count-down> </app-count-down> -->
+                  </div>
+                  <!-- <div class="col-4 text-right">
+                    Marks: {{ currentQuestion?.marks }}
+                  </div> -->
+                </div>
+              </div>
+              <div class="pb-4">
+                <div class="card">
+                  <div
+                    class="card-header text-left"
+                    [innerHTML]="currentQuestion?.question"
+                  ></div>
+                  <div class="card-body">
+                    <div class="card">
+                      <div
+                        class="card-body text-left opt"
+                        (click)="saveAnswer(1)"
+                        [ngClass]="{ 'bg-primary text-white': isSelected(1) }"
+                        [innerHTML]="
+                          '<b>Option 1: </b>' + currentQuestion?.option_1
+                        "
+                      ></div>
+                    </div>
+                    <div class="card">
+                      <div
+                        class="card-body text-left"
+                        (click)="saveAnswer(2)"
+                        [ngClass]="{ 'bg-primary text-white': isSelected(2) }"
+                        [innerHTML]="
+                          '<b>Option 2: </b>' + currentQuestion?.option_2
+                        "
+                      ></div>
+                    </div>
+                    <div class="card">
+                      <div
+                        *ngIf="currentQuestion?.option_3"
+                        class="card-body text-left"
+                        (click)="saveAnswer(3)"
+                        [ngClass]="{ 'bg-primary text-white': isSelected(3) }"
+                        [innerHTML]="
+                          '<b>Option 3: </b>' + currentQuestion?.option_3
+                        "
+                      ></div>
+                    </div>
+                    <div class="card">
+                      <div
+                        *ngIf="currentQuestion?.option_4"
+                        class="card-body text-left"
+                        (click)="saveAnswer(4)"
+                        [ngClass]="{ 'bg-primary text-white': isSelected(4) }"
+                        [innerHTML]="
+                          '<b>Option 4: </b>' + currentQuestion?.option_4
+                        "
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container nxt">
+                  <div class="row">
+                    <div class="col">
+                      <button
+                        class="btn btn-warning"
+                        (click)="previousQuestion()"
+                      >
+                        <i class="fa fa-angle-left" aria-hidden="true"></i
+                        >previous
+                      </button>
+                    </div>
+                    <div class="col-4 text-right">
+                      <button
+                        class="btn btn-danger"
+                        (click)="submitAndNext()"
+                        *ngIf="questionList?.length != getQuestionIndex()"
+                      >
+                        Submit & Next
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        (click)="submit()"
+                        class="btn btn-danger"
+                        *ngIf="questionList?.length == getQuestionIndex()"
+                      >
+                        SUBMIT
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-12">
+      <div class="container pb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-8">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-transparent">Navigation Panel</div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <button class="btn btn-info">{{ notViewed }}</button>
+                    <br />Not Viewed
+                  </div>
+                  <div class="col-4">
+                    <button class="btn btn-warning">{{ viewed }}</button>
+                    <br />Viewed
+                  </div>
+                  <div class="col-4">
+                    <button class="btn btn-success">{{ answered }}</button>
+                    <br />
+                    Answered
+                  </div>
+                </div>
+                <hr />
+
+                <div id="list">
+                  <div class="row">
+                    <div
+                      class="col-2 my-2"
+                      *ngFor="let ques of questionList; index as i"
+                    >
+                      <span
+                        *ngIf="
+                          ques.seen == false &&
+                          ques.status == 'unanswered' &&
+                          ques._id != currentQuestion?._id
+                        "
+                        (click)="currentQuestion = ques"
+                        class="btn btn-info"
+                      >
+                        {{ i + 1 }}
+                      </span>
+                      <span
+                        *ngIf="
+                          ques.seen == true &&
+                          ques.status == 'unanswered' &&
+                          ques._id != currentQuestion?._id
+                        "
+                        (click)="currentQuestion = ques"
+                        class="btn btn-warning"
+                      >
+                        {{ i + 1 }}
+                      </span>
+                      <span
+                        *ngIf="ques.status == 'answered'"
+                        class="btn btn-success"
+                        (click)="currentQuestion = ques"
+                      >
+                        {{ i + 1 }}
+                      </span>
+                      <span
+                        *ngIf="
+                          currentQuestion?._id == ques._id &&
+                          ques.status == 'unanswered'
+                        "
+                        (click)="currentQuestion = ques"
+                        class="btn btn-dark text-white"
+                      >
+                        {{ i + 1 }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit" *ngIf="userSubmit">
+    <div class="container mt--7 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent">
+              <h1 class="text-red">
+                Note: This exam is for practice purpose only!!
+              </h1>
+              <br />
+              <h2>
+                It does not have any impact on the actual exams which will be
+                conducted in future.
+              </h2>
+            </div>
+            <div class="card-body">
+              <!-- <div class="row">
+                <div class="col-4 text-center">
+                  <button class="btn btn-info">{{ notViewed }}</button>
+                  <br />Not Viewed
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-warning">{{ viewed }}</button>
+                  <br />Viewed
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-success">{{ answered }}</button>
+                  <br />
+                  Answered
+                </div>
+              </div>
+              <hr />
+
+              <div id="list">
+                <div class="row">
+                  <div
+                    class="col-2 my-2"
+                    *ngFor="let ques of questionList; index as i"
+                  >
+                    <span
+                      *ngIf="
+                        ques.seen == false &&
+                        ques.status == 'unanswered' &&
+                        ques._id != currentQuestion?._id
+                      "
+                      class="btn btn-info"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        ques.seen == true &&
+                        ques.status == 'unanswered' &&
+                        ques._id != currentQuestion?._id
+                      "
+                      class="btn btn-warning"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="ques.status == 'answered'"
+                      class="btn btn-success"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        currentQuestion?._id == ques._id &&
+                        ques.status == 'unanswered'
+                      "
+                      class="btn btn-dark text-white"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                  </div>
+                </div>
+              </div> -->
+
+              <hr />
+              <div class="row">
+                <div class="col text-left">
+                  <button
+                    class="btn btn-secondary"
+                    *ngIf="goBackButton && gobackhide"
+                    (click)="goBack()"
+                  >
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Go Back To Exam
+                  </button>
+                </div>
+                <div class="col-4 text-right">
+                  <button class="btn btn-danger" (click)="goBackToHome()">
+                    Go To Dashboard
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit" *ngIf="demoExam">
+    <div class="container mt--7 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent">
+              <h1 class="text-red">
+                Note: This exam is for practice purpose only!!
+              </h1>
+              <br />
+              <h2>
+                It does not have any impact on the actual exams which will be
+                conducted in future.
+              </h2>
+            </div>
+            <div class="card-body">
+              <!-- <div class="row">
+                <div class="col-4 text-center">
+                  <button class="btn btn-info">{{ notViewed }}</button>
+                  <br />Not Viewed
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-warning">{{ viewed }}</button>
+                  <br />Viewed
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-success">{{ answered }}</button>
+                  <br />
+                  Answered
+                </div>
+              </div>
+              <hr />
+
+              <div id="list">
+                <div class="row">
+                  <div
+                    class="col-2 my-2"
+                    *ngFor="let ques of questionList; index as i"
+                  >
+                    <span
+                      *ngIf="
+                        ques.seen == false &&
+                        ques.status == 'unanswered' &&
+                        ques._id != currentQuestion?._id
+                      "
+                      class="btn btn-info"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        ques.seen == true &&
+                        ques.status == 'unanswered' &&
+                        ques._id != currentQuestion?._id
+                      "
+                      class="btn btn-warning"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="ques.status == 'answered'"
+                      class="btn btn-success"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        currentQuestion?._id == ques._id &&
+                        ques.status == 'unanswered'
+                      "
+                      class="btn btn-dark text-white"
+                    >
+                      {{ i + 1 }}
+                    </span>
+                  </div>
+                </div>
+              </div> -->
+
+              <hr />
+              <div class="row">
+                <div class="col text-left">
+                  <button
+                    class="btn btn-secondary"
+                    *ngIf="goBackButton"
+                    (click)="goBack()"
+                  >
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Go Back
+                  </button>
+                </div>
+                <div class="col-4 text-right">
+                  <button class="btn btn-danger" (click)="logout()">
+                    Submit Paper
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit" *ngIf="submitFinalExam">
+    <div class="container mt--7 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent">
+              <h1 class="text-red">Your Exam Has Been Submitted!!</h1>
+              <br />
+              <!-- <h2>
+                It does not have any impact on the actual exams which will be
+                conducted in future.
+              </h2> -->
+            </div>
+            <div class="card-body">
+              <hr />
+              <div class="row">
+                <div class="col text-left">
+                  <button class="btn btn-secondary" (click)="goBackToHome()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Go Back
+                    To Home
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

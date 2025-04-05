@@ -1,0 +1,104 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7 ">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h2 class="card-title">Course Study Material List</h2>
+            </div>
+            <div class="d-flex col-3">
+              <button [routerLink]="['/study/study-create']"  class="btn btn-success btn-sm">+ Add New Content</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+                (pageChange)="page = $event; getCourseList()" id="user-paginator"></pagination-controls>
+            </div>
+            <div class="col-6" style="text-align: right">
+              <!-- <p>
+                Showing results from {{ newIndex }} to
+                {{ newIndex + (limit > listCount ? listCount : limit) - 1 }}
+                of {{ listCount }}
+              </p> -->
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-responsive">
+            <table class="table align-items-center text-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Upload Type</th>
+                  <th scope="col">Title</th>
+                  <!-- <th scope="col">Image</th -->
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <thead class="thead-white">
+                <tr>
+                  <th></th>
+                  <th scope="col form-group">
+                    <input type="text" class="form-control form-control-sm" name="course_name" [(ngModel)]="course_name"
+                      placeholder="Search" />
+                  </th>
+                  <th scope="col form-group">
+                    <!-- <input type="text" class="form-control form-control-sm" name="mobile" [(ngModel)]="mobile"
+                      placeholder="Search" /> -->
+                  </th>
+                  <th scope="col form-group">
+                    <!-- <input type="text" class="form-control form-control-sm" name="email" [(ngModel)]="email"
+                      placeholder="Search" /> -->
+                  </th>
+
+
+
+
+                  <th scope="col">
+                    <button class="btn btn-sm btn-dark" (click)="getCourseList();isEmptySearch()">
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Filter
+                    </button>
+                    <button *ngIf="!emptySearch" class="btn btn-sm btn-danger" (click)="clearFilter()">
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Clear
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of courseList| paginate
+                : {
+                    id: 'user-paginator',
+                    itemsPerPage: limit,
+                    currentPage: page,
+                    totalItems: listCount
+                  }; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.course_name}}</td>
+                  <td>{{(item.fileType?(item.fileType == 'pdf'?'PDF':'YouTube Link'):'NA')}}</td>
+                  <td>{{item.title?item.title: item.pdf_title}}</td>
+                  <td><a *ngIf="item.fileType == 'pdf'" class="btn btn-link" href="{{ env.url }}/file/download/{{item.pdf_link}}" target="_blank"> View</a><span class="btn btn-danger btn-sm" (click)="deleteContent(item._id)"><i class="fa fa-trash" aria-hidden="true"></i></span></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

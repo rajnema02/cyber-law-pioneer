@@ -1,0 +1,388 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 60px">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+
+</div>
+<div class="container-fluid mt--7">
+  <!-- <div class="row">
+    <div class="col"> -->
+      <div class="card">
+        <div class="card-body" id="component1">
+          <style>
+            @media print {
+              .print-hidden {
+                display: none !important;
+              }
+            }
+          </style>
+          <div class="text-center" id="top">
+            <div class="">
+              <img src="assets/img/cedmap.png" alt="cedmap_logo" class="w-100">
+            </div>
+            <div class="info">
+              <!-- <h2 class="border-bottom">Receipt</h2> -->
+              <!-- <h2>SBISTechs Inc</h2> -->
+            </div><!--End Info-->
+          </div>
+          <!-- <div class="row">
+            <div class="col-6">
+              <td>Name:</td>
+            </div>
+            <div class="col-6">
+              <td>{{ courseUserData.full_name }}</td>
+            </div>
+          </div> -->
+
+          <!-- <form> -->
+          <!-- <hr class="my-4" /> -->
+          <!-- Address -->
+          <div class="card border-3">
+            <div class="card-body">
+              <div class="pb-3">
+                <h3>User information</h3>
+                <div class="row border-bottom">
+                  <div class="col-8">
+                    <div class="row border-top py-2">
+                      <div class="col-4 border-0 font-weight-bold">Name:</div>
+                      <div class="col border-0">
+                        {{ courseUserData.full_name }}
+                      </div>
+                    </div>
+                    <div class="row border-top py-2">
+                      <div class="col-4 border-0 font-weight-bold">
+                        Father's name:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.father_name }}
+                      </div>
+                    </div>
+                    <div class="row border-top py-2">
+                      <div class="col-4 border-0 font-weight-bold">
+                        Email:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.email }}
+                      </div>
+                    </div>
+
+                    <div class="row border-top py-2">
+                      <div class="col-4 border-0 font-weight-bold">
+                        Phone:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.mobile }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+
+                    <div class="ml-5">
+                      <img src="{{ env.url }}/file/download/{{
+                          courseUserData.profile_photo || 'no-image'
+                        }}" style="object-fit: contain;min-height:100px; height:150px
+                         ;" target="_blank" class="my-auto" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <h3>Correspondence Address</h3>
+                <!-- <div class="row"> -->
+
+                <div class="row border-top py-2">
+                  <div class="col-3 border-0 font-weight-bold">
+                    Address:
+                  </div>
+                  <div class="col-9 border-0">
+                    {{ courseUserData.home_address }}
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+
+
+                  <div class="col-4 border border-left-0">
+                    <div class="row py-2">
+                      <div class="col-4 border-0 font-weight-bold">
+                        State:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.state }}
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-4 border">
+                    <div class="row py-2">
+                      <div class="col-4 border-0 font-weight-bold">City:</div>
+                      <div class="col border-0">
+                        {{ courseUserData.city }}
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-4 border border-right-0">
+                    <div class="row py-2">
+                      <div class="col-4 border-0 font-weight-bold">
+                        Pin Code:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.postal_code }}
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- <hr class="my-4" /> -->
+                <!-- Description -->
+                <div class="">
+                  <div class="row border-top-0">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td class="">
+                            <div class="row border-0">
+                              <div class="col-6 border-0 font-weight-bold">
+                                Is identity pic uploaded?:
+                              </div>
+                              <div class="col border-0">Yes</div>
+                            </div>
+                          </td>
+                          <!-- <td>
+               Is identity pic uploaded? &nbsp; &nbsp; &nbsp; Yes
+               </td> -->
+                          <td class="print-hidden" rowspan="2">
+                            <img src="{{ env.url }}/file/download/{{
+                  courseUserData.identity_file || 'no-image'
+                }}" height="80px" target="_blank" class="pr-5" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col">
+                            <div class="row border-0">
+                              <div class="col-6 border-0 font-weight-bold">
+                                Course Deatil:
+                              </div>
+                              <div class="col border-0">
+                                <h4> {{ courseUserData.course_code }}</h4>
+                              </div>
+                            </div>
+                          </td>
+                          <!-- <td>Email:</td>
+                <td>{{ courseUserData.email }}</td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- <h6 class="heading-small text-muted mb-4">About me</h6> -->
+
+                <div class="border-top pb-3">
+                  <h3>Department/Org. Name</h3>
+                  <div class="row border-top mt-3">
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Department:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.department }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Employee Type:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.employeeType }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row border-top">
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Company Type:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.companyType }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Company:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.company }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" row border-top">
+
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Block:
+                        </div>
+                        <div class="col-8 border-0 py-2">
+                          {{ courseUserData.block }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row border-0 py-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          State:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.state }}
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row border-top">
+                    <div class="col-6">
+                      <div class="row border-0 pt-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          District:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.district }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row border-0 pt-2">
+                        <div class="col-4 border-0 font-weight-bold">
+                          Pin Code:
+                        </div>
+                        <div class="col-8 border-0">
+                          {{ courseUserData.pin_code }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="card mt-3">
+
+              <h3 class="pl-3 pt-3">Payment Details</h3>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="row border-0 pb-3">
+                      <div class="col-6 border-0 font-weight-bold">
+                        Transaction Date:
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.transaction_at | date: 'dd/MM/yyyy' }}
+                      </div>
+                    </div>
+                    <!-- Transaction Summary: -->
+                    <!-- <div class="row border-0">
+                    <div class="col-8 border-0 font-weight-bold"> -->
+                    <div class="row border-0">
+                      <div class="col-6 border-0 font-weight-bold">
+                        Transaction Id:
+                      </div>
+                      <div class="col border-0 font-weight-bold">
+                        Amount:
+                      </div>
+                    </div>
+
+                    <!-- </div> -->
+                    <div class="row">
+                      <div class="col border-0">
+                        {{ courseUserData.transaction_id }}<br>
+                        {{courseUserData?.transaction_id_2}}
+                      </div>
+                      <div class="col border-0">
+                        {{ courseUserData.amount }}<br>
+                        {{ courseUserData?.amount_2 }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <img src="{{ env.url }}/file/download/{{
+                    courseUserData.payment_file || 'no-image'
+                  }}" height="300px" target="_blank" style=" transform: scale(1.5) ; overflow: hidden;" />
+
+                      </div>
+                      <div class="col" *ngIf="courseUserData?.payment_file_2">
+                        <img src="{{ env.url }}/file/download/{{
+                    courseUserData?.payment_file_2 || 'no-image'
+                  }}" target="_blank" height="300px" style=" transform: scale(1.5) ; overflow: hidden;"/>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- transection-2 -->
+            <!-- <div class="mt-3 row" *ngIf="transaction_id_2 && amount_2">
+            <input type="text" class="form-control col-4 mx-3" [(ngModel)]="courseUserData.amount_2" id="amount_2"
+              placeholder="Enter Amount Paid" />
+            <input class="form-control col" [(ngModel)]="courseUserData.transaction_id_2" type="text"
+              id="transaction_id_2" name="transaction_id_2" placeholder="Enter Transaction Id" />
+          </div>
+
+          <div class="d-flex mt-3" *ngIf="transaction_id_2 && amount_2">
+            <label class="col">Upload screenshot of payment confirmation</label>
+            <br />
+
+            <img src="{{ env.url }}/file/download/{{
+                  courseUserData.payment_file_2 || 'no-image'
+                }}" target="_blank" />
+
+            <a class="ml-5" (click)="payment2_update()" *ngIf="userRole == 'admin'">
+              <i class="fa fa-edit" aria-hidden="true"></i>
+              Click To Update</a><br />
+            <input *ngIf="pic_payment2" class="form-control form-control-alternative" type="file" name="payment_receipt"
+              (change)="uploadpayment_2($event)" />
+          </div>
+          <div class="text-xs text-muted" *ngIf="transaction_id_2 && amount_2">
+            Upload Image(JPEG,PNG,JPG only) upto 300KB
+          </div> -->
+          </div>
+
+          <div class="row container print-hidden">
+            <div class="col-6 mb-3 px-5">
+              <!-- <a class="btn btn-primary" (click)="backToForm()">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+            </a> -->
+            </div>
+            <div class="col-6 float-right mb-3 px-5 text-md-right">
+              <!-- <a class="btn btn-success" (click)="printPage()">
+              <i class="fa fa-print" aria-hidden="true"></i> Print
+            </a> -->
+              <a class="btn btn-success" (click)="printComponent('component1')">
+                <i class="fa fa-print" aria-hidden="true"></i> Print
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->

@@ -1,0 +1,76 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-start">
+
+    <!-- <div class="btn-group" role="group" aria-label="Basic example">
+      <button routerLinkActive="active" [routerLink]="['/one']" type="button" class="btn btn-secondary">Cource</button>
+      <button routerLinkActive="active" [routerLink]="['/user-profile']" type="button" class="btn btn-secondary">Edit
+        profile</button>
+      <button routerLinkActive="active" [routerLink]="['/pyment']" type="button"
+        class="btn btn-secondary">Pyment</button>
+    </div> -->
+  </div>
+</div>
+<div class="container mt--3 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-7">
+      <div class="card  shadow border-0">
+
+
+
+        <div class="card-body px-lg-5 py-lg-5">
+          <h1>Payment Page</h1>
+
+
+
+
+          <form >
+            <div class="form-field d-flex align-items-center">
+              <!-- <label for="name">Name on Card</label> -->
+              <i class="fas fa-credit-card"></i>
+              <input [(ngModel)]="pymentUserData.name" name="name" type="text"  name="name" placeholder="Enter name on card">
+            </div>
+            <div class="form-field d-flex align-items-center">
+              <i class="fas fa-credit-card"></i>
+              <input [(ngModel)]="pymentUserData.card_number" name="card_number" type="text"  placeholder="Enter card number">
+            </div>
+            <div class="form-field d-flex align-items-center">
+
+              <i class="fas fa-calendar-alt"></i>
+            <input [(ngModel)]="pymentUserData.expiry_date" name="expiry_date"  type="text"  placeholder="Expiry date - MM/YY">
+            </div>
+            <div class="form-field d-flex align-items-center">
+
+              <i class="fas fa-credit-card"></i>
+            <input [(ngModel)]="pymentUserData.cvv" name="cvv"  type="text"  placeholder="Enter CVV">
+            </div>
+            <div class="form-field d-flex align-items-center">
+
+            <i class="fas fa-envelope"></i>
+            <input [(ngModel)]="pymentUserData.email" name="email"  type="email" placeholder="Enter email address">
+            </div>
+            <div class="form-field d-flex align-items-center">
+
+              <i class="fas fa-dollar-sign"></i>
+            <select [(ngModel)]="pymentUserData.currency" name="currency" >
+              <option value="10">$10</option>
+              <option value="25">$25</option>
+              <option value="50">$50</option>
+              <option value="100">$100</option>
+            </select>
+            </div>
+
+            <div class="row justify-content-center">
+              <button  (click)="paymentUser()" type="submit" class="btn btn-primary">Pyment Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

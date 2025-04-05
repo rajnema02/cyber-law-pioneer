@@ -1,0 +1,56 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header">
+              <div class="row">
+                <h3 class="card-title col">Our Partners</h3>
+                <div class="col-2">
+                  <span class="d-flex">
+                    <a [routerLink]="['/content/create-partner']" class="btn btn-success btn-sm">+ New Partner</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Uploaded File</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let partner of partnerList">
+                      <td>{{partner.name}}</td>
+                      <td>
+                        <img *ngIf="partner.image" src="https://cyberlawpioneers.org/file/download/{{partner.image}}" alt="{{partner.name}}" style="width: 100px; height: 100px;" />
+                        <span *ngIf="!partner.image">No Image</span>
+                    </td>
+                      <td>
+                        <a href="https://cyberlawpioneers.org/file/download/{{partner.file}}" target="_blank" class="btn btn-info btn-sm">View File</a>
+                      </td>
+                      <td>
+                        <a class="mx-3 btn btn-sm btn-primary" [routerLink]="['/content/update-partner', partner._id]">
+                          <i class="fas fa-edit"></i> 
+                        </a>
+                        <a class="mx-3 btn btn-sm btn-danger" (click)="deletePartner(partner._id)"><i class="fas fa-trash"></i> </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    

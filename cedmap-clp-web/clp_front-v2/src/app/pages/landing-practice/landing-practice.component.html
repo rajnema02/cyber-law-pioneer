@@ -1,0 +1,64 @@
+
+<div>
+  <!-- Landing Header -->
+  <app-landing-header></app-landing-header>
+
+  <!-- Practice List Section -->
+  <section>
+    <div class="container text-center pt-6">
+      <h2 class="display-5 fw-bold">Our Practices</h2>
+    </div>
+
+    <div class="container mt-5">
+      <!-- Practice List Display -->
+      <div class="row" *ngIf="filteredPracticeList.length > 0; else noPractices">
+        <div class="col-md-12 mb-4" *ngFor="let practice of filteredPracticeList">
+          <div class="card shadow border-0">
+            <div class="row g-0">
+              <!-- Practice Image -->
+              <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                <img 
+                  src="https://cyberlawpioneers.org/file/download/{{practice.image}}" 
+                  class="img-fluid rounded" 
+                  alt="{{ practice.name }}"
+                  style="max-width: 250px;"
+                />
+              </div>
+
+              <!-- Practice Details -->
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title mb-3">{{ practice.name }}</h3>
+                  <p class="card-text text-muted mb-3">
+                    {{ practice.description }}
+                  </p>
+                  <p class="card-text text-muted mb-3">
+                    {{ practice.service }}
+                  </p>
+                  <div *ngIf="practice.file">
+                    <a 
+                      href="https://cyberlawpioneers.org/file/download/{{practice.file}}" 
+                      target="_blank" 
+                      class="btn btn-primary btn-sm"
+                    >
+                      View Uploaded File
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noPractices>
+        <div class="text-center">
+          <h4>No Practices Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- Landing Footer -->
+  <app-landing-footer></app-landing-footer>
+</div>

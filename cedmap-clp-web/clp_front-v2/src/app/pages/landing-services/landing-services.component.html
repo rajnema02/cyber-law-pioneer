@@ -1,0 +1,224 @@
+<div>
+  <app-landing-header></app-landing-header>
+  
+  <!-- <section class="about-section">
+    <div class="overlay"></div>
+    <img
+      class="about-banner"
+      src="../../../../assets/img/j.jpg"
+      alt="Banner 2"
+    />
+    <span class="about-text">Services</span>
+  </section> -->
+
+  <!-- <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+            <ngb-panel title="Cyber Law Consultancy">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>1. Legal litigation in matter of Cyber Crimes.</p>
+                  <p>2. Online and Banking frauds.</p>
+                  <p>3. Civil disputes under the IT Act, 2000.</p>
+                  <p>
+                    4. Drafting for cybercrimes, electronic evidence and matter
+                    for adjudicating officer.
+                  </p>
+                  <p>5. Criminal cases IPR violations in E-world.</p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="IT Domain consultancy">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>1. E-contract draft.</p>
+                  <p>2. Software license agreement.</p>
+                  <p>3. Internet usage policy.</p>
+                  <p>4. Employer-employee agreement preparation.</p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Educational Program">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>
+                    Certification Program We provide cyber security, cyber law
+                    and IT certification program in association with MPCON
+                    Limited.<a href="http://mpced.mpconsultancy.org/">
+                      http://mpced.mpconsultancy.org/</a
+                    >
+                  </p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Training Program">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>
+                    We prepared special training programs on cyber security
+                    compliance, Investigation and forensic for Law enforcement,
+                    IT personnel, Banking & Law professional, corporate and
+                    students.
+                  </p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Seminar/Workshop">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>
+                    Organized Seminar, workshop on cyber security, cyber crimes,
+                    forensics, Information security and related subjects.
+                  </p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Penetration testing & Compliance">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>1. Web Application penetration testing.</p>
+                  <p>2. Network penetration testing.</p>
+                  <p>3. Website Security Audit.</p>
+                  <p>
+                    4. Implementation of Information security management system
+                    as per Information Technology Act.
+                  </p>
+                  <p>5. Single Window IT Solution.</p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Computer Forensics">
+              <ng-template ngbPanelContent>
+                <div class="card-body">
+                  <p>1. Hard disk data recovery.</p>
+                  <p>2. Mobile Data recovery.</p>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+        <div class="col-lg-6">
+          <img src="../../../../assets/img/sb.png" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="services-section py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Our Services</h2>
+      
+      <div class="service-category bg-white p-4 mb-4 rounded shadow-sm">
+        <h3 class="h4 text-primary border-bottom pb-3 mb-4">Compliance</h3>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-success"></i> Implementation of Cyber Security Management Solution, Assistance in Website Design VAPT, Penetration testing and IT Compliances, Internal Audit.</li>
+        </ul>
+      </div>
+  
+      <div class="service-category bg-white p-4 mb-4 rounded shadow-sm">
+        <h3 class="h4 text-primary border-bottom pb-3 mb-4">Cyber Security</h3>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-success"></i> Firewall, Antivirus, DLP, MFA, Data Wiping, Data Recovery, SOC, Patch Management, IT Server Support & Network Maintenance.</li>
+          </ul>
+      </div>
+  
+      <div class="service-category bg-white p-4 mb-4 rounded shadow-sm">
+        <h3 class="h4 text-primary border-bottom pb-3 mb-4">Professional Services</h3>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-success"></i> Cyber Crime & Law Awareness Training Program, Certification Courses in the field of Cyber Security, Law & Digital Forensics, Legal and Consultancy Services, Digital Forensic & Investigation Support.</li>
+         </ul>
+      </div>
+    </div>
+  </section>
+   -->
+  <section>
+    <div class="container text-center pt-6">
+      <h2 class="display-5 fw-bold">Services</h2>
+    </div>
+    <div class="container mt-5">
+      <div class="row" *ngIf="serviceList.length > 0; else noServices">
+        <div class="d-flex flex-column flex-md-row" *ngFor="let service of serviceList">
+          
+          <!-- Left Div for Images -->
+          <div class="col-md-6 order-md-1 order-2">
+            <div class="row">
+              <div class="col-6 p-3" *ngIf="service.image1">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image1}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image2">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image2}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image3">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image3}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image4">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image4}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- Right Div for Text Content -->
+          <div class="col-md-6 order-md-2 order-1">
+            <div class="card-body">
+              <h3 class="card-title mb-3">{{ service.name }}</h3>
+              <p class="card-text text-muted mb-3">{{ service.description }}</p>
+              <div class="d-flex align-items-center mt-3">
+                <div *ngIf="service.file">
+                  <a
+                    href="https://cyberlawpioneers.org/file/download/{{service.file}}"
+                    target="_blank"
+                    class="btn btn-primary btn-sm me-2"
+                  >
+                    View Uploaded File
+                  </a>
+                </div>
+                <button
+                  class="btn text-white fw-bold px-3 py-2"
+                  style="background-color: #d50047; border: none; border-radius: 5px;"
+                >
+                  <a
+                    [routerLink]="['/serviceDetail', service.name]"
+                    class="text-white text-decoration-none"
+                  >
+                    View More
+                  </a>
+                </button>
+              </div>              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <ng-template #noServices>
+        <div class="text-center">
+          <h4>No Services Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+  
+  <app-landing-footer></app-landing-footer>
+</div>

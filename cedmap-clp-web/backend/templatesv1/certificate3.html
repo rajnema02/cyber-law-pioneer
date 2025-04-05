@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      
+      .outer {
+        border: 5px solid black;
+        max-height: 750px;
+      }
+
+      .certificate-header {
+        background-image: url('../images/mp.jpg');
+        height: 249px;
+        width: 100%;
+
+      }
+
+      .about-certificate {
+        font-family: Arial Rounded MT Bold;
+      }
+
+      .rowClass {
+        margin-top: 50px;
+        margin-bottom: 80px;
+      }
+
+      @media print {
+        @page {
+          size: landscape;
+          max-height: 800px;
+        }
+      }
+      .certificate-container {
+        width: 297mm;
+        height: 210mm;
+      }
+      .certificate {
+        border: 20px solid #0c5280;
+        height: 818px;
+        position: relative;
+      }
+
+      .certificate:after {
+        content: "";
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;  
+        position: absolute;
+        background-size: 100%;
+        z-index: -1;
+      }
+
+      
+
+      .certificate-title {
+        text-align: center;
+      }
+
+      .certificate-body {
+        text-align: center;
+      }
+
+      h1 {
+        font-weight: 800;
+        margin-top: 3px;
+        font-size: 56px;
+        color: black;
+        font-style: italic;
+      }
+
+      .student-name {
+        font-size: 24px;
+      }
+
+      .certificate-content {
+        margin: 0 auto;
+        width: 750px;
+      }
+
+      .about-certificate {
+        width: 380px;
+        margin: 0 auto;
+      }
+
+      .topic-description {
+        text-align: center;
+      }
+
+      h4 {
+        margin-left: -600px;
+        font-size: 25px;
+      }
+      p {
+        font-size: 24px;
+        margin-top: -23px;
+      }
+
+      h3 {
+        font-size: 30px;
+        width: 976px;
+        margin-top: -20px;
+        margin-left: -290px;
+      }
+      .container {
+        float: left;
+        width: 68%;
+        padding: 10px;
+        height: 50px;
+      }
+
+      .row {
+        justify-content: center;
+
+        display: flex;
+        clear: both;
+        margin-top: 60px;
+        font-weight: bold;
+        margin-left: -113px;
+      }
+
+      .col {
+       padding: 15px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: medium;
+      }
+      .center {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="certificate-container">
+      <div class="certificate">
+        <div class="water-mark-overlay"></div>
+        <div class="certificate-header container-fluid" >
+        </div>
+        <div class="certificate-body text-center">
+          <h1>Certificate</h1>
+          <h4>Ref.No.{{referenceNo}}</h4>
+
+          <div class="certificate-content">
+            <div class="about-certificate">
+              <p>This is to certify that</p>
+
+              <h3>{{full_name}}</h3>
+              <p>has successfully Completed</p>
+              <h3>{{course_type}} on ' {{course_name}}'</h3>
+              <p>FROM {{from_date}} TO {{to_date}}</p>
+              <p>He / She has obtained "{{grade}}" Grade.</p>
+            </div>
+            <div>
+              <div class="row">
+                <div class="col">
+                  <p>Authorized Signature</p>
+                  <p>Shri Manoj Mishra</p>
+                  <p>Vertical Head(IT)</p>
+                  <p>MPCON Ltd.</p>
+                </div>
+                <div class="col">
+                  <p>Authorized Signature</p>
+                  <p>Er.Yashdeep Chaturvedi</p>
+                  <p>Director Cyber Law</p>
+                  <p>Pioneer Pvt.Ltd.</p>
+                </div>
+                <div class="col">
+                  <p>
+                    Knowledge Partner
+                    <img class="center" src="../images/logo.jpg" />
+                  </p>
+                </div>
+                <div class="col">
+                  <p>QR<br /><img src="#" /></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

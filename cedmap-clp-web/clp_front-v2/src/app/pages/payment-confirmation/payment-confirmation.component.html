@@ -1,0 +1,75 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="container ">
+    <h3>Transaction Status</h3>
+    <table>
+      <tr>
+        <th>Transaction Ref No</th>
+        <td>
+          {{this.pgMeTrnRefNo}}
+          <!-- <%= resMsgDTO.getPgMeTrnRefNo() %> -->
+        </td>
+        <th>Order ID</th>
+        <td>
+          {{this.orderId}}
+          <!-- <%= resMsgDTO.getOrderId() %> -->
+        </td>
+      </tr>
+      <tr>
+        <th>Transaction Date Time</th>
+        <td>
+          {{this.trnReqDate}}
+          <!-- <%= resMsgDTO.getTrnReqDate() %> -->
+        </td>
+        <th>Transaction Status</th>
+        <td class="status Fail">
+          <span *ngIf="this.statusCode =='S'" style="color: green;">Success</span>
+          <span *ngIf="this.statusCode !='S'" style="color: red;">Failed</span>
+
+        </td>
+      </tr>
+      <tr>
+        <th>Status Description</th>
+        <td colspan="3">
+          {{this.statusDesc}}
+          <!-- <%= resMsgDTO.getStatusDesc() %> -->
+        </td>
+      </tr>
+      <tr>
+        <th>Transaction Amount</th>
+        <td>
+          &#8377;
+          {{convertToInteger(this.trnAmt)/100}}
+          <!-- <%= resMsgDTO.getTrnAmt() %> -->
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="container">
+    <div class="card text-center" >
+      <div class="card-body" >
+        <p class=" text-capitalize font-weight-600 text-center" *ngIf="transaction_status" style="color: green;">
+          Your Transaction is Successful and Your Form is Submitted Successfully.
+        </p>
+      <!-- </div>
+      <div class="card-body" > -->
+        <p class="text-danger text-capitalize font-weight-600 text-center" *ngIf="!transaction_status">
+          Your Transaction Failed and Your Form is not Submitted .
+          <br>
+          PLease Try After Sometime.
+        </p>
+        <div>
+          <button class="btn btn-outline-warning text-center" (click)="buttonClicked()" [disabled]="isButtonDisabled">{{ buttonText }} {{countdownSeconds}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

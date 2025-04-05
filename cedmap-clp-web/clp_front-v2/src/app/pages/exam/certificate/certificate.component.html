@@ -1,0 +1,97 @@
+<div class="container outer">
+  <div class="certificate-header text-left padding-0">
+    <img src="../../../../assets/img/mp.jpg  " class="logo w-100" alt="" />
+  </div>
+  <div class="container">
+    <h1 *ngIf = "grade == 'A+'" class="text-center" style="font-family: Roboto">Certificate</h1>
+    <h1 *ngIf = "grade == 'B'" class="text-center" style="font-family: Roboto">Certificate  Of Participation</h1>
+    <!-- <h4>Ref.No.SPPM172143</h4> -->
+    <div class="about-certificate text-center">
+      <p>This is to certify that</p>
+
+      <h3>{{full_name}} </h3>
+      <p>has successfully Completed</p>
+      <h3>{{course_type}} on " {{course_name}} "</h3>
+      <p>FROM  <u> {{fromDate}} </u>TO  <u> {{toDate}}</u></p>
+      <p *ngIf = "grade== 'A+'">He / She has obtained<u> {{grade}} </u>Grade.</p>
+      <div class="row rowClass">
+        <div class="col">
+          <small><b> Signature</b>Authorized</small>
+          <small><b> Manoj Mishra</b>Shri</small>
+          <small><b> Head(IT)</b>Vertical</small>
+          <small><b> Ltd.</b>MPCON</small>
+        </div>
+        <div class="col">
+          <small><b> Signature</b>Authorized</small>
+          <small><b>.Yashdeep Chaturvedi</b>Er</small>
+          <small><b> Cyber Law</b>Director</small>
+          <small><b> Pvt.Ltd.</b>Pioneer</small>
+        </div>
+        <div class="col">
+          <small><b>
+            Knowledge Partner<br>
+            <img class="h-50" src="../../../../assets/img/logo.jpg" />
+          </b></small>
+        </div>
+        <div class="col">
+          <small><b>QR<br /></b></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="certificate-container">
+  <div class="certificate">
+    <div class="water-mark-overlay"></div>
+    <div class="certificate-header container-fluid">
+      <img src="../../../../assets/img/mp.jpg" class="logo" alt="" />
+    </div>
+    <div class="certificate-body text-center">
+      <h1>Certificate</h1>
+      <h4>Ref.No.SPPM172143</h4>
+
+      <div class="certificate-content">
+        <div class="about-certificate">
+          <p>This is to certify that</p>
+
+          <h3>Mr./Ms PIYUSH KUMAR TIWARI</h3>
+          <p>has successfully Completed</p>
+          <h3>
+            Training Program on "Cyber Security Compliance and Etiquettes"
+          </h3>
+          <p>FROM 06-05-2022 TO 05-08-2022</p>
+          <p>He / She has obtained "A+" Grade.</p>
+
+        </div>
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col text-center">
+              <p>Authorized Signature</p>
+              <p>Shri Manoj Mishra</p>
+              <p>Vertical Head(IT)</p>
+              <p>MPCON Ltd.</p>
+            </div>
+            <div class="col">
+              <p>Authorized Signature</p>
+              <p>Er.Yashdeep Chaturvedi</p>
+              <p>Director Cyber Law</p>
+              <p>Pioneer Pvt.Ltd.</p>
+            </div>
+            <div class="col">
+              <p>
+                Knowledge Partner
+                <img class="center" src="../../../../assets/img/logo.jpg" />
+              </p>
+            </div>
+            <div class="col">
+              <p>QR<br /><img src="#" /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div> -->

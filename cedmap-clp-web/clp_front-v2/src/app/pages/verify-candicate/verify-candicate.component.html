@@ -1,0 +1,48 @@
+<div class="header  pt-8 pt-lg-8">
+
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<div class="container mt-2 pb-5">
+
+
+  <div class="card">
+    <div class="card-heade">
+      <div class="logo w-100">
+
+        <img class="" src="/assets/img/MPCON-landscape.jpeg" alt="" height="150" style="width: 100%;">
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row text-center">
+        <div class="col-4 reference-no">
+          <h4>Ref.No.{{user?._id}}</h4>
+        </div>
+        <div class="col">
+          <div style="float: right !important">
+            <img src="{{ env.production ? env.url : 'https://mpced.cyberlawpioneers.org' }}/file/download/{{
+              user?.profile_photo || 'no-image'
+            }}" srcset="" class="border" style="height: 80px; object-fit: cover">
+          </div>
+        </div>
+      </div>
+      <div class="container text-center">
+        <div class="my-2">
+          This is to certify that <b>Mr./Ms.{{user?.full_name}}</b> S/D/o
+          {{user?.father_name}} has successfully completed
+        </div>
+        <div class="my-3"><b>Traning Programme on ' {{batch?.course_name}}'</b> from {{batch?.startDate}} to
+          {{batch?.endDate}}</div>
+      </div>
+    </div>
+    <!-- <div class="card-footer text-muted">
+      Footer
+    </div> -->
+  </div>
+
+
+
+</div>

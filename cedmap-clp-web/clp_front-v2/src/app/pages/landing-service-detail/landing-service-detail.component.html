@@ -1,0 +1,80 @@
+<div>
+    <app-landing-header></app-landing-header>
+  <section>
+    <div class="container text-center pt-6">
+      <h2 class="display-5 fw-bold">Detail Service</h2>
+    </div>
+    <div class="container mt-5">
+      <div class="row" *ngIf="filteredServiceDetailList.length > 0; else noServices">
+        <div class="d-flex flex-column flex-md-row" *ngFor="let service of filteredServiceDetailList">
+          
+          <!-- Left Div for Images -->
+          <div class="col-md-6 order-md-1 order-2">
+            <div class="row">
+              <div class="col-6 p-3" *ngIf="service.image">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image1">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image1}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image2">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image2}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="service.image3">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{service.image3}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ service.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- Right Div for Text Content -->
+          <div class="col-md-6 order-md-2 order-1">
+            <div class="card-body">
+              <h3 class="card-title mb-3">{{ service.name }}</h3>
+              <h3 class="card-title mb-3">{{ service.partnerName }}</h3>
+  
+              <p class="card-text text-muted mb-3">{{ service.description }}</p>
+              <div *ngIf="service.file">
+                <a
+                  href="https://cyberlawpioneers.org/file/download/{{service.file}}"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                >
+                  View Uploaded File
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <ng-template #noServices>
+        <div class="text-center">
+          <h4>No Services Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+  
+  <app-landing-footer></app-landing-footer>
+</div>

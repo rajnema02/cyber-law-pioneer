@@ -1,0 +1,81 @@
+<div>
+    <app-landing-header></app-landing-header>
+  <section>
+    <div class="container text-center pt-6">
+      <h2 class="display-5 fw-bold">Projects</h2>
+    </div>
+    <div class="container mt-5">
+      <div class="row" *ngIf="filteredProjectList.length > 0; else noProjects">
+        <div class="d-flex flex-column flex-md-row" *ngFor="let project of filteredProjectList">
+          
+          <!-- Left Div for Images -->
+          <div class="col-md-6 order-md-1 order-2">
+            <div class="row">
+              <div class="col-6 p-3" *ngIf="project.image">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{project.image}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ project.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="project.image1">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{project.image1}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ project.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="project.image2">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{project.image2}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ project.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="project.image3">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{project.image3}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ project.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- Right Div for Text Content -->
+          <div class="col-md-6 order-md-2 order-1">
+            <div class="card-body">
+              <h3 class="card-title mb-3">{{ project.name }}</h3>
+              <h3 class="card-title mb-3">{{ project.partnerName }}</h3>
+  
+              <p class="card-text text-muted mb-3">{{ project.description }}</p>
+              <div *ngIf="project.file">
+                <a
+                  href="https://cyberlawpioneers.org/file/download/{{project.file}}"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                >
+                  View Uploaded File
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <ng-template #noProjects>
+        <div class="text-center">
+          <h4>No Projects Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+  
+  
+  <app-landing-footer></app-landing-footer>
+</div>

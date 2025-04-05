@@ -1,0 +1,33 @@
+<div>
+  <app-landing-header></app-landing-header>
+  <section>
+      <div class="container py-5">
+        <h2 class="text-center mb-4 mt-5">Latest Updates</h2> 
+        <div class="row g-4 "> 
+          <div class="col-md-6"style="margin-bottom: 30px;" *ngFor="let card of latestUpdateList">
+            <div class="card text-white bg-dark border-0 h-100">
+              <div class="position-relative" style="height: 300px;">
+                <img 
+                  src="https://cyberlawpioneers.org/file/download/{{card.image}}" 
+                  class="card-img-top h-100 w-100" 
+                  alt="{{ card.name }}" 
+                  style="object-fit: cover;">
+                <div 
+                  class="position-absolute top-0 start-0 bg-warning text-dark fw-bold px-3 py-2">
+                  {{ card.created_at | date: 'd MMM' }}
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="text-uppercase small mb-2">{{ card.description }}</p>
+                <h5 class="card-title fw-bold">{{ card.name }}</h5>
+                <a 
+                  href="https://cyberlawpioneers.org/file/download/{{card.file}}" 
+                  class="text-warning text-decoration-none fw-bold">READ MORE »</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<app-landing-footer></app-landing-footer>
+</div>

@@ -1,0 +1,331 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profil shadow">
+        <div class="card-body">
+          <h3 class="mb-0">Batch</h3>
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+            <div class="row">
+              <div class="col-xl-12 order-xl-1">
+                <div class="card-body">
+                  <!-- <h3>Batch Management</h3> -->
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"
+                          >Batch Name</label
+                        >
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                        <div class="hh">
+                          <input
+                            required
+                            ngModel
+                            name="batch_name"
+                            class="form-control form-control-alternative"
+                            type="text"
+                            placeholder="Batch Name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-12 pt-2">
+                                <div class="form-field d-flex align-items-center">
+
+                                    <textarea name="" placeholder="Disclaimer" id="" cols="60" rows="5"></textarea>
+                                </div>
+                              </div> -->
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Description</label>
+                        <textarea
+                          ngModel
+                          name="disclaimer"
+                          rows="2"
+                          cols="30"
+                          class="form-control form-control-alternative"
+                          placeholder="A few words about Details ..."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="input-country">Course Type</label>
+                        <select
+                          required
+                          ngModel
+                          name="course_type"
+                          class="form-select form-control"
+                          placeholder="Course Type"
+                          aria-label="Default select example"
+                          (change)="getCourseList($event)"
+                        >
+                          <!-- <option >Course type</option> -->
+                          <option value="" disabled selected hidden>
+                            Select Course Type
+                          </option>
+
+                          <option value="Training program for Govt Organisation">
+                            Training program for Govt Organisation
+                          </option>
+                          <!-- <option value="Special Training Program">
+                            Special Training Program
+                          </option> -->
+                          <option value="Internship Program">
+                            Internship Program
+                          </option>
+                          <option value="Regular">Regular Courses</option>
+                          <option value="E-Learning Course">
+                            E-Learning Course
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="">Course Name</label>
+                        <select
+                          required
+                          ngModel
+                          name="course_name"
+                          class="form-select form-control"
+                          placeholder="Course Name"
+                          aria-label="Default select example"
+                        >
+                          <option value="" disabled selected hidden>
+                            Select Course name
+                          </option>
+                          <option
+                            *ngFor="let course of courseList"
+                            value="{{ course.course_name }}"
+                          >
+                            {{ course.course_name }}
+                          </option>
+                        </select>
+                        <small id="helpId" class="text-muted">Help text</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <h3>Select Batch Date</h3>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="appt">Select start Date:</label>
+                          <div class="row">
+                            <div class="col">
+                              <input
+                                required
+                                ngModel
+                                name="startDate"
+                                type="Date"
+                                class="form-control"
+                                id="appd"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="appt">Select end Date:</label>
+                          <div class="row">
+                            <div class="col">
+                              <input
+                                required
+                                ngModel
+                                name="endDate"
+                                type="Date"
+                                class="form-control"
+                                id="appde"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <!-- <h3>Select Batch Timing</h3> -->
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="appt">Select start time:</label>
+                          <div class="row">
+                            <div class="col">
+                              <input
+                                required
+                                ngModel
+                                name="startTime"
+                                type="time"
+                                class="form-control"
+                                id="appt"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="appt">Select end time:</label>
+                          <div class="row">
+                            <div class="col">
+                              <input
+                                required
+                                ngModel
+                                name="endTime"
+                                type="time"
+                                class="form-control"
+                                id="appt"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <h3>Select Weekdays</h3>
+
+                    <div class="btn-group">
+                      <span
+                        required
+                        class="btn btn-light"
+                        *ngFor="let day of weekdays"
+                        (click)="pushDay(day)"
+                        [ngClass]="{ 'bg-success': isSelected(day) }"
+                      >
+                        {{ day }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <hr />
+                    <h3>Schedule Exam without certification</h3>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"
+                            >Exam without Cerification
+                          </label>
+                          <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                          <select
+                            required
+                            ngModel
+                            name="certificationExam"
+                            class="form-select form-control"
+                            placeholder="certification Exam"
+                            aria-label="Default select example"
+                            (change)="getExamSchema($event)"
+                          >
+                            <!-- <option >Course type</option> -->
+                            <option value="" disabled selected hidden>
+                              Select Course Type
+                            </option>
+                            <option value="false">
+                              Yes create batch without examination
+                            </option>
+                            <option value="true">
+                              No proceed with examination paper scheme
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container" *ngIf="examSchema">
+                    <hr />
+                    <h3>Question Paper Scheme:</h3>
+
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"
+                            >Total No. Of Questions:</label
+                          >
+                          <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                          <div class="hh">
+                            <input
+                              required
+                              ngModel
+                              name="total_no_of_questions"
+                              class="form-control form-control-alternative"
+                              type="number"
+                              placeholder="Enter total no. of questions for question paper"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"
+                            >Percent Of Course Questions:</label
+                          >
+                          <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                          <div class="hh">
+                            <input
+                              required
+                              ngModel
+                              name="percent_of_course_questions"
+                              class="form-control form-control-alternative"
+                              type="number"
+                              placeholder="Enter percent of course questions for question paper"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"
+                          >Exam with Audit Question
+                        </label>
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                        <select
+                          required
+                          ngModel
+                          name="isAuditExam"
+                          class="form-select form-control"
+                          placeholder=""
+                          aria-label="Default select example"
+                        >
+                          <!-- <option >Course type</option> -->
+                          <option value="" disabled selected hidden>
+                            Select
+                          </option>
+                          <option value="true">Yes</option>
+                          <option value="false">No</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="row justify-content-center"
+                    style="padding-top: 100px"
+                  >
+                    <button type="submit" class="btn btn-primary">
+                      Create Batch
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

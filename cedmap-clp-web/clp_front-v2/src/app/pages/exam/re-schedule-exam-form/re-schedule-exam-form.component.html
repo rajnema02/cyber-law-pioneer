@@ -1,0 +1,80 @@
+
+
+        <div class="card-body">
+          <h2>Schedule Exam</h2>
+
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm" class="p-3 mt-3">
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <input
+                  [(ngModel)]="examData.exam_name"
+                  name="exam_name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Exam Name"
+                  required
+                />
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                  <input
+                    [(ngModel)]="examData.exam_code"
+                    name="exam_code"
+                    type="text"
+                    class="form-control"
+                    placeholder="Exam Code"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <input
+                  [(ngModel)]="examData.course_name"
+                  name="course_name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Course Name"
+                  disabled
+                />
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                  <input
+                    [(ngModel)]="examData.course_type"
+                    name="course_type"
+                    type="text"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <label for="" class="form-label">Exam Date:</label>
+                <input required (change)="checkDate(infoForm.form.value.exam_date)" ngModel name="exam_date" type="date" class="form-control" placeholder="Exam Date" />
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                  <!-- <span class="fas fa-key"></span> -->
+
+                  <!-- <input [(ngModel)]="registerUserData.designation" name="designation" type="text" class="form-control" placeholder="Designation/पद"> -->
+                  <label class="form-label">
+                    Exam Time:
+                  </label>
+                  <input ngModel name="exam_time" type="time" class="form-control" placeholder="Exam Code" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="row container mt-4">
+              <button class="btn btn-primary" type="submit">Schedule Exam</button>
+            </div>
+          </form>
+        </div>
+

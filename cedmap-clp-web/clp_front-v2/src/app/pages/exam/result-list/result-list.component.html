@@ -1,0 +1,403 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row">
+            <h4 class="card-title col">Exam Report</h4>
+            <div class="col-6">
+              <span class="d-flex">
+                <span *ngIf="clearState" class="text-warning mx-3">
+                  <a (click)="getResultList()"> Clear Filter</a>
+                </span>
+                <!-- <a (click)="getTotalCount()" class="btn btn-info btn-sm"
+                  ><i class="fa fa-check-square" aria-hidden="true"></i> Total Students
+                  </a
+                > -->
+                <a
+                  (click)="getExamReport()"
+                  class="btn btn-primary btn-sm"
+                  *ngIf="processResultButton"
+                  ><i class="fa fa-circle-notch" aria-hidden="true"></i> Process
+                  Results [{{ resultCount }}]
+                  <!-- Results [{{ resultCount }}/{{ count }}] -->
+                </a>
+                <a routerLink="/exam/print-pdf/2/{{examId}}" target="_blank" class="btn btn-primary btn-sm"
+                ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Export PDF
+              </a>
+                <a (click)="getPassedStudents()" class="btn btn-success btn-sm"
+                  ><i class="fa fa-check" aria-hidden="true"></i> View Passed
+                  Students [{{ passedCount }}]
+                </a>
+                <a routerLink="/exam/print-pdf/1/{{examId}}" target="_blank" *ngIf="passPdf" class="btn btn-primary btn-sm"
+                  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Export Pass PDF
+                </a>
+                <a (click)="getFailedStudents()" class="btn btn-danger btn-sm"
+                  ><i class="fas fa-times"></i> View Failed Students [{{
+                    failedCount
+                  }}]
+                </a>
+                <a routerLink="/exam/print-pdf/0/{{examId}}" target="_blank" *ngIf="failPdf" class="btn btn-primary btn-sm"
+                  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Export Fail PDF
+                </a>
+                <a
+                  *ngIf="generateCertificateButton"
+                  (click)="generateCertificates()"
+                  class="btn btn-warning btn-sm"
+                  ><i class="fa fa-circle-notch" aria-hidden="true"></i>
+                  Generate Certificates</a
+                >
+                <a
+                  *ngIf="downloadCertificateButton"
+                  (click)="downloadCertificates()"
+                  class="btn btn-warning btn-sm"
+                  ><i class="fa fa-download" aria-hidden="true"></i> Download
+                  Certificates</a
+                >
+                <a
+                  *ngIf="uploadCertificateButton"
+                  (click)="uploadCertificates()"
+                  class="btn btn-success btn-sm"
+                  ><i class="fa fa-upload" aria-hidden="true"></i> Upload
+                  Certificates</a
+                >
+                <!-- <a
+                 (click)="showAttendenceList()"
+                  class="btn btn-primary btn-sm"
+                  ><i class="fas fa-list"></i> View Attendence List [{{count}}]  </a
+                > -->
+                <!-- <a
+                  [routerLink]="['/exam/schedule-exam']"
+                  class="btn btn-primary btn-sm"
+                >
+                  <i class="fa fa-download" aria-hidden="true"></i> Export to
+                  CSV</a
+                > -->
+              </span>
+            </div>
+          </div>
+
+          <div *ngIf="!reScheduleExamForm && !uploadCertificateForm">
+            <div class="table-responsive" *ngIf="!showAttendence">
+              <table class="table align-items-center table-flush text-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Students Name</th>
+                    <!-- <th scope="col">Exam Code</th> -->
+                    <th scope="col">Total Answered</th>
+                    <!-- <th scope="col">Total Seen</th> -->
+                    <th scope="col">Correct Answers</th>
+                    <th scope="col">Incorrect Answers</th>
+                    <th scope="col">Total Marks</th>
+                    <th scope="col">Marks Obtained</th>
+
+                    <th scope="col">Grade Obtained</th>
+
+                    <th scope="col">Result</th>
+                    <th scope="col" *ngIf="!viewCertificate">Attendence</th>
+                    <!-- <th scope="col" *ngIf="viewCertificate">
+                      View Certificate
+                    </th>
+                    <th scope="col" *ngIf="viewParticipationCertificate">
+                      View Participation Certificate
+                    </th> -->
+
+                    <!-- <th scope="col">Image</th -->
+                    <!-- <th scope="col">Actions</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of resultList">
+                    <td>
+                      {{
+                        result.Student_name
+                          ? result.Student_name
+                          : result.full_name
+                      }}
+                    </td>
+                    <!-- <td>{{result.exam_code}} </td> -->
+                    <td>{{ result.Answered ? result.Answered : "0" }}</td>
+                    <!-- <td>{{ result.TotalSeen ? result.TotalSeen : "0" }}</td> -->
+                    <td>
+                      {{ result.CorrectAnswers ? result.CorrectAnswers : "0" }}
+                    </td>
+                    <td>
+                      {{
+                        result.IncorrectAnswers ? result.IncorrectAnswers : "0"
+                      }}
+                    </td>
+                    <td>{{ result.TotalMarks ? result.TotalMarks : "0" }}</td>
+                    <td>
+                      {{ result.StudentMarks ? result.StudentMarks : "0" }}
+                    </td>
+                    <td>{{ result.grade ? result.grade : "-" }}</td>
+                    <td *ngIf="result.Result == 'Pass'">
+                      <span class="badge badge-pill badge-success">{{
+                        result.Result
+                      }}</span>
+                    </td>
+                    <td *ngIf="result.Result == 'Fail'">
+                      <span class="badge badge-pill badge-danger">{{
+                        result.Result
+                      }}</span>
+                    </td>
+                    <td *ngIf="!result.Result">
+                      <span class="badge badge-pill badge-danger">Fail</span>
+                    </td>
+                    <td *ngIf="!viewCertificate">
+                      <span class="text-success" *ngIf="!result.Absent">
+                        Present
+                      </span>
+                      <span class="text-danger" *ngIf="result.Absent">
+                        Absent
+                      </span>
+                    </td>
+                    <!-- <td *ngIf="viewCertificate">
+                      <a
+                        target="_blank"
+                        routerLink="/exam/download-certificate/{{ result._id }}"
+                      >
+                        <i class="fa fa-envelope-open" aria-hidden="true"></i
+                      ></a>
+                    </td>
+                    <td *ngIf="viewParticipationCertificate">
+                      <a
+                        target="_blank"
+                        routerLink="/exam/download-certificate/{{ result._id }}"
+                      >
+                        <i class="fa fa-envelope-open" aria-hidden="true"></i
+                      ></a>
+                    </td> -->
+
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                 <td *ngIf="result.status == 'Pass'"><span class="badge badge-pill badge-success">{{result.status}}</span>
+                 </td>     -->
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Done'"><span class="badge badge-pill badge-success">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Ongoing'"><span class="badge badge-pill badge-primary">{{exam.exam_status}}</span>
+                    </td> -->
+                    <!-- <td>{{exam.created_at}}</td> -->
+
+                    <!-- <td>
+                     <a class="mx-3 btn btn-sm btn-outline-info " routerLink='/exam/question-paper/{{exam._id}}'>Preview Question Paper</a>
+
+                  </td>
+                  <td>
+                     <a class="mx-3 btn btn-sm btn-outline-success " routerLink='/exam/result-list/{{exam._id}}'>Show Results</a>
+
+                  </td> -->
+
+                    <!-- <td>{{item.full_name}}</td> -->
+                    <!-- <td>{{item.fees}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-right">
+              <a
+                *ngIf="createBatchButton"
+                (click)="reScheduleExam()"
+                class="btn btn-info btn-sm"
+                ><i class="fa fa-check-square" aria-hidden="true"></i
+                >Re-Schedule Exam for failed students</a
+              >
+            </div>
+            <div class="table-responsive" *ngIf="showAttendence">
+              <table class="table align-items-center table-flush text-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Students Name</th>
+                    <!-- <th scope="col">Exam Code</th> -->
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Status</th>
+
+                    <!-- <th scope="col">Exam Creation Date</th> -->
+
+                    <!-- <th scope="col">Image</th -->
+                    <!-- <th scope="col">Actions</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of studentList">
+                    <td>{{ student.full_name }}</td>
+                    <!-- <td>{{result.exam_code}} </td> -->
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.mobile }}</td>
+                    <td *ngIf="student.attendenceStatus == 'Present'">
+                      <span class="badge badge-pill badge-success">{{
+                        student.attendenceStatus
+                      }}</span>
+                    </td>
+                    <td *ngIf="student.attendenceStatus == 'Absent'">
+                      <span class="badge badge-pill badge-danger">{{
+                        student.attendenceStatus
+                      }}</span>
+                    </td>
+
+                    <!-- <td>{{ result.CorrectAnswers }}</td>
+                  <td>{{ result.IncorrectAnswers }}</td>
+                  <td>{{ result.TotalMarks }}</td>
+                  <td>{{ result.StudentMarks }}</td> -->
+                    <!-- <td *ngIf="result.Result == 'Pass'">
+                    <span class="badge badge-pill badge-success">{{
+                      result.Result
+                    }}</span>
+                  </td>
+                  <td *ngIf="result.Result == 'Fail'">
+                    <span class="badge badge-pill badge-danger">{{
+                      result.Result
+                    }}</span>
+                  </td> -->
+
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                 <td *ngIf="result.status == 'Pass'"><span class="badge badge-pill badge-success">{{result.status}}</span>
+                 </td>   -->
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Done'"><span class="badge badge-pill badge-success">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Ongoing'"><span class="badge badge-pill badge-primary">{{exam.exam_status}}</span>
+                    </td> -->
+                    <!-- <td>{{exam.created_at}}</td> -->
+
+                    <!-- <td>
+                     <a class="mx-3 btn btn-sm btn-outline-info " routerLink='/exam/question-paper/{{exam._id}}'>Preview Question Paper</a>
+
+                  </td>
+                  <td>
+                     <a class="mx-3 btn btn-sm btn-outline-success " routerLink='/exam/result-list/{{exam._id}}'>Show Results</a>
+
+                  </td> -->
+
+                    <!-- <td>{{item.full_name}}</td> -->
+                    <!-- <td>{{item.fees}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div *ngIf="reScheduleExamForm && !uploadCertificateForm">
+            <div class="card-body">
+              <h2>Schedule Exam</h2>
+
+              <form
+                (ngSubmit)="submit(infoForm)"
+                #infoForm="ngForm"
+                class="p-3 mt-3"
+              >
+                <div class="row mt-2">
+                  <div class="col-lg-6">
+                    <input
+                      [(ngModel)]="examData.exam_name"
+                      name="exam_name"
+                      type="text"
+                      class="form-control"
+                      placeholder="Exam Name"
+                    />
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group align-items-center">
+                      <input
+                        [(ngModel)]="examData.exam_code"
+                        name="exam_code"
+                        type="text"
+                        class="form-control"
+                        placeholder="Exam Code"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-lg-6">
+                    <input
+                      [(ngModel)]="examData.course_name"
+                      name="course_name"
+                      type="text"
+                      class="form-control"
+                      placeholder="Course Name"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group align-items-center">
+                      <input
+                        [(ngModel)]="examData.course_type"
+                        name="course_type"
+                        type="text"
+                        class="form-control"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-2">
+                  <div class="col-lg-6">
+                    <label for="" class="form-label">Exam Date:</label>
+                    <input
+                      required
+                      (change)="checkDate(infoForm.form.value.exam_date)"
+                      ngModel
+                      name="exam_date"
+                      type="date"
+                      class="form-control"
+                      placeholder="Exam Date"
+                    />
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group align-items-center">
+                      <!-- <span class="fas fa-key"></span> -->
+
+                      <!-- <input [(ngModel)]="registerUserData.designation" name="designation" type="text" class="form-control" placeholder="Designation/पद"> -->
+                      <label class="form-label"> Exam Time: </label>
+                      <input
+                        ngModel
+                        name="exam_time"
+                        type="time"
+                        class="form-control"
+                        placeholder="Exam Code"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row container mt-4">
+                  <button class="btn btn-primary" type="submit">
+                    Schedule Exam
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div *ngIf="uploadCertificateForm">
+            <div class="card-body">
+              <h2>Upload Certificates:</h2>
+
+              <form #certForm="ngForm" class="p-3 mt-3">
+                <div class="row mt-2">
+                  <div class="col-lg-6">
+                    <input
+                      type="file"
+                      (change)="onFileSelected($event)"
+                      multiple
+                    />
+                    <button (click)="onSubmit()">Upload</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

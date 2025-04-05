@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container mt--7 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-12 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent"></div>
+        <div class="card-body">
+          <h2>Course</h2>
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm" class="p-3 mt-3">
+            <div class="row mt-4">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="" class="">Course Type: </label>
+                  <div class="">
+                    <input type="text" [(ngModel)]="courseData.course_type" required name="course_type"
+                      class="form-control" placeholder="Course Type" aria-label="Default select example" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Name</label>
+                  <input [(ngModel)]="courseData.course_name" required name="course_name" type="text"
+                    class="form-control" placeholder="Course Name" />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Duration</label>
+                  <input [(ngModel)]="courseData.course_duration" required name="course_duration" type="text"
+                    class="form-control" placeholder="Course Duration" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Code</label>
+                  <input [(ngModel)]="courseData.course_code" required name="course_code" type="text"
+                    class="form-control" placeholder="Course Code" />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Fees</label>
+                  <input [(ngModel)]="courseData.fees" required name="fees" type="number" class="form-control"
+                    placeholder=" Course Fees" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Eligibility</label>
+                  <input [(ngModel)]="courseData.course_eligibilty" required name="course_eligibilty" type="text"
+                    class="form-control" placeholder=" Course Eligibility" />
+                </div>
+              </div>
+              <!-- <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Course Content</label>
+
+                  <input [(ngModel)]="courseData.course_content" required name="course_content" type="file" (change)="uploadContent($event)" class="form-control" placeholder="file" />
+                </div>
+              </div> -->
+            </div>
+
+
+
+            <button type="submit" class="btn btn-warning mt-3 justify-content-center">
+              Update
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

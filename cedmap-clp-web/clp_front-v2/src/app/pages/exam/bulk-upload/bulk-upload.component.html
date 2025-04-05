@@ -1,0 +1,117 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profile bg-secondary shadow">
+        <div class="card-body">
+          <!-- Navbar -->
+
+          <nav class="navbar nav-light" style="background-color: #e3f2fd">
+            <h2>Questions Upload</h2>
+          </nav>
+
+          <div class="py-2">
+            <div class="container py-2">
+              <div
+                class="md-ad leaderboard blue-gradient"
+                data-text="Leaderboard"
+              ></div>
+
+              <div class="row">
+                <div class="col-6 container p-3">
+                  <!-- <nav
+                    class="nav navbar-light pl-3"
+                    style="background-color: #e3f2fd"
+                  >
+                    <h2>Import Question</h2>
+                  </nav> -->
+                  <form (submit)="onSubmit(infoForm)" enctype="multipart/form-data" #infoForm="ngForm">
+                    <h5>Course Type</h5>
+                    <select
+                      required
+                      (change)="getCourseList()"
+                      [(ngModel)]="course_type"
+                      class="form-select form-control"
+                      name="course_type"
+                    >
+                      <option [ngValue]="''" disabled selected hidden>
+                        Select Course Type
+                      </option>
+                      <option [ngValue]="'General'">General Question</option>
+                      <option [ngValue]="'Special Training Program'">
+                        Special Training Program
+                      </option>
+                      <option [ngValue]="'Internship Program'">
+                        Internship Program
+                      </option>
+                      <option [ngValue]="'Regular'">Regular Course</option>
+                      <option [ngValue]="'E-Learning Course'">
+                        E-Learning Course
+                      </option>
+                    </select>
+
+                    <div class="mt-2" *ngIf="notGeneral">
+                      <h5>Course Name</h5>
+                      <select
+                      required
+                        [(ngModel)]="course_name"
+                        class="form-control form-control-alternative"
+                        name="course_name"
+                      >
+                        <option [ngValue]="" disabled selected hidden>
+                          Select Course Name
+                        </option>
+                        <option
+                          *ngFor="let course of courseList"
+                          [ngValue]="course.course_name"
+                        >
+                          {{ course.course_name }}
+                        </option>
+                      </select>
+                    </div>
+
+                    <input class="form-control mt-3" type="file" (change)="onFileSelected($event)" />
+                    <button [ngClass]="{disabled: !uploadButtonStatus}" class="btn btn-warning mt-3" type="submit"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+                  </form>
+
+                  <!-- <div class="pl-3">
+                    <label for="formFileLg" class="form-label">Upload Csv File For Questions Data</label>
+                    <input type="file" (change)="onFileSelected($event)">
+<button (click)="submit()">Upload</button>
+                  </div> -->
+                </div>
+                <div class="col-6 containers p-3">
+                  <nav
+                    class="nav navbar-light pl-3"
+                    style="background-color: #e3f2fd"
+                  >
+                    <h2>Notes</h2>
+                  </nav>
+
+                  <div class="pl-3">
+                    <p>1. Click here to download sample format.</p>
+                    <p>
+                      2. Check Uploaded questions count with detected count to
+                      ensure all data is processed.
+                    </p>
+                    <p>
+                      Click on process button after ensure all data is accurate
+                      as per your knowledge.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

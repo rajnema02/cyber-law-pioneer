@@ -1,0 +1,63 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="card-title">Courses</h3>
+            </div>
+            <div class="col-2 d-flex">
+              <a
+                [routerLink]="['/course/course-create']"
+                routerLinkActive="router-link-active"
+                class="btn btn-success btn-sm"
+                >+ New Course</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Course Code</th>
+                  <th scope="col">Course Type</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Course Fees</th>
+                  <th scope="col">Course Duration</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of courseList">
+                  <td>{{ item.course_code }}</td>
+                  <td>{{ item.course_type }}</td>
+                  <td>{{ item.course_name }}</td>
+                  <td>{{ item.fees }}</td>
+                  <td>{{ item.course_duration }}</td>
+
+                  <td>
+                    <a
+                      class="mx-3 btn btn-sm btn-warning"
+                      routerLink="/course/course-update/{{ item._id }}"
+                      ><i class="fas fa-edit"></i>
+                    </a>
+                    <!-- <a class="mx-3 btn btn-sm btn-danger" (click)="deleteCourse(item._id)"><i class="fas fa-trash"></i> </a> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

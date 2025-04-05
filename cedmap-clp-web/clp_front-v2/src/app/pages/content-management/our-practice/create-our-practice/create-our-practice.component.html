@@ -1,0 +1,77 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card card-profil shadow">
+          <div class="card-body">
+            <h3 class="mb-0">Create Practice</h3>
+            <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+              <div class="row">
+                <div class="col-xl-12 order-xl-1">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-name">Name</label>
+                          <div class="hh">
+                            <input ngModel required name="name" class="form-control form-control-alternative" type="text"
+                              placeholder="Enter name" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image" class="form-label">Upload Image</label>
+                          <input type="file" id="image" class="form-control" (change)="onImageSelected($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-pdf">Upload PDF</label>
+                          <input type="file" id="pdf" class="form-control" (change)="onPdfSelected($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">Description</label>
+                          <textarea ngModel required name="description" rows="3" class="form-control form-control-alternative"
+                            placeholder="Enter a brief description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-service">Service</label>
+                          <select ngModel required name="service" class="form-control form-control-alternative" id="input-service">
+                            <option value="">Select</option>
+                            <option value="CSMS">CSMS</option>
+                            <option value="NASSCOM">NASSCOM</option>
+                            <option value="Network Security Service">Network Security Service</option>
+                            <option value="DSCI">DSCI</option>
+                            <option value="CEDMAP">CEDMAP</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center" style="padding-top: 100px">
+                      <button type="submit" class="btn btn-primary">
+                        Create Practice
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

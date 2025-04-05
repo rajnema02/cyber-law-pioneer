@@ -1,0 +1,171 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 60px">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="card card-profil py-5" id="component1">
+          <div class="">
+            <img src="assets/img/MPCON-landscape-large.jpeg" alt="mpcon_logo" class="w-100" />
+          </div>
+          <div class="container mt-3 border border-dark-50">
+            <div class="row ">
+              <div class="col">
+                <p style="
+                    margin-left: 100pxcm;
+                    margin-right: 0cm;
+                    text-align: start;
+                  ">
+                  <span style="font-size: 11pt"><span style="font-family: Calibri, sans-serif"><span
+                        style="color: #000000"><span style="font-size: 16pt"><span
+                            style="font-family: 'Times New Roman', serif">Program Name:&nbsp;{{ BatchList?.course_name
+                            }}</span></span></span></span></span>
+                </p>
+              </div>
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"><span style="font-family: Calibri, sans-serif"><span
+                        style="color: #000000"><span style="font-size: 16pt"><span
+                            style="font-family: 'Times New Roman', serif">Program Code: {{ BatchList?.course_code
+                            }}</span></span></span></span></span>
+                </p>
+              </div>
+            </div>
+            <div class="row border-bottom border-top">
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"><span style="font-family: Calibri, sans-serif"><span
+                        style="color: #000000"><span style="font-size: 16pt"><span
+                            style="font-family: 'Times New Roman', serif">Batch&nbsp; {{ BatchList?.batch_name
+                            }}</span></span></span></span></span>
+                </p>
+              </div>
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"><span style="font-family: Calibri, sans-serif"><span
+                        style="color: #000000"><span style="font-size: 16pt"><span
+                            style="font-family: 'Times New Roman', serif">Start Date:{{
+                            BatchList?.startDate | date : "dd-MM-YYYY"
+                            }}
+                            End Date:{{ BatchList?.endDate | date : "dd-MM-YYYY" }}
+                          </span></span></span></span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid candidate-table">
+            <h1 class="my-2 text-center">Final Result </h1>
+            <div class="table">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th scope="col">Students Name</th>
+                    <th> District</th>
+                    <th> Office</th>
+
+                    <th scope="col">Marks/Grade in Exam-1</th>
+                    <th scope="col">Marks/Grade in Exam-2</th>
+                    <th scope="col">Marks/Grade in Exam-3</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of resultList; let i=index">
+                    <td>{{i+1}}</td>
+                    <td class="text-capitalize">
+                      {{
+                      result.StudentName
+                      ? result.StudentName
+                      : result.full_name
+                      }}
+                    </td>
+                    <td class="text-capitalize">{{result.StudentDistrict}}</td>
+                    <td class="text-capitalize">{{result.StudentOffice}}</td>
+                    <!-- <span *ngFor="let item of result.StudentReport"> -->
+                    <td> {{result.StudentReport[0].grade }}</td>
+                    <td> {{result.StudentReport[1]?.grade? result.StudentReport[1].grade: '--'}}</td>
+                    <td>{{result.StudentReport[2]?.grade? result.StudentReport[2].grade: '--'}}</td>
+                    <!-- <td>{{result.StudentReport[0].StudentMarks }} / {{result.StudentReport[0].grade }}</td>
+                    <td>{{result.StudentReport[1]?.StudentMarks? result.StudentReport[1].StudentMarks: '--'}}  / {{result.StudentReport[1]?.grade? result.StudentReport[1].grade: '--'}}</td>
+                    <td>{{result.StudentReport[2]?.StudentMarks?result.StudentReport[2].StudentMarks:'--' }} / {{result.StudentReport[2]?.grade? result.StudentReport[2].grade: '--'}}</td> -->
+
+                    <!-- </span> -->
+                    <!-- <td>{{ result.Answered ? result.Answered : "0" }}</td>
+                    <td>
+                      {{ result.CorrectAnswers ? result.CorrectAnswers : "0" }}
+                    </td>
+                    <td>
+                      {{
+                        result.IncorrectAnswers ? result.IncorrectAnswers : "0"
+                      }}
+                    </td>
+                    <td>{{ result.TotalMarks ? result.TotalMarks : "0" }}</td>
+                    <td>
+                      {{ result.StudentMarks ? result.StudentMarks : "0" }}
+                    </td>
+                    <td>{{ result.grade ? result.grade : "-" }}</td>
+
+                    <td *ngIf="!viewCertificate">
+                      <span class="text-dark" *ngIf="!result.Absent">
+                        Present
+                      </span>
+                      <span class="text-dark" *ngIf="result.Absent">
+                        Absent
+                      </span>
+                    </td> -->
+                    <!-- <td *ngIf="viewCertificate">
+                      <a
+                        target="_blank"
+                        routerLink="/exam/download-certificate/{{ result._id }}"
+                      >
+                        <i class="fa fa-envelope-open" aria-hidden="true"></i
+                      ></a>
+                    </td>
+                    <td *ngIf="viewParticipationCertificate">
+                      <a
+                        target="_blank"
+                        routerLink="/exam/download-certificate/{{ result._id }}"
+                      >
+                        <i class="fa fa-envelope-open" aria-hidden="true"></i
+                      ></a>
+                    </td> -->
+
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                 <td *ngIf="result.status == 'Pass'"><span class="badge badge-pill badge-success">{{result.status}}</span>
+                 </td>     -->
+                    <!-- <td *ngIf="exam.exam_status == 'upcoming'"><span class="badge badge-pill badge-warning">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Done'"><span class="badge badge-pill badge-success">{{exam.exam_status}}</span>
+                    </td>
+                  <td *ngIf="exam.exam_status == 'Ongoing'"><span class="badge badge-pill badge-primary">{{exam.exam_status}}</span>
+                    </td> -->
+                    <!-- <td>{{exam.created_at}}</td> -->
+
+                    <!-- <td>
+                     <a class="mx-3 btn btn-sm btn-outline-info " routerLink='/exam/question-paper/{{exam._id}}'>Preview Question Paper</a>
+
+                  </td>
+                  <td>
+                     <a class="mx-3 btn btn-sm btn-outline-success " routerLink='/exam/result-list/{{exam._id}}'>Show Results</a>
+
+                  </td> -->
+
+                    <!-- <td>{{item.full_name}}</td> -->
+                    <!-- <td>{{item.fees}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 text-center">
+      <!-- <button class="btn btn-primary" (click)="printComponent('component1')"> <i class="fa fa-print" aria-hidden="true"></i> print</button> -->
+    </div>
+  </div>
+</div>

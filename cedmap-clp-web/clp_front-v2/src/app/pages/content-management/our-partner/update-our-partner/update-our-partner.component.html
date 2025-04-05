@@ -1,0 +1,58 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card card-profile shadow">
+          <div class="card-body">
+            <h3 class="mb-4">Update Partner</h3>
+            <form (ngSubmit)="submit()" #infoForm="ngForm">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Partner Name</label>
+                    <input [(ngModel)]="name" name="name" required class="form-control" type="text" placeholder="Enter name">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Upload Image</label>
+                    <input type="file" (change)="handleImageUpload($event)" class="form-control">
+                    <div *ngIf="image_link">
+                      <small class="text-muted">Current Image:</small><br>
+                      <img [src]="image_link" alt="partner image" class="img-thumbnail" style="max-width: 120px; margin-top: 5px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Upload File</label>
+                    <input type="file" (change)="handleFileUpload($event)" class="form-control" accept="application/pdf">
+                    <div *ngIf="file_link">
+                      <small class="text-muted">Current File:</small>
+                      <a [href]="file_link" target="_blank">View File</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">Update Partner</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

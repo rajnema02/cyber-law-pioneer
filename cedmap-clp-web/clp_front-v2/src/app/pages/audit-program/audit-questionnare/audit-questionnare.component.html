@@ -1,0 +1,101 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container mt--7 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center" *ngIf="userView">
+    <div class="col-lg-12 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent"></div>
+        <div class="card-body">
+          <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <h2>Doubt/Query Question</h2>
+
+            <div class="row mt-4">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Question Category</label>
+                  <select
+                    ngModel
+                    required
+                    name="question_category"
+                    class="form-control"
+                    placeholder="Course Type"
+                    (change)="getQuestion($event)"
+                    aria-label="Default select example"
+                  >
+                    <option value="" disabled selected hidden>
+                      Select Question Category
+                    </option>
+                    <option
+                      *ngFor="let question of question_category"
+                      [value]="question._id"
+                    >
+                      {{ question.title }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Question </label>
+                  <select
+                    ngModel
+                    required
+                    name="question_id"
+                    class="form-control"
+                    placeholder="Course Type"
+                    aria-label="Default select example"
+                    (change)="getSelectedQuestionValue($event)"
+                  >
+                    <option value="" disabled selected hidden>
+                      Select Question
+                    </option>
+                    <option
+                      *ngFor="let ques of questions"
+                      [value]="ques._id"
+                      [innerHtml]="ques.question"
+                      title="{{ ques.question }}"
+                    >
+                      <!-- {{ ques.question }} -->
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="container" *ngIf="selectedQuestion">
+                <div class="card my-4">
+                  <div class="card-body">
+                    <span> Selected Question:</span>
+                    <br />
+                    {{ selectedQuestion }}
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <label for="">Doubt/Query</label>
+                  <textarea
+                    class="form-control"
+                    rows="5"
+                    ngModel
+                    name="applicant_query"
+                    id=""
+                  >
+                  </textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-success mt-3 justify-content-center"
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

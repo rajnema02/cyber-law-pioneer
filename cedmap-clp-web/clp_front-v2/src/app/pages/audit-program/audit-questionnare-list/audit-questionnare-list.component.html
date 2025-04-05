@@ -1,0 +1,84 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="card-title m-0">Audit Doubt/Query List</h3>
+            </div>
+            <div class="col-2 d-flex" *ngIf="user.role != 'admin'">
+              <a
+                [routerLink]="['/audit/audit-questionnare']"
+                routerLinkActive="router-link-active"
+                class="btn btn-success btn-sm"
+                >+ New Query/Doubt</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- <hr class="mb-2" /> -->
+          <div class="table-responsive">
+            <!-- <h4>Category List</h4> -->
+            <div class="d-flex justify-content-end">
+              Total : {{ listCount }}
+            </div>
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              [responsive]="true"
+              (pageChange)="page = $event; getList()"
+              id="question-paginator"
+            ></pagination-controls>
+
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr class="text-center">
+                  <th>Category</th>
+                  <th>Question</th>
+                  <th>View Reply/Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let question of questionList
+                      | paginate
+                        : {
+                            id: 'question-paginator',
+                            itemsPerPage: limit,
+                            currentPage: page,
+                            totalItems: listCount
+                          };
+                    let i = index
+                  "
+                >
+                  <td class="text-center">
+                    {{ question.category.title }}
+                  </td>
+                  <td style="word-wrap: normal; white-space: normal">
+                    <div [innerHTML]="question.question.question"></div>
+                  </td>
+                  <td class="text-center">
+                    <a routerLink="/audit/audit-query-view/{{ question._id }}">
+                      <span *ngIf="question.reply" class="text-success">View Reply<br></span>
+                      <span *ngIf="!question.reply" class="text-danger">Not Reply Yet<br></span>
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

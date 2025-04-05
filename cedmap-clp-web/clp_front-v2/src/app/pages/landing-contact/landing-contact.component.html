@@ -1,0 +1,131 @@
+<div>
+  <app-landing-header></app-landing-header>
+  <!-- page content  start -->
+  <section class="about-section">
+    <div class="overlay"></div>
+    <img
+      class="about-banner"
+      src="../../../../assets/img/j.jpg"
+      alt="Banner 2"
+    />
+    <span class="about-text">Contact Us</span>
+  </section>
+
+  <section>
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="contact-main white-bg p-5 mt-n11">
+          <form
+  id="contact-form"
+  class="row"
+  method="post"
+  *ngIf="showForm"
+  (ngSubmit)="regSubmit(regForm)"
+  #regForm="ngForm"
+>
+  <div class="form-group col-md-6">
+    <input
+      id="form_name"
+      type="text"
+      name="firstName"
+      class="form-control"
+      placeholder="First Name"
+      required
+      [(ngModel)]="firstName"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <input
+      id="form_name1"
+      type="text"
+      name="lastName"
+      class="form-control"
+      placeholder="Last Name"
+      required
+      [(ngModel)]="lastName"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <input
+      id="form_email"
+      type="email"
+      name="email"
+      class="form-control"
+      placeholder="Email"
+      required
+      [(ngModel)]="email"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <input
+      id="form_phone"
+      type="tel"
+      name="mobile"
+      class="form-control"
+      placeholder="Mobile"
+      required
+      [(ngModel)]="mobile"
+    />
+  </div>
+  <div class="form-group col-md-12">
+    <textarea
+      id="form_message"
+      name="message"
+      class="form-control"
+      placeholder="Message"
+      rows="4"
+      required
+      [(ngModel)]="message"
+    ></textarea>
+  </div>
+  <div class="col-md-12 text-center mt-4">
+    <button class="btn btn-theme" type="submit" [disabled]="!regForm.form.valid">
+      <span>Send Message</span>
+    </button>
+  </div>
+</form>
+
+<div class="verify" *ngIf="!showForm">
+  <form (ngSubmit)="Submit(otpForm)" #otpForm="ngForm">
+    <input
+      required
+      [(ngModel)]="otp"
+      name="otp"
+      type="number"
+      pattern="[0-9]{6}"
+      class="form-control"
+      placeholder="Enter otp"
+      maxlength="6"
+    />
+    <div class="text-center mt-4">
+      <button class="btn btn-primary" type="submit">verify</button>
+    </div>
+  </form>
+</div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 mt-6 mt-lg-0">
+          <div class="white-bg box-shadow p-5">
+            <div class="contact-media mb-5">
+              <h5>Find Office:</h5>
+              <span class="text-black"
+                >Plot No. C-203, 3rd Floor, Biside Of Hotel Arya Palace, MP
+                Nagar Zone-II Bhopal(M.P.) 462011</span
+              >
+            </div>
+            <div class="contact-media mb-5">
+              <h5>Contact Us:</h5>
+              <a href="tel:+8770303862">+91 8770303862</a>
+              <a href="mailto:cyberlawpioneers.com">
+                info&#64;cyberlawpioneers.com</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-landing-footer></app-landing-footer>
+</div>

@@ -1,0 +1,692 @@
+<div class="container mt-5">
+  <form action="">
+    <div>
+      <!-- <h2>Study Center Registration form</h2> -->
+      <div class="container-fluid mt-5">
+        <div class="row">
+          <div class="col-xl-12 order-xl-1">
+            <div class="card bg-secondary shadow">
+              <div class="card-header bg-white border-0">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h3 class="mb-0">Profile</h3>
+                  </div>
+                  <!-- <div class="col-4 text-right">
+                        <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                      </div> -->
+                </div>
+              </div>
+              <div class="card-body">
+                <form>
+                  <h3>
+                    THE SOCIETY/TRUST/FIRM/COMPANY GOVERNING THE STUDY CENTER
+                  </h3>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <!-- <div class="col-lg-6 pt-2">
+                              <div class="form-field align-items-center">
+                                
+                                <input
+                                  required
+                                  type="text"
+                                  
+                                  name="full_name"
+                                  id="input-username"
+                                  class="form-control"
+                                  placeholder="Name"
+                                />
+                                <small
+                                  id="Name_code"
+                                  class="form-text text-muted"
+                                  >Name</small
+                                >
+                              </div>
+                            </div> -->
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <i class="fas fa-user"></i> -->
+                          <select
+                            required
+                            name="full_name"
+                            id="input-username"
+                            class="form-control"
+                          >
+                            <option value="" disabled selected>
+                              Select Center Type
+                            </option>
+                            <option value="john_doe">Society</option>
+                            <option value="jane_doe">Firm</option>
+                            <option value="jane_doe">Proprietor</option>
+                            <option value="jane_doe">Gumasta</option>
+                            <option value="jane_doe">NGO</option>
+                            <option value="jane_doe">PVT Ltd</option>
+                            <option value="jane_doe">Other</option>
+
+                            <!-- Add more options as needed -->
+                          </select>
+                          <small id="Name_code" class="form-text text-muted"
+                            >Center Type</small
+                          >
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="fas fa-key"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name=""
+                            class="form-control"
+                            placeholder="Center Name"
+                          />
+                          <small id="Email_code" class="form-text text-muted"
+                            >Center's Name(optional)</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="far fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="mobile"
+                            class="form-control"
+                            placeholder=" Address"
+                          />
+                          <small id="Mobile_code" class="form-text text-muted"
+                            >Registered Address</small
+                          >
+                        </div>
+                      </div>
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="fas fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="father_name"
+                            class="form-control"
+                            placeholder="year"
+                          />
+                          <small
+                            id="Father's_Name_code"
+                            class="form-text text-muted"
+                            >Year of establishment</small
+                          >
+                        </div>
+                      </div>
+                      <!-- <div class="col-lg-6 pt-2">
+                              <div class="form-field  align-items-center">
+                                <h5 class="text-muted"> Date Of Birth</h5>
+
+                                <input required type="date" [(ngModel)]="courseUserData.dob" name="dob" class="form-control"
+                                  placeholder="Date Of Birth">
+                              </div>
+                            </div> -->
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="far fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="mobile"
+                            class="form-control"
+                            placeholder="Registration Number"
+                          />
+                          <small id="Mobile_code" class="form-text text-muted"
+                            >Registration Number</small
+                          >
+                        </div>
+                      </div>
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="fas fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="father_name"
+                            class="form-control"
+                            placeholder="Firm / Society / NGO / Pvt Ltd / Company"
+                          />
+                          <small
+                            id="Father's_Name_code"
+                            class="form-text text-muted"
+                            >Registering Authority</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="far fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="mobile"
+                            class="form-control"
+                            placeholder="with STD code"
+                          />
+                          <small id="Mobile_code" class="form-text text-muted"
+                            >Phone No.
+                          </small>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="fas fa-user"></span> -->
+
+                          <input
+                            required
+                            type="email"
+                            name="father_name"
+                            class="form-control"
+                            placeholder="Email"
+                          />
+                          <small
+                            id="Father's_Name_code"
+                            class="form-text text-muted"
+                          >
+                            Email
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <span class="far fa-user"></span> -->
+
+                          <input
+                            required
+                            type="text"
+                            name="mobile"
+                            class="form-control"
+                            placeholder="GSTN No"
+                          />
+                          <small id="Mobile_code" class="form-text text-muted">
+                            GSTN No
+                          </small>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <input
+                            required
+                            type="text"
+                            name="pan_number"
+                            class="form-control"
+                            placeholder="PAN No"
+                          />
+                          <small id="PAN_Code" class="form-text text-muted"
+                            >PAN No</small
+                          >
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <label for="fileUpload">Upload Document</label> -->
+                          <input
+                            type="file"
+                            name="fileUpload"
+                            id="fileUpload"
+                            class="form-control-file"
+                            accept=".pdf, .doc, .docx"
+                          />
+                          <small
+                            id="FileUpload_Code"
+                            class="form-text text-muted"
+                            >Upload Document</small
+                          >
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 pt-2">
+                        <div class="form-field align-items-center">
+                          <!-- <label for="fileUpload">Upload Document</label> -->
+                          <input
+                            type="file"
+                            name="fileUpload"
+                            id="fileUpload"
+                            class="form-control-file"
+                            accept=".pdf, .doc, .docx"
+                          />
+                          <small
+                            id="FileUpload_Code"
+                            class="form-text text-muted"
+                            >Upload Document</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="row">
+
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field  align-items-center">
+
+                                <input required type="text" [(ngModel)]="courseUserData.mother_name" name="mother_name"
+                                  class="form-control" placeholder="Mother Name">
+                              </div>
+                            </div>
+                          </div> -->
+                    <!-- <div class="row">
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field d-flex align-items-center">
+                                <select required [(ngModel)]="courseUserData.category" class="form-control" name="category">
+                                  <option value="" disabled>Category</option>
+                                  <option class="text-uppercase" *ngFor="let item of category" [value]="item">
+                                    {{item}}
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field d-flex align-items-center">
+                                <select required [(ngModel)]="courseUserData.gender" class="form-control" name="gender">
+                                  <option value="" disabled>Gender</option>
+                                  <option class="text-uppercase" *ngFor="let item of gender" [value]="item">{{item}}
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                          </div> -->
+                  </div>
+                  <hr class="my-4" />
+
+                  <div class="card-body">
+                    <form>
+                      <h3>President/Chairman Details</h3>
+                      <div class="pl-lg-4">
+                        <div class="row">
+                          <div class="col-lg-6 pt-2">
+                            <div class="form-field align-items-center">
+                              <!-- <span class="far fa-user"></span> -->
+
+                              <input
+                                required
+                                type="text"
+                                name="mobile"
+                                class="form-control"
+                                placeholder="Full Name"
+                              />
+                              <small
+                                id="Mobile_code"
+                                class="form-text text-muted"
+                                >Name
+                              </small>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 pt-2">
+                            <div class="form-field align-items-center">
+                              <!-- <span class="fas fa-user"></span> -->
+
+                              <input
+                                required
+                                type="email"
+                                name="father_name"
+                                class="form-control"
+                                placeholder="Email"
+                              />
+                              <small
+                                id="Father's_Name_code"
+                                class="form-text text-muted"
+                              >
+                                Email
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field align-items-center">
+                                <!-- <span class="far fa-user"></span> -->
+  
+                                <input
+                                  required
+                                  type="text"
+                                  name="mobile"
+                                  class="form-control"
+                                  placeholder="with STD code"
+                                />
+                                <small
+                                  id="Mobile_code"
+                                  class="form-text text-muted"
+                                  >Phone No.
+                                </small>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field align-items-center">
+                                <!-- <span class="fas fa-user"></span> -->
+  
+                                <input
+                                  required
+                                  type="email"
+                                  name="father_name"
+                                  class="form-control"
+                                  placeholder="Email"
+                                />
+                                <small
+                                  id="Father's_Name_code"
+                                  class="form-text text-muted"
+                                >
+                                  Email
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+
+                      </div>
+                    </form>
+                  </div>
+
+                  <hr class="my-4" />
+
+                  <div class="card-body">
+                    <form>
+                      <h3>Center In charge/Head Details</h3>
+                      <div class="pl-lg-4">
+                        <div class="row">
+                          <div class="col-lg-6 pt-2">
+                            <div class="form-field align-items-center">
+                              <!-- <span class="far fa-user"></span> -->
+
+                              <input
+                                required
+                                type="text"
+                                name="mobile"
+                                class="form-control"
+                                placeholder="Name"
+                              />
+                              <small
+                                id="Mobile_code"
+                                class="form-text text-muted"
+                                >Name
+                              </small>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 pt-2">
+                            <div class="form-field align-items-center">
+                              <!-- <span class="fas fa-user"></span> -->
+
+                              <input
+                                required
+                                type="number"
+                                name="father_name"
+                                class="form-control"
+                                placeholder="mobile"
+                              />
+                              <small
+                                id="Father's_Name_code"
+                                class="form-text text-muted"
+                              >
+                                Mobile Number
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field align-items-center">
+                                <!-- <span class="far fa-user"></span> -->
+  
+                                <input
+                                  required
+                                  type="text"
+                                  name="mobile"
+                                  class="form-control"
+                                  placeholder="with STD code"
+                                />
+                                <small
+                                  id="Mobile_code"
+                                  class="form-text text-muted"
+                                  >Phone No.
+                                </small>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 pt-2">
+                              <div class="form-field align-items-center">
+                                <!-- <span class="fas fa-user"></span> -->
+  
+                                <input
+                                  required
+                                  type="email"
+                                  name="father_name"
+                                  class="form-control"
+                                  placeholder="Email"
+                                />
+                                <small
+                                  id="Father's_Name_code"
+                                  class="form-text text-muted"
+                                >
+                                  Email
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+
+                      </div>
+                    </form>
+                  </div>
+
+                  <hr class="my-4" />
+                  <!-- Address -->
+                  <h3>Location for Establish Study Center</h3>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-field align-items-center">
+                          <input
+                            required
+                            class="form-control"
+                            placeholder="Center Address"
+                            type="text"
+                            name="center_address"
+                          />
+                          <small id="Address_code" class="form-text text-muted"
+                            >Address</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-lg-3">
+                        <div class="form-field align-items-center">
+                          <input
+                            required
+                            type="text"
+                            class="form-control"
+                            placeholder="City"
+                            name="city"
+                          />
+                          <small id="City_code" class="form-text text-muted"
+                            >Name of the Place/City</small
+                          >
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <select
+                          required
+                          name="state"
+                          class="form-control w-100"
+                        >
+                          <option value="" disabled>State</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        </select>
+                        <small id="State_code" class="form-text text-muted"
+                          >State</small
+                        >
+                      </div>
+
+                      <div class="col-lg-3">
+                        <select
+                          required
+                          name="state"
+                          class="form-control w-100"
+                        >
+                          <option value="" disabled>State</option>
+                          <option value="Madhya Pradesh">
+                            Select-District
+                          </option>
+                        </select>
+                        <small id="State_code" class="form-text text-muted"
+                          >District</small
+                        >
+                      </div>
+
+                      <!-- <div class="col-lg-3">
+                              <div class="form-field align-items-center">
+                                <input
+                                  required
+                                  
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="City"
+                                  name="city"
+                                />
+                                <small
+                                  id="City_code"
+                                  class="form-text text-muted"
+                                  >City</small
+                                >
+                              </div>
+                            </div> -->
+                      <!-- <div class="col-lg-3">
+                              <div class="form-field  align-items-center">
+                                <input required [(ngModel)]="courseUserData.country" type="text" class="form-control "
+                                  placeholder="Country" name="country">
+                              </div>
+                            </div> -->
+                      <div class="col-lg-3">
+                        <div class="form-field align-items-center">
+                          <input
+                            required
+                            type="number"
+                            class="form-control"
+                            placeholder="Postal code"
+                            name="postal_code"
+                          />
+                          <small id="Pin_code" class="form-text text-muted"
+                            >Pin Code</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="my-4" />
+
+
+
+                  <!-- Description -->
+                  <h6 class="heading-small text-muted mb-4">About me</h6>
+                  <div class="row">
+                    <div class="col-6 pl-lg-4">
+                      <div class="form-field">
+                        <label>Profile Photo Upload</label>
+                        <br />
+                        <!-- <a
+                                href="{{ env.url }}/file/download/{{
+                                  courseUserData.profile_photo || 'no-image'
+                                }}"
+                                target="_blank"
+                                class="pr-5"
+                              >
+                                <i
+                                  class="fa fa-file"
+                                  aria-hidden="true"
+                                ></i>
+                                Click To View
+                              </a> -->
+                        <a
+                          class="ml-5"
+                          (click)="profile_update()"
+                          *ngIf="userRole == 'admin'"
+                        >
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                          Click To Update</a
+                        ><br />
+                        <input
+                          *ngIf="pic_profile"
+                          required
+                          class="form-control form-control-alternative"
+                          type="file"
+                          name="profile_photo"
+                          (change)="uploadprofile($event)"
+                        />
+                        <span class="text-xs text-muted"
+                          >Upload Image(JPEG,PNG,JPG only) upto 300KB</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-6 pl-lg-4">
+                      <div class="form-field">
+                        <label>Identity Upload</label>
+                        <br />
+                        <!-- <a
+                                href="{{ env.url }}/file/download/{{
+                                  courseUserData.identity_file || 'no-image'
+                                }}"
+                                target="_blank"
+                              >
+                                <i
+                                  class="fa fa-file"
+                                  aria-hidden="true"
+                                ></i>
+                                Click To View
+                              </a> -->
+                        <a
+                          class="ml-5"
+                          (click)="identity_update()"
+                          *ngIf="userRole == 'admin'"
+                        >
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                          Click To Update</a
+                        ><br />
+                        <input
+                          *ngIf="pic_identity"
+                          required
+                          class="form-control form-control-alternative"
+                          type="file"
+                          name="identity_file"
+                          (change)="uploadidentity($event)"
+                        />
+                        <span class="text-xs text-muted"
+                          >Upload Image(JPEG,PNG,JPG only) upto 300KB</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <button class="btn btn-primary mt-3" mat-button matStepperNext>
+            Next
+            <i class="fa fa-caret-right ml-4" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

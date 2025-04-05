@@ -1,0 +1,59 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row">
+            <h4 class="card-title col">Certificates List</h4>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <!-- <th scope="col">Exam Name</th> -->
+                  <!-- <th scope="col">Exam Code</th> -->
+                  <!-- <th scope="col">Course Type</th> -->
+                  <th scope="col">Exam Id</th>
+                  <th scope="col">Certificate</th>
+                  <!-- <th scope="col">Exam Time</th>
+                  <th scope="col">Exam Status</th> -->
+                  <!-- <th scope="col">Exam Creation Date</th> -->
+
+                  <!-- <th scope="col">Actions</th> -->
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let report of reportList">
+                  <!-- <td>{{exam.exam_name}}</td>
+                  <td>{{exam.exam_code}}</td>
+                  <td>{{exam.course_type}}</td> -->
+                  <td>{{ report.examObject.exam_name }}</td>
+                  <td><a target="_blank" href ="file/download/{{ report.certificatePath  }}"><i class="fa fa-envelope-open" aria-hidden="true"></i
+                    >View Certificate </a>   </td>
+
+
+                  <!-- <td>{{exam.created_at}}</td> -->
+
+
+
+                  <!-- <td>{{item.full_name}}</td> -->
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

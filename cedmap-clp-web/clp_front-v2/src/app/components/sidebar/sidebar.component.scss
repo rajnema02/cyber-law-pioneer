@@ -1,0 +1,34 @@
+.fa,.fas{
+  margin-right: 7px;
+}
+
+@keyframes blink-animation {
+  0%, 50%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}
+.badge:empty {
+   display: block !important;
+}
+.blink {
+  animation: blink-animation 1s infinite;
+}
+#blinking-text{
+  visibility: visible;
+}
+#blink_text{
+  animation-name:blink;
+  // width:280px;
+  animation-duration:2s;
+  animation-timing-function:ease-in;
+  animation-iteration-count:Infinite;
+  }
+
+@keyframes blink{
+  0%{color:red;}
+  50%{color:white;}
+  100%{color:red;}
+}

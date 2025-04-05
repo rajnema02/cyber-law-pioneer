@@ -1,0 +1,177 @@
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 60px"
+>
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="card card-profil py-5" id="component1">
+          <div class="">
+            <img
+              src="assets/img/cedmap.png"
+              alt="cedmap_logo"
+              class="w-100"
+            />
+          </div>
+          <div class="container mt-3 border border-dark-50">
+            <div class="row ">
+              <div class="col">
+                <p
+                  style="
+                    margin-left: 100pxcm;
+                    margin-right: 0cm;
+                    text-align: start;
+                  "
+                >
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Program Name:&nbsp;{{ BatchList.course_name }}</span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Program Code: {{ BatchList.course_code }}</span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="row border-bottom border-top">
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Batch&nbsp; {{ BatchList.batch_name }}</span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Start Date:{{
+                              BatchList.startDate | date : "dd-MM-YYYY"
+                            }}
+                            End Date:{{ BatchList.endDate | date : "dd-MM-YYYY" }}
+                          </span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Lecture Time:{{ BatchList.startTime }} to
+                            {{ BatchList.endTime }}</span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+              <div class="col">
+                <p style="margin-left: 0cm; margin-right: 0cm; text-align: start">
+                  <span style="font-size: 11pt"
+                    ><span style="font-family: Calibri, sans-serif"
+                      ><span style="color: #000000"
+                        ><span style="font-size: 16pt"
+                          ><span style="font-family: 'Times New Roman', serif"
+                            >Lecture Days:<span
+                              class="mx-"
+                              *ngFor="let day of BatchList.days"
+                            >
+                              {{ day }}
+                            </span>
+                          </span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="container candidate-table">
+            <div class="table">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <!-- <th scope="col"></th> -->
+
+                    <th scope="col">S No.</th>
+                    <th scope="col">Candidate Name</th>
+                    <th scope="col">Father Name</th>
+                    <th scope="col">Office/Location</th>
+
+                    <!-- <th scope="col">Image</th -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of userList; let i = index">
+                    <!-- <tr *ngFor="let item of batchList"> -->
+                    <!-- <td>{{item.batch_name}}</td> -->
+                    <!-- <td> <button [routerLink]="['/batch/batch-allotment']" routerLinkActive="router-link-active"
+                    class="btn btn-success ">Batch Allotment</button>
+                </td> -->
+
+                    <!-- <td>
+                  <input type="checkbox" id="myCheckbox" name="stdId" placeholder="StudentId" (change)="selectStud(item._id)">
+                </td> -->
+
+                    <td class="col-3">{{ i + 1 }}</td>
+                    <td class="col-3">{{ item.full_name }}</td>
+                    <td class="col-3">{{ item.father_name }}</td>
+                    <td class="col-3">{{ item.office }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 text-center">
+      <!-- <button class="btn btn-primary" (click)="printComponent('component1')"> <i class="fa fa-print" aria-hidden="true"></i> print</button> -->
+    </div>
+  </div>
+</div>

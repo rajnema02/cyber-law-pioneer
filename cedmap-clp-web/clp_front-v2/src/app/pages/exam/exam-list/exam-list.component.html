@@ -1,0 +1,114 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row">
+            <h4 class="card-title col">Exam List</h4>
+            <div class="col-2">
+              <span class="d-flex">
+                <a
+                  [routerLink]="['/exam/schedule-exam']"
+                  class="btn btn-success btn-sm"
+                  >+ Schedule Exam</a
+                >
+              </span>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Exam Name</th>
+                  <th scope="col">Exam Code</th>
+                  <th scope="col">Course Type</th>
+                  <!-- <th scope="col">Course Name</th> -->
+                  <th scope="col">Batch Name</th>
+                  <th scope="col">Exam Date</th>
+                  <th scope="col">Exam Time</th>
+                  <th scope="col">Exam Status</th>
+                  <!-- <th scope="col">Exam Creation Date</th> -->
+
+                  <th scope="col">Actions</th>
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let exam of updatedExamList">
+                  <td>{{ exam.exam_name }}</td>
+                  <td>{{ exam.exam_code }}</td>
+                  <td>{{ exam.course_type }}</td>
+                  <!-- <td>{{exam.course_name}}</td> -->
+                  <td>
+                    <div *ngIf="exam?.batch_name">
+                      <span
+                        class="badge badge-pill ml-2 badge-primary border border-primary"
+                      >
+                        {{ exam.batch_name }}
+                      </span>
+                    </div>
+                  </td>
+                  <td>{{ exam.exam_date | date : "dd-MM-YYYY" }}</td>
+                  <td>{{ exam.exam_time }}</td>
+                  <td *ngIf="exam.exam_status == 'Upcoming'">
+                    <span class="badge badge-pill badge-success">{{
+                      exam.exam_status
+                    }}</span>
+                  </td>
+                  <td *ngIf="exam.exam_status == 'Exam Over'">
+                    <span class="badge badge-pill badge-danger">{{
+                      exam.exam_status
+                    }}</span>
+                  </td>
+                  <td *ngIf="exam.exam_status == 'Ongoing'">
+                    <span class="badge badge-pill badge-primary">{{
+                      exam.exam_status
+                    }}</span>
+                  </td>
+                  <!-- <td>{{exam.created_at}}</td> -->
+
+                  <td>
+                    <div ngbDropdown placement="bottom-right">
+                      <a
+                        class="btn btn-sm btn-icon-only text-light"
+                        ngbDropdownToggle
+                      >
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div
+                        *ngIf="exam.exam_status == 'Exam Over'"
+                        ngbDropdownMenu
+                        class="dropdown-menu-right dropdown-menu-arrow"
+                      >
+                        <!-- <a class="dropdown-item" routerLink="/exam/question-paper/{{exam._id}}" target="_blank">
+                          Preview Question Paper
+                        </a> -->
+                        <a
+                          class="dropdown-item"
+                          routerLink="/exam/result-list/{{ exam._id }}"
+                        >
+                          Show Results</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+
+                  <!-- <td>{{item.full_name}}</td> -->
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

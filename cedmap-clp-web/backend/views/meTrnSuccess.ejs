@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <script type="text/javascript"></script>
+    <meta charset="utf-8">
+    <title>Merchant Site</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            /* font-size: : 12px; */
+        }
+
+        .wrapper {
+            width: 980px;
+            /* margin: 0 auto; */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* margin: 0; */
+            padding: auto;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 800px;
+            margin: auto auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #3498db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        tr {
+            border-bottom: 1px solid #ccc;
+        }
+
+        td,
+        th {
+            padding: 10px;
+        }
+
+        th {
+            text-align: left;
+            background-color: #f4f4f4;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .status {
+            color: green;
+        }
+
+        .status.failed {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <script>
+        var ResMsgDTO = require('./ResMsgDTO.js');
+        var ReqMsgDTO = require('./ReqMsgDTO.js');
+        var VtransactSecurity = require('./VtransactSecurity.js');
+        var HTTPPost = require('./HTTPPost.js');
+        var HTTPPost = require('./AWLMEAPI.js');
+        var reqMsgDTO = new ReqMsgDTO();
+        var resMsgDTO = new ResMsgDTO();
+        var transactMeAPI = new AWLMEAPI();
+        var vTransactSecurity = new VtransactSecurity();
+        // Parse Merchant encryption to parse PG response message 
+        var merchantResponse = null;
+        // Merchant Encryption Key String 
+        enc_key = request.getParameter("enc_key");
+        resMsgDTO = null;
+        if (request.getParameter("merchantResponse") != null) {
+            // Get PG transaction response 
+            merchantResponse = request.getParameter("merchantResponse");
+            // Initialise object to parse response message
+            //AWLMEAPI transactMeAPI = new AWLMEAPI();
+
+            // Call method to parse PG transaction response 
+            resMsgDTO = transactMeAPI.parseTrnResMsg(merchantResponse, enc_key);
+        } else {
+            merchantResponse = "No response";
+        }
+    </script> -->
+
+    <form style="margin: 50px;" action="" method="post">
+        <!-- <center>
+            <H3>Transaction Status </H3>
+        </center>
+        <br><br><br><br>
+        <div style=" text-align: center; justify-content: center;">
+            <table>
+                <tr>
+                    <td><label for="one"> Transaction Ref No </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getPgMeTrnRefNo() %> </label></td>
+                    <td><label for="one"> Order ID </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getOrderId() %> </label></td>
+
+                </tr>
+
+                <tr>
+                    <td><label for="one"> RRN </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getRrn() %> </label></td>
+                    <td><label for="one"> AuthZCode </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getAuthZCode() %> </label></td>
+                    <td><label for="one"> Response Code </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getResponseCode() %> </label></td>
+
+                </tr>
+                <tr>
+                    <td><label for="one"> Transaction Date Time </label></td>
+                    <td><label for="one">: <%=resMsgDTO.getTrnReqDate() %> </label></td>
+                    <td><label for="one"> Transaction Status </label></td>
+                    <td><label for="one">:
+                            <% if (resMsgDTO.getStatusCode()==="S" ) { %>
+                                Success
+                                <% } else { %>
+                                    Fail
+                                    <% } %>
+                        </label></td>
+                    <td><label for="one"> Transaction Status Description </label></td>
+                    
+                    <br>
+                </tr>
+                <tr>
+                    <td><label for="one">
+                            <%=resMsgDTO.getStatusDesc() %>
+                        </label></td>
+                    <td><label for="two"> Additional Field1</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField1() %> </label></td>
+                        <td><label for="two"> Additional Field2</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField2() %> </label></td>
+                        <td><label for="two"> Additional Field3</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField3() %> </label></td>
+                </tr>
+                <tr>
+                    <td><label for="three"> Additional Field4</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField4() %> </label></td>
+                        <td><label for="three"> Additional Field5</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField5() %> </label></td>
+                        <td><label for="three"> Additional Field6</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField6() %> </label></td>
+                </tr>
+                <tr>
+                    <td><label for="three"> Additional Field7</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField7() %> </label></td>
+                        <td><label for="three"> Additional Field8</label></td>
+                        <td><label for="one">: <%=resMsgDTO.getAddField8() %> </label></td>
+                    <td><label for="three"> Transaction Amount</label></td>
+                    <td><label for="one">: <%=resMsgDTO.getTrnAmt() %> </label></td>
+                </tr>
+            </table>
+
+        </div> -->
+        <div class="container ">
+            <h3>Transaction Status</h3>
+            <table>
+                <tr>
+                    <th>Transaction Ref No</th>
+                    <td>
+                        <%= resMsgDTO.getPgMeTrnRefNo() %>
+                    </td>
+                    <th>Order ID</th>
+                    <td>
+                        <%= resMsgDTO.getOrderId() %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Transaction Date Time</th>
+                    <td>
+                        <%= resMsgDTO.getTrnReqDate() %>
+                    </td>
+                    <th>Transaction Status</th>
+                    <td class="status Fail">
+                        <%if( resMsgDTO.getStatusCode()==='S' ){ %>
+                            <span style="color: green;">Success</span>
+                            <% } %>
+                                <%if( resMsgDTO.getStatusCode()!='S' ){ %>
+                                    <span style="color: red;">Failed</span>
+                                    <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status Description</th>
+                    <td colspan="3">
+                        <%= resMsgDTO.getStatusDesc() %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Transaction Amount</th>
+                    <td>
+                        &#8377; <%= resMsgDTO.getTrnAmt() %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+
+
+    </div>
+  </div>
+</div>
+<div class="container mt--7" *ngIf="this.role == 'user'">
+
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Payment History</h3>
+        </div>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+          (pageChange)="page = $event; getUserList()" id="payment-paginator"></pagination-controls>
+
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Transaction Id</th>
+                <th scope="col">Bank Ref Number</th>
+                <th scope="col">Payment Date</th>
+                <th scope="col">Payment Mode</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let item of userList | paginate
+              : {
+                  id: 'payment-paginator',
+                  itemsPerPage: limit,
+                  currentPage: page,
+                  totalItems: listCount
+                };">
+                <td>
+                  {{item?.orderId}}
+                </td>
+                <td>{{item?.trnRefNo? item?.trnRefNo:'NA'}}</td>
+                <td>{{item?.trnReqDate ? (item?.trnReqDate | date:'dd-MM-yyyy HH:mm:ss' ):'NA'}}</td>
+                <td>{{item?.addField9 ? item?.addField9:'NA'}}</td>
+                <td>
+                  <span *ngIf="item?.responseCode === '00'" style="color: green;">
+                    Success
+                  </span>
+                  <span *ngIf="item?.responseCode !== '00'" style="color: red;">
+                    Failed
+                  </span>
+
+                </td>
+                <td>
+                  {{convertToInteger(item?.trnAmt)/100}}
+                </td>
+                <td> <a *ngIf="item?.responseCode === '00'" routerLink="/receipt/{{item?.orderId}}">View
+                    Reciept</a><span *ngIf="item?.responseCode != '00'">NA</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt--7" *ngIf="this.role == 'admin'|| this.role =='super-admin'">
+
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Payment Details</h3>
+        </div>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+          (pageChange)="page = $event; getUserList()" id="payment-paginator"></pagination-controls>
+
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">User Name</th>
+                <!-- <th scope="col">User Mobile Number</th> -->
+                <th scope="col">Transaction Id</th>
+                <th scope="col">Bank Ref Number</th>
+                <th scope="col">Payment Date</th>
+                <th scope="col">Payment Mode</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of userList | paginate
+              : {
+                  id: 'payment-paginator',
+                  itemsPerPage: limit,
+                  currentPage: page,
+                  totalItems: listCount
+                };">
+                <td>{{item?.addField1}}</td>
+                <!-- <td>{{item?.addField2}}</td> -->
+                <td>{{item?.orderId}}</td>
+                <td>{{item?.trnRefNo ? item?.trnRefNo:'NA'}}</td>
+                <td>{{item?.trnReqDate ? (item?.trnReqDate | date:'dd-MM-yyyy HH:mm:ss' ):'NA'}}</td>
+                <td>{{item?.addField9 ? item?.addField9:'NA'}}</td>
+                <td>
+                  <span *ngIf="item?.responseCode === '00'" style="color: green;">
+                    Success
+                  </span>
+                  <span *ngIf="item?.responseCode !== '00'" style="color: red;">
+                    Failed
+                  </span>
+
+                </td>
+                <td>
+                  {{convertToInteger(item?.trnAmt)/100}}
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

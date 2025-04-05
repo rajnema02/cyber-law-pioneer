@@ -1,0 +1,82 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row">
+            <h4 class="card-title col">Message List</h4>
+            <div class="col-2">
+              <span class="d-flex">
+                <a
+                  [routerLink]="['/message/create-message']"
+                  class="btn btn-success btn-sm"
+                  >+ Create New Message</a
+                >
+              </span>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th class="col-1">Sr. No.</th>
+                  <!-- <th scope="col">Batch Name</th> -->
+                  <th class="col-3">Message Description</th>
+                  <th class="col-2">Created At</th>
+                  <th class="col-2">Status</th>
+                  <th scope="col">Type</th>
+
+                  <th class="col-2">Actions</th>
+
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let message of messageList; let i = index;">
+                  <td class="col-1">{{ i + 1 }}</td>
+                  <!-- <td class="col-2">{{ message.batchObject.batch_name }}</td> -->
+                  <td class="col-3" style="word-wrap: normal; white-space: normal;" [innerHTML]=" message.message_description "></td>
+                  <td class="col-2">{{ message.created_on | date : "short" }}</td>
+                  <td class="col-2">
+                    <!-- {{ message.disable }} -->
+                    <span
+                      *ngIf="!message.disable"
+                      class="badge badge-pill badge-success"
+                      >Enabled</span
+                    >
+                    <span
+                      *ngIf="message.disable"
+                      class="badge badge-pill badge-danger"
+                      >Disabled</span
+                    >
+                  </td>
+                  <td>
+                    {{message.alert_message?"Home Page Notice": "Batch Announcement"}}
+                  </td>
+                  <td class="col-2">
+                    <!-- <a
+                      class="mx-3 btn btn-sm btn-warning"
+                      routerLink="/course/course-update/{{ message._id }}"
+                      ><i class="fas fa-edit"></i>
+                    </a> -->
+                    <a
+                      class="mx-3 btn btn-sm btn-danger"
+                      (click)="disableMessage(message._id)"
+                      ><i class="fas fa-eye-slash"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

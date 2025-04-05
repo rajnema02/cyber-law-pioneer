@@ -1,0 +1,174 @@
+.custom-carousel {
+  height: 400px; /* Set this to your desired fixed height */
+}
+
+.custom-carousel img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-carousel {
+  /* Add any custom styles for your carousel here */
+}
+
+.custom-carousel .item {
+  /* Ensure proper styling for items */
+}
+
+.custom-carousel .testimonial-img img {
+  /* Make sure the images are styled correctly */
+  max-width: 100px; /* Adjust size as needed */
+  margin: 0 auto;
+}
+
+.card-practice {
+  border: 1px dashed;
+  border-color: #f35353;
+  height: 355px;
+  //   border-style: dashed;
+}
+
+.featured-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 1px;
+  border-radius: 50%;
+  color: #0035d0; /* Adjust color if needed */
+}
+.practice-icon {
+  width: 60px;
+  height: auto;
+  //   display: flex;
+  //   align-items: center;
+  justify-content: center;
+}
+
+.hd2 {
+  color: #d80650;
+  text-transform: uppercase;
+  text-align: left;
+}
+.text-theme2 {
+  color: #d80650;
+  font-size: 22px;
+}
+.font-italic {
+  font-size: 20px bold;
+  color: white;
+}
+.bg-team {
+  background-color: #0d0f33;
+}
+
+.light-bg {
+  background-color: #e4fcfa;
+}
+.btn.btn-theme {
+  background: #d80650;
+  color: #ffffff;
+}
+.btn {
+  background: none;
+  padding: 16px 35px;
+  overflow: hidden;
+  border-radius: 0;
+  position: relative;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-weight: 700;
+}
+.nav-logo {
+  height: 60px;
+  width: auto;
+}
+.bg-fullnav {
+  background-color: #0d0f33;
+  position: fixed;
+}
+.about-banner {
+  margin-top: -220px;
+}
+
+.about-section {
+  position: relative;
+  display: inline-block;
+}
+
+.about-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
+  z-index: 1;
+}
+
+.about-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px; /* Adjust this value to make the font size bigger or smaller */
+  color: white; /* Change the color as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better readability */
+  font-weight: bold;
+  z-index: 2;
+}
+
+.section-title h6 {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #fb3b3c;
+  font-size: 22px;
+}
+.section-title p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.7;
+}
+.font-w-6 {
+  font-weight: 600;
+}
+
+// accordian  css
+/* Styling for ngb-accordion and ngb-panel */
+.ngb-panel {
+  margin-bottom: 20px; /* Adjust as needed */
+  border: 1px solid #ccc; /* Example border styling */
+}
+
+.card-header {
+  padding: 10px 15px;
+  background-color: #f8f9fa; /* Example background color */
+  border-bottom: 1px solid #ccc; /* Example border styling */
+  cursor: pointer; /* Optional: make header clickable */
+}
+
+.card-body {
+  padding: 15px;
+}
+
+/* Optional: Hover effect on header */
+.card-header:hover {
+  background-color: #e9ecef;
+}

@@ -1,0 +1,238 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body"></div>
+    </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card card-profil shadow">
+                <div class="card-body">
+                    <h3 class="mb-0">Institute Center</h3>
+                    <form (ngSubmit)="submit(centerForm)" #centerForm="ngForm">
+                        <div class="row">
+                            <div class="col-xl-12 order-xl-1">
+                                <div class="card-body">
+                                    <!-- <h3>Batch Management</h3> -->
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Center
+                                                    Name</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="^[^0-9]+$" minlength="3" name="center_name"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Center Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Center
+                                                    Code</label>
+                                                <div class="hh">
+                                                    <input ngModel min="1" name="center_code"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Center Code" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Company
+                                                    Name</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="^[^0-9]+$" minlength="3" name="company_name"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Company Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Institute Head
+                                                    Name</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="^[^0-9]+$" minlength="3" name="head_name"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Institute Head Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Address</label>
+                                                <div class="hh">
+                                                    <input ngModel name="address"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Address" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Pincode</label>
+                                                <div class="hh">
+                                                    <input ngModel min="0" pattern="^\d+$" name="pincode"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter Pincode" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">District</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="^[^0-9]+$" minlength="3" name="district"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter District" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">State</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="^[^0-9]+$" minlength="3" name="state"
+                                                        class="form-control form-control-alternative" type="text"
+                                                        placeholder="Enter State" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Email
+                                                    Address</label>
+                                                <div class="hh">
+                                                    <input ngModel pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" minlength="3"
+                                                        name="email" class="form-control form-control-alternative"
+                                                        type="email" placeholder="Enter Email Address" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Mobile
+                                                    Number</label>
+                                                <div class="hh">
+                                                    <input ngModel name="mobile"
+                                                        class="form-control form-control-alternative"
+                                                        pattern="[6789][0-9]{9}" minlength="10" maxlength="10"
+                                                        type="tel" placeholder="Enter Mobile Number" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Telephone
+                                                    Number</label>
+                                                <div class="hh">
+                                                    <input ngModel name="tel_number"
+                                                        class="form-control form-control-alternative"
+                                                        pattern="[6789][0-9]{9}" minlength="10" maxlength="10"
+                                                        type="tel" placeholder="Enter Telephone Number" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngFor="let courseType of uniqueCourseTypes; let i = index">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-country">Course
+                                                        Type</label>
+                                                    <div class="hh">
+                                                        <select [(ngModel)]="selectedCourses[i].course_type"
+                                                            (change)="onCourseTypeChange(courseType)"
+                                                            class="form-control" name="course_type">
+                                                            <option [value]="courseType">{{ courseType }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-country">Course
+                                                        List</label>
+                                                    <div class="hh">
+                                                        <select class="form-control" name="course_name"
+                                                            [(ngModel)]="selectedCourses[i].course_name"
+                                                            (change)="onCourseNameChange(courseType, selectedCourses[i].course_name)"
+                                                            multiple>
+                                                            <option *ngFor="let courseItem of getCourseList(courseType)"
+                                                                [value]="courseItem.course_name">
+                                                                {{ courseItem.course_name }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <!-- <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Course
+                                                    Type</label>
+                                                <div class="hh">
+                                                    <select class="form-control" ngModel name="course_type" id=""
+                                                        (change)="getCourseList($event)">
+                                                        <option *ngFor="let course of uniqueCourseTypes"
+                                                            value="{{ course }}">
+                                                            {{ course }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Course
+                                                    List</label>
+                                                <div class="hh">
+                                                    <select class="form-control" ngModel name="course_name" id=""
+                                                        multiple>
+                                                        <option *ngFor="let course of courseList"
+                                                            value="{{ course.course_name }}">
+                                                            {{ course.course_name }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+
+
+
+
+
+                                    <div class="row justify-content-center" style="padding-top: 100px">
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

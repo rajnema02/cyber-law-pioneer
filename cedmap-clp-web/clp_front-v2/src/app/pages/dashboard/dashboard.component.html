@@ -1,0 +1,1108 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7" *ngIf="this.role == 'user'">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h4 class="card-title">
+            <img src="/assets/img/cedmap.png" alt="CEDMAP" class="w-100" />
+          </h4>
+          <br />
+          <div *ngIf="!formStatus" class="text-danger">
+            <p class="border-danger">
+              Complete the registration to participate in the training and for
+              related information!!!<br />
+              The account will be verified only after the registration is
+              complete.
+            </p>
+            <hr />
+            <p class="border-danger">
+              प्रशिक्षण में भाग लेने एवं संबंधित जानकारी के लिए रजिस्ट्रैशन
+              पूर्ण करें !!!<br />
+              पंजीयन पूर्ण होने पर ही अकाउंट वेरफाइ किया जाएगा ।
+            </p>
+          </div>
+          <p
+            class="card-text text-danger"
+            *ngIf="formStatus && !profile_verify"
+          >
+            !!!! Your Profile is to be verified by Admin !!!!
+          </p>
+          <section class="container-fluid" *ngIf="formStatus && profile_verify">
+            <div class="row" *ngIf="userTransaction_id">
+              <!-- <div class="col-6"> -->
+              <!-- <div class="row">
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="card-title">Title</h3>
+                        <p class="card-text">Text</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="card-title">Title</h3>
+                        <p class="card-text">Text</p>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- <div class="card shadow">
+                  <div class="card-header">
+                    <h3 class="card-title">Title</h3></div>
+                  <div class="card-body">
+                    <a routerLink="/receipt/{{ user.id }}/veiw" target="_blank">
+                      View Reciept                   </a>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">Reciept</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <a routerLink="/receipt/{{ user.id }}/view" target="_blank"
+                      >View Reciept</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">Demo Exam</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <a routerLink="/exam/demo-exam">Open Demo Exam</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3" *ngFor="let msg of messageBatchList">
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">Online Training Link</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <p [innerHTML]="msg.message_description"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">Certificate</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body" *ngIf="this.ceritificate.success">
+                    <a
+                      target="_blank"
+                      *ngFor="let report of reportList"
+                      href="file/download/{{ report.certificatePath }}"
+                      ><i class="fa fa-envelope-open" aria-hidden="true"></i
+                      ><i class="fa fa-download" aria-hidden="true"></i>
+                      Certificate</a
+                    >
+                  </div>
+                  <div
+                    class="card-body text-danger"
+                    *ngIf="this.ceritificate.success == false"
+                  >
+                    {{ ceritificate.message }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">Internal Assessment</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <a routerLink="/audit/student-exam-list">View Assessment</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <button (click)="getNewUrl()">Click Me</button> -->
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="container-fluid mt--7"
+  *ngIf="this.role == 'admin' || this.role == 'super-admin'"
+>
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row m-0 p-0">
+            <div class="col">
+              <h4>Students List</h4>
+            </div>
+            <!-- <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)"></pagination> -->
+
+            <div class="col text-right">
+              <nav class="nav justify-content-end">
+                <a
+                  class="nav-link border-right"
+                  *ngIf="selectedFormQuery"
+                  (click)="selectedFormQuery = undefined; getUserList()"
+                >
+                  <span class="badge badge-danger"> Clear Filter </span>
+                </a>
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[0]
+                  }"
+                  (click)="selectedFormQuery = formQueries[0]; getUserList()"
+                  >Form Pending</a
+                >
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[1]
+                  }"
+                  (click)="selectedFormQuery = formQueries[1]; getUserList()"
+                  >Form Filled</a
+                >
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[3]
+                  }"
+                  (click)="selectedFormQuery = formQueries[3]; getUserList()"
+                  >Rejected Form
+                </a>
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[4]
+                  }"
+                  (click)="selectedFormQuery = formQueries[4]; getUserList()"
+                  >Spam Form
+                </a>
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[2]
+                  }"
+                  (click)="selectedFormQuery = formQueries[2]; getUserList()"
+                  >Profile Verified</a
+                >
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <pagination-controls (pageChange)="page = $event; getUserList()" id="user-paginator"></pagination-controls> -->
+        </div>
+        <div class="card-body px-0 pb-5" [style.overflow]="'scroll'">
+          <div class="pb-5 mb-5">
+            <div class="row mb-3">
+              <div class="col"></div>
+              <div class="col-3">
+                <button class="btn btn-sm btn-info" (click)="exportAsCsv()">
+                  <i class="fa fa-download" aria-hidden="true"></i> Export To
+                  CSV
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  [responsive]="true"
+                  (pageChange)="page = $event; getUserList()"
+                  id="user-paginator"
+                ></pagination-controls>
+              </div>
+              <div class="col-6" style="text-align: right">
+                <p>
+                  Showing results
+                  {{ newIndex + (limit > listCount ? listCount : limit)  }}
+                  of {{ listCount }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="table-head">S No.</th>
+                  <th scope="col" class="table-head">Applicant Details</th>
+                  <th scope="col" class="table-head">Mobile</th>
+                  <th scope="col" class="table-head">E-mail</th>
+                  <th scope="col" class="table-head">Course</th>
+                  <th scope="col" class="table-head">Reg. Date</th>
+                  <th scope="col" class="table-head">District</th>
+                  <th scope="col" class="table-head">Transaction Id</th>
+                  <th scope="col" class="table-head">Transaction Date</th>
+                  <th scope="col" class="table-head">Actions</th>
+                </tr>
+              </thead>
+              <thead class="thead-white">
+                <tr>
+                  <th></th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="full_name"
+                      [(ngModel)]="full_name"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="mobile"
+                      [(ngModel)]="mobile"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="email"
+                      [(ngModel)]="email"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="course"
+                      [(ngModel)]="course"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="date"
+                      class="form-control form-control-sm"
+                      name="created_at"
+                      [(ngModel)]="created_at"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th scope="col" class="table-head">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="district"
+                      [(ngModel)]="district"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="transaction_id"
+                      [(ngModel)]="transaction_id"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th class="table-head" scope="col form-group">
+                    <input
+                      type="date"
+                      class="form-control form-control-sm"
+                      name="transaction_at"
+                      [(ngModel)]="transaction_at"
+                      placeholder="Search"
+                    />
+                  </th>
+
+                  <th scope="col" class="table-head">
+                    <button
+                      class="btn btn-sm btn-dark"
+                      (click)="getUserList(); isEmptySearch()"
+                    >
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Filter
+                    </button>
+                    <button
+                      *ngIf="!emptySearch"
+                      class="btn btn-sm btn-danger"
+                      (click)="clearFilter()"
+                    >
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Clear
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Showing results from {{(page-1)*limit+i+1}} to {{((page-1)*limit+i+1)+limit}} of {{listCount}} -->
+                <tr
+                  class="border-bottom"
+                  *ngFor="
+                    let item of userList
+                      | paginate
+                        : {
+                            id: 'user-paginator',
+                            itemsPerPage: limit,
+                            currentPage: page,
+                            totalItems: listCount
+                          };
+                    let i = index
+                  "
+                >
+                  <td class="table-head">{{ (page - 1) * limit + i + 1 }}</td>
+
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <!-- <a class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                      </a> -->
+                      <!-- <a
+                        class="avatar rounded-circle mr-3"
+                        href="{{env.url}}/file/download/{{item.payment_file || 'no-image'}}"
+                        target="_blank"
+                      >
+                        <img
+                          src="{{env.url}}/file/download/{{item.payment_file || 'no-image'}}"
+                          class="border"
+                          style="height: 50px;object-fit:cover"
+                        >
+                      </a> -->
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{ item.full_name }}</span>
+                        <br />
+                        <span *ngIf="item.is_spam" class="text-danger">
+                          (<i
+                            class="fa fa-user-slash text-danger"
+                            aria-hidden="true"
+                          ></i>
+                          Spam Form )
+                        </span>
+                        <span
+                          *ngIf="
+                            !item.formStatus &&
+                            !item.is_profileVerified &&
+                            !item.is_spam
+                          "
+                        >
+                          (<i
+                            class="fa fa-user text-primary"
+                            aria-hidden="true"
+                          ></i>
+                          Form pending)
+                        </span>
+                        <span
+                          *ngIf="item.formStatus && !item.is_profileVerified"
+                        >
+                          (<i
+                            class="fa fa-file text-primary"
+                            aria-hidden="true"
+                          ></i>
+                          Form filled)
+                        </span>
+                        <span
+                          *ngIf="item.formStatus && item.is_profileVerified"
+                        >
+                          (<i
+                            class="fa fa-check text-success"
+                            aria-hidden="true"
+                          ></i>
+                          Verified)
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="col-3">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.profile_photo || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{
+                              env.production
+                                ? env.url
+                                : 'https://cyberlawpioneers.org'
+                            }}/file/download/{{
+                              item.profile_photo || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Photo
+                      </div>
+                      <div class="col-3">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.identity_file || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{
+                              env.production
+                                ? env.url
+                                : 'https://cyberlawpioneers.org'
+                            }}/file/download/{{
+                              item.identity_file || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Identity
+                      </div>
+                      <div class="col-6">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.payment_file || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            src="{{
+                              env.production
+                                ? env.url
+                                : 'https://cyberlawpioneers.org'
+                            }}/file/download/{{
+                              item.payment_file || 'no-image'
+                            }}"
+                            alt=""
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <a
+                          class="avatar rounded-circle"
+                          *ngIf="item.payment_file_2"
+                          href="{{ env.url }}/file/download/{{
+                            item.payment_file_2 || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            src="{{
+                              env.production
+                                ? env.url
+                                : 'https://cyberlawpioneers.org'
+                            }}/file/download/{{
+                              item.payment_file_2 || 'no-image'
+                            }}"
+                            alt=""
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Receipt
+                      </div>
+                    </div>
+                  </th>
+                  <td class="table-head">
+                    <span class="text-decoration-none">
+                      {{ item.mobile }}
+                    </span>
+                  </td>
+                  <td class="table-head w-25">
+                    <span class="text-decoration-none">
+                      {{ item.email }}
+                    </span>
+                  </td>
+                  <td class="table-head w-25">
+                    <span class="text-decoration-none">
+                      {{ item.course_code }}
+                    </span>
+                  </td>
+                  <td>
+                    {{ item.created_at | date : "dd/MM/yyyy hh:mm a" }}
+                  </td>
+                  <td>
+                    {{ item.district ? item.district : "--" }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.transaction_id || "--" }}<br />
+                    <span *ngIf="item.transaction_id_2">
+                      {{ item.transaction_id_2 || "--" }}
+                    </span>
+                  </td>
+                  <td class="text-center">
+                    {{
+                      item.transaction_at
+                        ? (item.transaction_at | date : "dd/MM/yyyy")
+                        : "--"
+                    }}
+                  </td>
+                  <td>
+                    <div ngbDropdown placement="bottom-right">
+                      <a
+                        class="btn btn-sm btn-icon-only text-light"
+                        ngbDropdownToggle
+                      >
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu-right dropdown-menu-arrow"
+                      >
+                        <a class="dropdown-item">
+                          <button
+                            *ngIf="!item.formStatus"
+                            class="btn btn-outline-primary disabled btn-sm"
+                            disabled
+                          >
+                            Profile Incomplete
+                          </button>
+                          <button
+                            (click)="verifyProfile(item._id)"
+                            *ngIf="
+                              item.formStatus &&
+                              item.is_profileVerified == false
+                            "
+                            class="btn btn-outline-warning btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="Verify"
+                          >
+                            Profile Approve
+                          </button>
+                          <button
+                            (click)="rejectProfile(item._id)"
+                            *ngIf="
+                              item.formStatus &&
+                              item.is_profileVerified == false
+                            "
+                            class="btn btn-outline-danger btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="reject"
+                          >
+                            Profile Reject
+                          </button>
+                          <button
+                            (click)="spamProfile(item._id)"
+                            *ngIf="item.is_profileVerified == false"
+                            class="btn btn-outline-danger btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="spam"
+                          >
+                            Profile Spam
+                          </button>
+                          <button
+                            disabled
+                            class="btn btn-outline-success btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="Verified"
+                            *ngIf="item.is_profileVerified"
+                          >
+                            Profile Approved
+                          </button></a
+                        >
+                        <a
+                          class="dropdown-item"
+                          routerLink="/receipt/{{ item._id }}"
+                          target="_blank"
+                        >
+                          View Receipt
+                        </a>
+                        <a
+                          class="dropdown-item"
+                          routerLink="/profile/{{ item._id }}"
+                        >
+                          View profile</a
+                        >
+                        <a
+                          class="dropdown-item"
+                          routerLink="/setting/update-password/{{ item._id }}"
+                          >Update Password</a
+                        >
+                      </div>
+                    </div>
+                    <!-- <div class="avatar-group">
+
+
+                    </div> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- </tr> | paginate
+                  : {
+                    id: 'user-paginator',
+                    itemsPerPage: limit,
+                    currentPage: page,
+                    totalItems: listCount
+                  }"> -->
+
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              [responsive]="true"
+              (pageChange)="page = $event; getUserList()"
+              id="user-paginator"
+            ></pagination-controls>
+          </div>
+        </div>
+        <!-- <ng-template #NOTFOUND>
+          <p>No Data Found</p>
+        </ng-template> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7" *ngIf="this.role == 'admin-read'">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row m-0 p-0">
+            <div class="col">
+              <h4>Students List</h4>
+            </div>
+            <!-- <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)"></pagination> -->
+
+            <div class="col text-right">
+              <nav class="nav justify-content-end">
+                <a
+                  class="nav-link border-right"
+                  *ngIf="selectedFormQuery"
+                  (click)="selectedFormQuery = undefined; getUserList()"
+                >
+                  <span class="badge badge-danger"> Clear Filter </span>
+                </a>
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[0]
+                  }"
+                  (click)="selectedFormQuery = formQueries[0]; getUserList()"
+                  >Form Pending</a
+                >
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[1]
+                  }"
+                  (click)="selectedFormQuery = formQueries[1]; getUserList()"
+                  >Form Filled</a
+                >
+                <a
+                  class="nav-link border-right"
+                  [ngClass]="{
+                    'bg-primary text-white': selectedFormQuery == formQueries[2]
+                  }"
+                  (click)="selectedFormQuery = formQueries[2]; getUserList()"
+                  >Profile Verified</a
+                >
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <pagination-controls (pageChange)="page = $event; getUserList()" id="user-paginator"></pagination-controls> -->
+        </div>
+        <div class="card-body pb-5" [style.overflow]="'scroll'">
+          <div class="pb-5 mb-5">
+            <!-- <button class="btn btn-sm btn-info" (click)="exportAsCsv()">
+              <i class="fa fa-download" aria-hidden="true"></i> Export To CSV
+            </button> -->
+            <div class="row">
+              <div class="col-6">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  [responsive]="true"
+                  (pageChange)="page = $event; getUserList()"
+                  id="user-paginator"
+                ></pagination-controls>
+              </div>
+              <div class="col-6" style="text-align: right">
+                <p>
+                  Showing results from {{ newIndex }} to
+                  {{ newIndex + limit - 1 }} of {{ listCount }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="table-head">S No.</th>
+                  <th scope="col" class="table-head">Applicant Details</th>
+                  <th scope="col" class="table-head">Mobile</th>
+                  <th scope="col" class="table-head">E-mail</th>
+                  <th scope="col" class="table-head">Reg. Date</th>
+                  <th scope="col" class="table-head">Transaction Id</th>
+                  <th scope="col" class="table-head">Actions</th>
+                </tr>
+              </thead>
+              <thead class="thead-white">
+                <tr>
+                  <th></th>
+                  <th scope="col" class="table-head form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="full_name"
+                      [(ngModel)]="full_name"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th scope="col" class="table-head form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="mobile"
+                      [(ngModel)]="mobile"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th scope="col" class="table-head form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="email"
+                      [(ngModel)]="email"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th scope="col" class="table-head form-group">
+                    <input
+                      type="date"
+                      class="form-control form-control-sm"
+                      name="created_at"
+                      [(ngModel)]="created_at"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <!-- <th scope="col" class="table-head"></th> -->
+                  <th scope="col" class="table-head form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      name="transaction_id"
+                      [(ngModel)]="transaction_id"
+                      placeholder="Search"
+                    />
+                  </th>
+                  <th scope="col" class="table-head">
+                    <button
+                      class="btn btn-sm btn-dark w-100"
+                      (click)="getUserList(); isEmptySearch()"
+                    >
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Filter
+                    </button>
+                    <button
+                      *ngIf="!emptySearch"
+                      class="btn btn-sm btn-danger"
+                      (click)="clearFilter()"
+                    >
+                      <i class="fa fa-filter" aria-hidden="true"></i>
+                      Clear
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Showing results from {{(page-1)*limit+i+1}} to {{((page-1)*limit+i+1)+limit}} of {{listCount}} -->
+                <tr
+                  class="border-bottom"
+                  *ngFor="
+                    let item of userList
+                      | paginate
+                        : {
+                            id: 'user-paginator',
+                            itemsPerPage: limit,
+                            currentPage: page,
+                            totalItems: listCount
+                          };
+                    let i = index
+                  "
+                >
+                  <td>{{ (page - 1) * limit + i + 1 }}</td>
+
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <!-- <a class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                      </a> -->
+                      <!-- <a
+                        class="avatar rounded-circle mr-3"
+                        href="{{env.url}}/file/download/{{item.payment_file || 'no-image'}}"
+                        target="_blank"
+                      >
+                        <img
+                          src="{{env.url}}/file/download/{{item.payment_file || 'no-image'}}"
+                          class="border"
+                          style="height: 50px;object-fit:cover"
+                        >
+                      </a> -->
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{ item.full_name }}</span>
+                        <br />
+                        <span
+                          *ngIf="!item.formStatus && !item.is_profileVerified"
+                        >
+                          (<i
+                            class="fa fa-user text-primary"
+                            aria-hidden="true"
+                          ></i>
+                          Form pending)
+                        </span>
+                        <span
+                          *ngIf="item.formStatus && !item.is_profileVerified"
+                        >
+                          (<i
+                            class="fa fa-file text-primary"
+                            aria-hidden="true"
+                          ></i>
+                          Form filled)
+                        </span>
+                        <span
+                          *ngIf="item.formStatus && item.is_profileVerified"
+                        >
+                          (<i
+                            class="fa fa-check text-success"
+                            aria-hidden="true"
+                          ></i>
+                          Verified)
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="col-3">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.profile_photo || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{ env.url }}/file/download/{{
+                              item.profile_photo || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Photo
+                      </div>
+                      <div class="col-3">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.identity_file || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{ env.url }}/file/download/{{
+                              item.identity_file || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Identity
+                      </div>
+                      <div class="col-6">
+                        <a
+                          class="avatar rounded-circle"
+                          href="{{ env.url }}/file/download/{{
+                            item.payment_file || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{ env.url }}/file/download/{{
+                              item.payment_file || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <a
+                          class="avatar rounded-circle"
+                          *ngIf="item.payment_file_2"
+                          href="{{ env.url }}/file/download/{{
+                            item.payment_file_2 || 'no-image'
+                          }}"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            src="{{ env.url }}/file/download/{{
+                              item.payment_file_2 || 'no-image'
+                            }}"
+                            class="border"
+                            style="height: 50px; object-fit: cover"
+                          />
+                        </a>
+                        <br />
+                        Receipt
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    <span class="badge badge-primary border border-primary">
+                      {{ item.mobile }}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-primary border border-primary">
+                      {{ item.email }}
+                    </span>
+                  </td>
+                  <td>
+                    {{ item.created_at | date : "short" }}
+                  </td>
+                  <td>
+                    {{ item.transaction_id || "-" }}<br />
+                    <span *ngIf="item.transaction_id_2">
+                      {{ item.transaction_id_2 || "-" }}
+                    </span>
+                  </td>
+                  <td>
+                    <a
+                      class="dropdown-item"
+                      routerLink="/profile/{{ item._id }}"
+                    >
+                      View profile</a
+                    >
+                    <!-- <div ngbDropdown placement="bottom-right">
+                      <a
+                        class="btn btn-sm btn-icon-only text-light"
+                        ngbDropdownToggle
+                      >
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu-right dropdown-menu-arrow"
+                      >
+                        <a class="dropdown-item">
+                          <button
+                            *ngIf="!item.formStatus"
+                            class="btn btn-outline-primary disabled btn-sm"
+                            disabled
+                          >
+                            Profile Incomplete
+                          </button>
+                          <button
+                            (click)="verifyProfile(item._id)"
+                            *ngIf="
+                              item.formStatus &&
+                              item.is_profileVerified == false
+                            "
+                            class="btn btn-outline-warning btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="Verify"
+                          >
+                            Profile Approve
+                          </button>
+                          <button
+                            disabled
+                            class="btn btn-outline-success btn-sm"
+                            data-toggle="tooltip"
+                            data-original-title="Verified"
+                            *ngIf="item.is_profileVerified"
+                          >
+                            Profile Approved
+                          </button></a
+                        >
+                        <a
+                          class="dropdown-item"
+                          routerLink="/receipt/{{ item._id }}"
+                          target="_blank"
+                        >
+                          View Receipt
+                        </a>
+
+                        <a class="dropdown-item">Something else here</a>
+                      </div>
+                    </div> -->
+                    <!-- <div class="avatar-group">
+
+
+                    </div> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- </tr> | paginate
+                  : {
+                    id: 'user-paginator',
+                    itemsPerPage: limit,
+                    currentPage: page,
+                    totalItems: listCount
+                  }"> -->
+
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              [responsive]="true"
+              (pageChange)="page = $event; getUserList()"
+              id="user-paginator"
+            ></pagination-controls>
+          </div>
+        </div>
+        <!-- <ng-template #NOTFOUND>
+          <p>No Data Found</p>
+        </ng-template> -->
+      </div>
+    </div>
+  </div>
+</div>

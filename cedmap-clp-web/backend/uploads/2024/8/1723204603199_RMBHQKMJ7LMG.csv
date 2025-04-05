@@ -1,0 +1,10 @@
+﻿Question,Risk,Suggestion
+Only use authorized and approved removable media devices provided by the organization.,Medium,Maintain a list of approved devices and provide easy access to these devices for employees.
+Bring Your Own Device (BYOD) should be restricted and no unknown devices should be allowed in the network without authorization by the Network Administrator.,High,"Implement strict device registration and authorization protocols, and use network access control solutions to enforce BYOD policies. Regularly audit connected devices and educate employees on the risks associated with unauthorized devices to ensure compliance with security standards."
+Whether official email ID registered with Bank Account used by other employee other than appropriate authority?,Medium,"Clearly communicate the policy and provide secure, approved email solutions for all official communications."
+Whether Standard User (non-administrator) account is set for the user for accessing the computer/laptops for regular work?,Low,"1. Educate users on the limitations and purpose of Standard User accounts to mitigate frustration.
+2.Establish clear procedures for requesting administrative access when necessary.
+3.Periodically review and adjust user permissions to ensure they align with current job requirements.
+4.Implement a support system to address issues and requests efficiently.
+5.Monitor user activities to ensure compliance and detect any attempts to bypass restrictions."
+Data must not be shared with outsiders without explicit & case specific approval of authority,Medium,Implement strict approval workflows and track data sharing activities to ensure compliance and accountability. Regularly audit data sharing processes to identify and mitigate any gaps.

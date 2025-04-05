@@ -1,0 +1,37 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card card-profil shadow">
+          <div class="card-body">
+            <h3 class="mb-0">Create Banner</h3>
+            <form (ngSubmit)="submit(bannerForm)" #bannerForm="ngForm">
+              <div class="row">
+                <div class="col-xl-12 order-xl-1">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image" class="form-label">Upload Image</label>
+                          <input type="file" id="image" class="form-control" (change)="onImageSelected($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center" style="padding-top: 100px">
+                      <button type="submit" class="btn btn-primary">Create Banner</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

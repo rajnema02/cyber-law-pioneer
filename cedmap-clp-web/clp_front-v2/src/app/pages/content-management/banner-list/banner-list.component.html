@@ -1,0 +1,48 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <div class="row">
+              <h3 class="card-title col">Banners</h3>
+              <div class="col-2">
+                <span class="d-flex">
+                  <a [routerLink]="['/content/create-banner']" class="btn btn-success btn-sm">+ New Banner</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush text-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let banner of bannerList">
+                    <td>
+                      <img src="https://cyberlawpioneers.org/file/download/{{banner.image}}" alt="Banner Image" style="width: 100px; height: auto;"/>
+                    </td>
+                    <td>
+                      <a class="mx-3 btn btn-sm btn-danger" (click)="deleteBanner(banner._id)"><i class="fas fa-trash"></i> </a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

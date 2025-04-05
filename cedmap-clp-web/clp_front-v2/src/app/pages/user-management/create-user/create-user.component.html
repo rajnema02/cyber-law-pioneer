@@ -1,0 +1,108 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profil shadow">
+        <div class="card-body">
+          <h3 class="mb-0">User Management</h3>
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+            <div class="row">
+              <div class="col-xl-12 order-xl-1">
+                <div class="card-body">
+                  <!-- <h3>Batch Management</h3> -->
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Full Name</label>
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                        <div class="hh">
+                          <input ngModel required name="full_name" class="form-control form-control-alternative"
+                            type="text" placeholder="Username" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="">Role</label>
+                        <select class="form-control" name="role" ngModel id="">
+                          <option value="super-admin">Super Admin</option>
+                          <option value="admin">Admin</option>
+                          <option value="admin-read">Oprator</option>
+                          <option value="trainer">Trainer</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Email</label>
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                        <div class="hh">
+                          <input ngModel required name="email" class="form-control form-control-alternative" type="text"
+                            placeholder="Enter email" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-12 pt-2">
+                                <div class="form-field d-flex align-items-center">
+
+                                    <textarea name="" placeholder="Disclaimer" id="" cols="60" rows="5"></textarea>
+                                </div>
+                              </div> -->
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Password</label>
+                        <input name="password" ngModel required password class="form-control form-control-alternative"
+                          placeholder="Enter password" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Mobile</label>
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                        <div class="hh">
+                          <input ngModel required name="mobile" class="form-control form-control-alternative"
+                            type="number" min="6000000000" max="9999999999" placeholder="Enter mobile no." />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-12 pt-2">
+                                <div class="form-field d-flex align-items-center">
+
+                                    <textarea name="" placeholder="Disclaimer" id="" cols="60" rows="5"></textarea>
+                                </div>
+                              </div> -->
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Role Description</label>
+                        <textarea ngModel required name="role_desc" rows="2" cols="30"
+                          class="form-control form-control-alternative"
+                          placeholder="A few words about role description ..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center" style="padding-top: 100px">
+                    <button type="submit" class="btn btn-primary">
+                      Create User
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

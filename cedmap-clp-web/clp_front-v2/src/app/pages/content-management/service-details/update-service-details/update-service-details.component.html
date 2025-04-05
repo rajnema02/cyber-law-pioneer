@@ -1,0 +1,83 @@
+<!-- update-service-details.component.html -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profile shadow">
+        <div class="card-body">
+          <h3 class="mb-4">Update Service</h3>
+          <form (ngSubmit)="submit()" #infoForm="ngForm">
+            <div class="row">
+              <!-- Name -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Name</label>
+                  <input [(ngModel)]="name" name="name" required class="form-control" type="text" placeholder="Enter name">
+                </div>
+              </div>
+
+              <!-- Service Name -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Service Name</label>
+                  <select [(ngModel)]="serviceName" name="serviceName" required class="form-control">
+                    <option value="" disabled selected>Select service</option>
+                    <option *ngFor="let service of serviceList" [value]="service._id">{{ service.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Description</label>
+                  <textarea [(ngModel)]="description" name="description" rows="4" required class="form-control" placeholder="Enter description"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Images -->
+            <div class="row">
+              <div class="col-lg-6" *ngFor="let i of [1,2,3,4]">
+                <div class="form-group">
+                  <label>Upload Image {{ i }}</label>
+                  <input type="file" (change)="handleImageUpload($event, i)" class="form-control">
+                  <div *ngIf="this['img_link' + i]">
+                    <small class="text-muted">Current Image:</small><br>
+                    <img [src]="this['img_link' + i]" alt="image{{i}}" class="img-thumbnail" style="max-width: 120px; margin-top: 5px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PDF -->
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Upload PDF File</label>
+                  <input type="file" (change)="handlePdfUpload($event)" class="form-control" accept="application/pdf">
+                  <div *ngIf="file_link">
+                    <small class="text-muted">Current File:</small>
+                    <a [href]="file_link" target="_blank">{{ file_link }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row justify-content-center mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">Update Service</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

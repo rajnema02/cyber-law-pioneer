@@ -1,0 +1,251 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profile bg-secondary shadow">
+        <div class="card-body">
+          <nav class="navbar navbar-light" style="background-color: #e3f2fd">
+            <h3>Question Master Form</h3>
+          </nav>
+
+          <div class="py-4">
+            <div class="container py-4">
+              <div
+                class="md-ad leaderboard blue-gradient"
+                data-text="Leaderboard"
+              ></div>
+
+              <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+                <h5>Course Type</h5>
+                <select
+                (change)="getCourseList()"
+                  [(ngModel)]="course_type"
+                  class="form-select form-control "
+                  name="course_type"
+                >
+                  <option [ngValue]="''" disabled selected hidden>Select Course Type</option>
+                  <option [ngValue]="'General'">General Question</option>
+                  <option [ngValue]="'Special Training Program'">Special Training Program</option>
+                  <option [ngValue]="'Internship Program'">Internship Program</option>
+                  <option [ngValue]="'Regular'">Regular Course</option>
+                  <option [ngValue]="'E-Learning Course'">E-Learning Course</option>
+                </select>
+
+                <div *ngIf="notGeneral">
+                  <h5>Course Name</h5>
+                  <select
+                    ngModel
+                    class="form-control form-control-alternative"
+                    name="course_name"
+                  >
+                    <option [ngValue]="" disabled selected hidden>Select Course Name</option>
+                    <option *ngFor ="let course of courseList" [ngValue]="course.course_name">{{course.course_name}} </option>
+                  </select>
+
+
+                </div>
+
+
+
+
+                <!-- <h5>Question Type</h5>
+              <select class="form-control form-control-alternative" name="percentage">
+                <option value="">Please Select Type</option>
+                <option value="2%">Single Choice</option>
+                <option value="2%">Multiple Choice</option>
+                <option value="6%">Subjective</option>
+                <option value="8%">Group Questions</option>
+              </select> -->
+
+                <h5>Number of Options</h5>
+                <select
+                  ngModel
+                  (change)="optionChange($event)"
+                  class="form-control form-control-alternative"
+                  name="number_of_options"
+                >
+                  <option value="">Please Select Options</option>
+                  <option value="2">2</option>
+                  <!-- <option value="3">3</option> -->
+                  <option value="4">4</option>
+                  <!-- <option value="5">5</option> -->
+                </select>
+
+                <h5>Difficulty Level</h5>
+                <select
+                  ngModel
+                  class="form-control form-control-alternative"
+                  name="difficulty_level"
+                >
+                  <option value="">Please Select</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
+                </select>
+
+                <h5>Question's Language</h5>
+                <select
+                  ngModel
+                  class="form-control form-control-alternative"
+                  name="regional_language"
+                >
+                  <option value="">Please Select</option>
+                  <option value="english">English</option>
+                  <option value="hindi">Hindi</option>
+                </select>
+                <div>
+                  <h3>Enter question below</h3>
+                  <ckeditor ngModel name="question" class="editor"></ckeditor>
+                </div>
+
+<div >
+  <h3>Option 1.</h3>
+
+  <ckeditor ngModel name="option_1"></ckeditor>
+</div>
+<div >
+  <h3>Option 2.</h3>
+
+  <ckeditor ngModel name="option_2"></ckeditor>
+</div>
+<div *ngIf = "four_option" >
+  <h3>Option 3.</h3>
+
+  <ckeditor ngModel name="option_3"></ckeditor>
+</div>
+<div *ngIf = "four_option" >
+  <h3>Option 4.</h3>
+
+  <ckeditor ngModel name="option_4"></ckeditor>
+</div>
+
+
+
+
+                <!-- <h3>Option 5.</h3>
+
+                <ckeditor ngModel name="option_5"></ckeditor> -->
+                <!-- <h3>Enter regional language question below</h3>
+                <ckeditor
+                  ngModel
+                  name="question_regional"
+                  class="editor"
+                ></ckeditor>
+
+                <h3>Option 1.</h3>
+
+                <ckeditor ngModel name="regional_option_1"></ckeditor>
+
+                <h3>Option 2.</h3>
+
+                <ckeditor ngModel name="regional_option_2"></ckeditor>
+
+                <h3>Option 3.</h3>
+
+                <ckeditor ngModel name="regional_option_3"></ckeditor>
+
+                <h3>Option 4.</h3>
+
+                <ckeditor ngModel name="regional_option_4"></ckeditor>
+
+                <h3>Option 5.</h3>
+
+                <ckeditor ngModel name="regional_option_5"></ckeditor>
+
+
+                <div class="form-group">
+                  <input
+                    ngModel
+                    type="text"
+                    class="form-control"
+                    name="regional_correct_answer"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Please Enter Correct Option in regional language"
+                  />
+                </div> -->
+                <h3>Correct Option</h3>
+                <div class="form-group">
+                  <input
+                    ngModel
+                    type="text"
+                    class="form-control"
+                    name="correct_answer"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Please Enter Correct Option"
+                  />
+                </div>
+                <h3>Marks</h3>
+                <div class="form-group">
+                  <input
+                    ngModel
+                    type="text"
+                    class="form-control"
+                    name="marks"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Please Enter Marks"
+                  />
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button class="btn btn-success" type="submit">
+                    Create Question
+                  </button>
+                </div>
+              </form>
+
+              <!-- <h5>Batches</h5>
+              <select class="form-control form-control-alternative" name="percentage">
+                <option value="">Please Select QP</option>
+                <option value="2%">acuvon</option>
+                <option value="2%">acuvon exam 1</option>
+                <option value="6%">acuvon exam 10</option>
+                <option value="8%">acuvon exam 101</option>
+                <option value="10%">acuvon exam 1996</option>
+              </select> -->
+
+              <!-- <h5>QP</h5>
+              <select class="form-control form-control-alternative" name="percentage">
+                <option value="">Please Select QP</option>
+                <option value="2%">Agriculture 2006</option>
+                <option value="2%">Food And Beverage (Q0301)</option>
+                <option value="6%">Bcbf01 (Bcbf01)</option>
+                <option value="8%">fTNS (ELE/Q4606)</option>
+                <option value="10%">BCBF (BSC/Q0301)</option>
+                <option value="10%">CRM NON VOICE (CRM NON VOICE)</option>
+              </select> -->
+
+              <!-- <h5>NOS</h5>
+              <select class="form-control form-control-alternative" name="percentage">
+                <option value="">Please Select a Section</option>
+                <option value="2%">2%</option>
+                <option value="2%">2%</option>
+                <option value="6%">6%</option>
+                <option value="8%">8%</option>
+                <option value="10%">10%</option>
+              </select> -->
+
+              <!-- <h5>PC</h5>
+              <select class="form-control form-control-alternative" name="percentage">
+                <option value="">Please Select a Sub Section</option>
+                <option value="2%">2%</option>
+                <option value="2%">2%</option>
+                <option value="6%">6%</option>
+                <option value="8%">8%</option>
+                <option value="10%">10%</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

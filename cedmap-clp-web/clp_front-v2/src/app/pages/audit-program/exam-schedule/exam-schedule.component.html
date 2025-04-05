@@ -1,0 +1,172 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container mt--7 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-12 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent">
+          <h2>Internal Security Assessment</h2>
+        </div>
+        <div class="card-body">
+
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm" class="p-3 mt-3">
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <label class="" for="input-country">Assessment Name</label>
+                <input ngModel name="exam_name" type="text" class="form-control" placeholder="Assessment Name" required />
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                  <label class="" for="input-country">Assessment Code</label>
+                  <input ngModel name="exam_code" type="text" class="form-control" placeholder="Assessment Code" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="" for="input-country">Course Type</label>
+
+                  <div class="">
+                    <select required ngModel name="course_type" class="form-select form-control"
+                      placeholder="Course Type" aria-label="Default select example" (change)="getCourseList($event)"
+                      required>
+                      <!-- <option >Course type</option> -->
+                      <option value="" disabled selected hidden>
+                        Select Course Type
+                      </option>
+                      <!-- <option value="Special Training Program">Special Training Program</option> -->
+                      <option value="Training program for Govt Organisation">
+                        Training program for Govt Organisation
+                      </option>
+                      <!-- <option value="Internship Program">Internship Program </option>
+                      <option value="Regular Course">Regular Course</option>
+                      <option value="E-Learning Course">E-Learning Course</option> -->
+                    </select>
+
+                  </div>
+                  <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="width Ex-10%"> -->
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-12 pt-2">
+                        <div class="form-group  align-items-center">
+
+                            <textarea name="" placeholder="Disclaimer" id="" cols="60" rows="5"></textarea>
+                        </div>
+                      </div> -->
+              <div class="col-6">
+                <label class="" for="input-country">Course Name</label>
+                <div class="">
+                  <select required ngModel name="course_name" class="form-select form-control" placeholder="Course Name"
+                    aria-label="Default select example" (change)="getBatch($event)">
+                    <!-- <option >Course type</option> -->
+                    <option value="" disabled selected hidden>
+                      Select Course name
+                    </option>
+
+                    <option *ngFor="let course of courseList" value="{{ course.course_name }}">
+                      {{ course.course_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mt-4">
+              <!-- <div class="col-lg-6">
+                <label for="" class="form-label">
+                  Exam Max Attempt :
+                </label>
+                <input class="form-control" id="exam_attempt" type="number" ngModel name="exam_attempt" max="3" min="1" placeholder="exam_attempt">
+              </div> -->
+              <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                  <!-- <span class="far fa-user"></span> -->
+
+                  <!-- <input [(ngModel)]="registerUserData.user_name" name="user_name" type="text" class="form-control"  placeholder="Participant Name/प्रतिभागी का नाम"> -->
+                  <label for="" class="form-label">Batch Name:
+                  </label>
+                  <div class="">
+                    <!-- <ng-select [(ngModel)]="batch_id" [multiple]="true" >
+                      <ng-option *ngFor="let batch of batchList" [value]="batch._id">{{batch.batch_name}}</ng-option>
+                   </ng-select> -->
+                    <select required ngModel multiple name="batch_id" class="form-select form-control" placeholder=""
+                      aria-label="Default select example">
+                      <!-- <option >Course type</option> -->
+                      <option value="" disabled selected hidden>
+                        Select Batch Name
+                      </option>
+                      <option *ngFor="let batch of batchList" value="{{ batch._id }}">
+                        {{ batch.batch_name }}
+                      </option>
+                    </select>
+                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Course Type
+                  </button>
+                  <div class="dropdown-menu" name="course_type" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" value="Regular" href="#" >Regular</a>
+                    <a class="dropdown-item" value="Training" href="#">Training</a>
+
+                  </div> -->
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-lg-6">
+                <label for="" class="form-label">Exam Date From:</label>
+                <input required (change)="checkDate(infoForm.form.value.exam_date_from,'from')" ngModel
+                  name="exam_date_from" type="datetime-local" class="form-control" placeholder="Exam Date" />
+              </div>
+              <!-- <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                   <label class="form-label">
+                    Exam Time:
+                  </label>
+                  <input required ngModel name="exam_time_from" type="time" class="form-control" placeholder="Exam Code"
+                    id="appt" />
+                </div>
+              </div> -->
+              <div class="col-lg-6">
+                <label for="" class="form-label">Exam Date To:</label>
+                <input required (change)="checkDate(infoForm.form.value.exam_date_to,'to')" ngModel name="exam_date_to"
+                  type="datetime-local" class="form-control" placeholder="Exam Date" />
+              </div>
+              <!-- <div class="col-lg-6">
+                <div class="form-group align-items-center">
+                         <label class="form-label">
+                    Exam Time:
+                  </label>
+                  <input required ngModel name="exam_time_to" type="time" class="form-control" placeholder="Exam Code"
+                    id="appt" />
+                </div>
+              </div> -->
+            </div>
+            <div class="row mt-4">
+              <div class="col-lg-6">
+                <label for="" class="form-label">
+                  Exam Duration (in minutes):
+                </label>
+                <input class="form-control" id="duration" ngModel name="exam_duration" placeholder="Duration">
+                <!-- <input class="form-control" id="duration" disabled [(ngModel)]="this.duration" placeholder="Duration"> -->
+              </div>
+            </div>
+            <div class="row container mt-4">
+              <button class="btn btn-primary" type="submit">Schedule Exam</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

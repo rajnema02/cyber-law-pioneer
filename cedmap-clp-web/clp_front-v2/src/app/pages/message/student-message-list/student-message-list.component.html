@@ -1,0 +1,118 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+<div class="card">
+  <div class="card-body">
+    <div class="row" *ngIf="messageRes">
+      <div class="col-12">
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="text-danger"><b>No Message to display!!!</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+              (pageChange)="page = $event; getStudentBatchMessages()" id="messageBatch-paginator"></pagination-controls>
+          </div>
+          <div class="col-12 col-md-6" style="text-align: right">
+            <p>
+              Results from {{ newBatchIndex }} to
+              {{ newBatchIndex + (limit > listBatchCount ? listBatchCount : limit) - 1 }} of
+              {{ listBatchCount }}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12" *ngFor="
+              let messageBatch of messageBatchList
+                | paginate
+                  : {
+                      id: 'message-paginator',
+                      itemsPerPage: limit,
+                      currentPage: page,
+                      totalItems: listBatchCount
+                    };
+              let i = index
+            ">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h2>Admin:-</h2>
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col-12 col-md-6 text-right">
+                    {{ messageBatch.created_on | date : "short" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col text-center">
+                    <p [innerHTML]="messageBatch.message_description"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 col-md-6" style="text-align: left">
+            <pagination-controls class="p-0" previousLabel="Prev" nextLabel="Next" [responsive]="true"
+              (pageChange)="page = $event; getStudentMessages()" id="message-paginator"></pagination-controls>
+          </div>
+          <div class="col-12 col-md-6" style="text-align: right">
+            <p>
+              Results from {{ newIndex }} to
+              {{ newIndex + (limit > listCount ? listCount : limit) - 1 }} of
+              {{ listCount }}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12" *ngFor="
+              let message of messageList
+                | paginate
+                  : {
+                      id: 'message-paginator',
+                      itemsPerPage: limit,
+                      currentPage: page,
+                      totalItems: listCount
+                    };
+              let i = index
+            ">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h2>Admin:-</h2>
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col-12 col-md-6  text-right">
+                    {{ message.created_on | date : "short" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col text-center">
+                    <p [innerHTML]="message.message_description"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>

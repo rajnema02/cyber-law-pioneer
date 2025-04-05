@@ -1,0 +1,111 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="">
+            <h1 class="card-title">Risk Assessment Audit Sheet </h1>
+            <div class="row my-4">
+              <!-- <button [routerLink]="['/batch/batch-create']" routerLinkActive="router-link-active"
+              class="btn btn-success ">+ New Batch</button>  -->
+              <div class="col">
+                <!-- <h2 class="">Batch name : {{ this.BatchList?.batch_name }}</h2> -->
+
+                <h2>Name: {{studentDetails?.full_name}}</h2>
+              </div>
+
+              <!-- <div class="col text-right justify-content-end">
+              <span class=" mx-3" *ngIf="selectedStudent.length"><b>{{selectedStudent.length}}</b> Students Selected</span>
+              <div class="btn btn-success btn-sm text-right" *ngIf="selectedStudent.length" (click)="allotToBatch()">Allot Students to the Batch</div>
+            </div> -->
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h3>Question</h3>
+                  </div>
+                  <div class="col">
+                    <h3>Answer</h3>
+                  </div>
+                  <div class="col">
+                    <h3>Description</h3>
+                  </div>
+                  <div class="col">
+                    <h3>Attached Evidence</h3>
+                  </div>
+                  <div class="col">
+                    <h3>Action</h3>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="card my-3" *ngFor="let item of answerSheet; let i=index">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <span [innerHTML]="item.question"></span>
+                  </div>
+                  <div class="col">
+                    {{item.userAnswer}}
+                  </div>
+                  <div class="col">
+                    {{item.userDescription}}
+                  </div>
+                  <div class="col">
+                    <a class="btn btn-primary" *ngIf="item.userEvidence"
+                      href="{{env.url}}/file/download/{{item.userEvidence}}" target="_blank"> <i class="fa fa-eye"
+                        aria-hidden="true"></i> View</a>
+                    <span *ngIf="!item.userEvidence">Not Attached</span>
+                  </div>
+                  <div class="col">
+                    <div class="form-group" name="adminStatus{{i}}" (change)="getAnswerResult($event, item)">
+                      <label for=""></label>
+                      <select class="form-control" name="" id="">
+                        <option disabled selected>Select</option>
+                        <option value="Accept">Accept</option>
+                        <option value="Reject">Reject</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- <div>{{item.isAdminSuggestion }}</div> -->
+                </div>
+                <div class="row" *ngIf="item.isAdminSuggestion">
+                  <div class="col-9">
+                    <h4>Suggestion <span class="text-danger">*</span></h4>
+                    <br>
+                    <ckeditor name="adminSuggestion{{i}}" [(ngModel)]="item.adminSuggestion"></ckeditor>
+
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group">
+                      <label for=""><h4>Risk <span class="text-danger">*</span></h4></label>
+                      <select class="form-control"  name="adminRisk{{i}}" (change)="setAdminRisk($event, item)" id="">
+                        <option disabled selected>Select</option>
+                        <option value="Low" class="text-success">Low</option>
+                        <option value="Medium" class="text-warning">Medium</option>
+                        <option value="High" class="text-danger">High</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="btn btn-primary" (click)="onSubmit()">Submit</div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

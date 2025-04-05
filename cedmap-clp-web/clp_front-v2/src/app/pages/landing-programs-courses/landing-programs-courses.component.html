@@ -1,0 +1,190 @@
+<div>
+  <app-landing-header></app-landing-header>
+<!-- 
+  <section>
+    <div class="container pt-6">
+      <div class="row align-items-center">
+        <div class="col-md-10 text-center">
+          <h2 class="display-5 fw-bold">
+            {{ programTitle || 'Cyber security programs' }}
+          </h2>
+        </div>
+        <div class="col-md-2 text-end">
+          <a 
+            *ngIf="programTitle === 'Training Program for govt. organization'; else registerButton"
+            [routerLink]="['/contact']" 
+            class="btn btn-primary"
+          >
+            Enquiry Now
+          </a>
+          <ng-template #registerButton>
+            <a [routerLink]="['/register']" class="btn btn-success">Register</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row" *ngIf="filteredProgramList.length > 0; else noPrograms">
+        <div class="d-flex" *ngFor="let program of filteredProgramList">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-6 p-3" *ngIf="program.image">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image1">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image1}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image2">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image2}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image3">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image3}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="card-body">
+              <h3 class="card-title mb-3">{{ program.name }}</h3>
+              <p class="card-text text-muted mb-3">{{ program.description }}</p>
+              <p class="card-text text-muted mb-3">{{ program.service }}</p>
+              <div *ngIf="program.file">
+                <a
+                  href="https://cyberlawpioneers.org/file/download/{{program.file}}"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                >
+                  View Uploaded File
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <ng-template #noPrograms>
+        <div class="text-center">
+          <h4>No Programs Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section> -->
+  <section>
+    <div class="container pt-6">
+      <div class="row align-items-center">
+        <!-- Centered Heading -->
+        <div class="col-md-10 text-center">
+          <h2 class="display-5 fw-bold">
+            {{ programTitle || 'Cyber security programs' }}
+          </h2>
+        </div>
+        <!-- Right-Aligned Button -->
+        <div class="col-md-2 text-end">
+          <a 
+            *ngIf="programTitle === 'Training Program for govt. organization'; else registerButton"
+            [routerLink]="['/contact']" 
+            class="btn btn-primary"
+          >
+            Enquiry Now
+          </a>
+          <ng-template #registerButton>
+            <a [routerLink]="['/register']" class="btn btn-success">Register</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container mt-5">
+      <div class="row" *ngIf="filteredProgramList.length > 0; else noPrograms">
+        <div class="d-flex flex-column flex-md-row" *ngFor="let program of filteredProgramList">
+          
+          <!-- Left Div for Images (Responsive) -->
+          <div class="col-md-6 order-md-1 order-2">
+            <div class="row">
+              <div class="col-6 p-3" *ngIf="program.image">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image1">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image1}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image2">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image2}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+              <div class="col-6 p-3" *ngIf="program.image3">
+                <img
+                  src="https://cyberlawpioneers.org/file/download/{{program.image3}}"
+                  class="img-fluid rounded border object-cover w-100"
+                  alt="{{ program.name }}"
+                  style="height: 150px;"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- Right Div for Text Content -->
+          <div class="col-md-6 order-md-2 order-1">
+            <div class="card-body">
+              <h3 class="card-title mb-3">{{ program.name }}</h3>
+              <p class="card-text text-muted mb-3">{{ program.description }}</p>
+              <p class="card-text text-muted mb-3">{{ program.service }}</p>
+              <div *ngIf="program.file">
+                <a
+                  href="https://cyberlawpioneers.org/file/download/{{program.file}}"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                >
+                  View Uploaded File
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <ng-template #noPrograms>
+        <div class="text-center">
+          <h4>No Programs Available</h4>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+  
+  <app-landing-footer></app-landing-footer>
+</div>

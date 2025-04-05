@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  font-family: 'Kruti Dev 010', sans-serif;
+}
+a {
+  cursor: pointer;
+}
+.cdk-visually-hidden.ng-star-inserted {
+  display: none;
+}
+.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color.ng-star-inserted {
+  display: none;
+
+}
+.visually-hidden{
+  display: none !important;
+}
+.mat-horizontal-stepper-header, .mat-stepper-horizontal-line {
+
+  display: none !important;
+  // border-top-width: 1px;
+  // border-top-style: solid;
+  // flex: auto;
+  // height: 0;
+  // margin: 0 -16px;
+  // min-width: 32px;
+}
+.mat-horizontal-stepper-header-container{
+  padding-top: 20px;
+}
+
+// form.ng-submitted input.ng-invalid, form.ng-submitted select.ng-invalid {
+//   color: red;
+//   border-color: red;
+//   border-style: solid;
+//   border-radius: 5px;
+// }
+// form.ng-submitted .ng-invalid {
+//   color: red;
+//   border-radius: 5px;
+// }
+
+select.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched,
+ng-select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.bg-gradient-green {
+  background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+}
+
+.bg-gradient-red {
+  background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(to right, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
+}
+
+.bg-gradient-black {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+}
+
+.bg-gradient-pink {
+  background: linear-gradient(106.5deg, rgba(207, 174, 148, 0.91) 23%, rgba(223, 159, 247, 0.8) 93%);
+}
+
+.btn-color{
+  background-color: #FF6801;
+  border: 1px solid #FF6801;
+  color: #fff;
+}
+.btn-color:hover {
+  color: #FF6801;
+  border: 1px solid #FF6801;
+}
+.btn-color:focus {
+  color: #000;
+}
+.fa {
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+}
+
+.bg-grey {
+  background-color: #eee;
+}

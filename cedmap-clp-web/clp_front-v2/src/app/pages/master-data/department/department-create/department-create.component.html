@@ -1,0 +1,63 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+
+<div class="container mt--7 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-12 col-md-12">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent">
+          <h2>Departments</h2>
+        </div>
+        <div class="card-body">
+          <form #infoForm="ngForm" (ngSubmit)="onCreateButtonClick(infoForm)" class="p-3 mt-3">
+            <div class="">
+              <div>
+                <div class="row mt-2">
+                  <div class="col-6">
+                    <h3>Department Title</h3>
+                    <div class="form-group align-items-center">
+                      <input ngModel name="name" type="text" class="form-control" placeholder="Title" />
+                      <small id="pdf_code" class="form-text text-muted">Title</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <h3>Department Description</h3>
+                    <div class="form-group align-items-center">
+                      <input ngModel name="description" type="text" class="form-control" placeholder="Department Description" />
+                      <!-- <input ngModel name="file_link" type="file" class="form-control" placeholder="Upload File"
+                        (change)="uploadFile($event)" /> -->
+                        <small id="file_link_code" class="form-text text-muted">Description</small>
+                    </div>
+                  </div>
+
+
+
+                  <!-- <div class="col-lg-6">
+                    <div class="form-group align-items-center">
+                      <textarea
+                        ngModel
+                        name="discription"
+                        rows="4"
+                        class="form-control form-control-alternative"
+                        placeholder="Brief Course  Discription"
+                      ></textarea>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3 justify-content-center">
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

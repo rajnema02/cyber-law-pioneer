@@ -1,0 +1,64 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7 ">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body ">
+          <h1 class="card-title">Batch Allotment Section</h1>
+          <div class="row">
+            <!-- <button [routerLink]="['/batch/batch-create']" routerLinkActive="router-link-active"
+              class="btn btn-success ">+ New Batch</button> -->
+            <h3 class="col">Batch name : {{this.BatchList?.batch_name}}</h3>
+            <div class="col text-right justify-content-end">
+              <span class=" mx-3" *ngIf="selectedStudent.length"><b>{{selectedStudent.length}}</b> Students Selected</span>
+              <div class="btn btn-success btn-sm text-right" *ngIf="selectedStudent.length" (click)="allotToBatch()">Allot Students to the Batch</div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Registration date</th>
+                  <th scope="col">Form Submitted</th>
+                  <th scope="col">Verification status</th>
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let item of userList"  (click)="selectStud(item._id)" [ngClass]="{'bg-light': isSelected(item._id)}">
+                  <!-- <tr *ngFor="let item of batchList"> -->
+                  <!-- <td>{{item.batch_name}}</td> -->
+                  <!-- <td> <button [routerLink]="['/batch/batch-allotment']" routerLinkActive="router-link-active"
+                      class="btn btn-success ">Batch Allotment</button>
+                  </td> -->
+
+
+                  <td>
+                    <input type="checkbox" id="myCheckbox" name="stdId" placeholder="StudentId" [checked]="isSelected(item._id) ? 'checked' : ''">
+                  </td>
+                  <td class="col-3">{{item.full_name}}</td>
+                  <td class="col-3">{{item.created_at | date:'short'}}</td>
+                  <td class="col-3">{{item.formStatus?'Yes':'No'}}</td>
+                  <td class="col-3">{{item.is_profileVerified?'Yes':'No'}}</td>
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

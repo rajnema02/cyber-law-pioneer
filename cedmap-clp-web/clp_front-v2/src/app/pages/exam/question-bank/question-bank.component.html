@@ -1,0 +1,104 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7 ">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body ">
+          <div class="row">
+            <h4 class="card-title col">Question Bank</h4>
+            <div class="col-2 ">
+              <span class="d-flex">
+
+                <a [routerLink]="['/exam/question']"  class=" btn btn-success btn-sm ">+ Add Question
+
+                </a>
+              </span>
+            </div>
+
+          </div>
+          <div class="table-responsive">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+              (pageChange)="page = $event; getQuestionBank()" id="question-paginator"></pagination-controls>
+              <div>Total : {{listCount}}</div>
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Question</th>
+                  <th scope="col">Course Type</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Regional</th>
+                  <th scope="col">Answer</th>
+                  <th scope="col">No. of options</th>
+                  <!-- <th scope="col">Difficulty level</th> -->
+                  <th scope="col">Marks</th>
+                  <!-- <th scope="col">Course Type</th> -->
+
+                  <th scope="col">Actions</th>
+
+                  <!-- <th scope="col">Image</th -->
+                  <!-- <th scope="col">Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let question of questionList| paginate
+                : {
+                    id: 'question-paginator',
+                    itemsPerPage: limit,
+                    currentPage: page,
+                    totalItems: listCount
+                  };
+            let i = index">
+                  <td style="word-wrap: normal; white-space: normal;font-family: 'Kokila', sans-serif; font-size: large;" [innerHTML]="question.question">
+
+                  </td>
+                  <td>
+                    {{question.course_type}}
+                  </td>
+                  <td>
+                    {{question.course_name?question.course_name: 'General'}}
+                  </td>
+                  <td>
+                    {{question.regional_language}}
+                  </td>
+                  <td>
+                    {{question.correct_answer}}
+                  </td>
+                  <td>
+                    {{question.number_of_options}}
+                  </td>
+                  <!-- <td>
+                    {{question.difficulty_level}}
+                  </td> -->
+
+                  <td>
+                    {{question.marks}}
+                  </td>
+                  <td>
+                    <a class="mx-3 btn btn-sm btn-warning" routerLink='/exam/quesion-update/{{question._id}}'><i class="fas fa-edit"></i> </a>
+                   <a class="mx-3 btn btn-sm btn-danger" (click)="deleteQuestion(question._id)"><i class="fas fa-trash"></i> </a>
+                  </td>
+
+
+
+                  <!-- <td>{{item.full_name}}</td> -->
+                  <!-- <td>{{item.fees}}</td> -->
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
