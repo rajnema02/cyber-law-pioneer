@@ -1,0 +1,57 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <div class="row">
+              <h3 class="card-title col">Cyber Security Courses</h3>
+              <div class="col-2">
+                <span class="d-flex">
+                  <a [routerLink]="['/content/create-service-course-offers']" class="btn btn-success btn-sm">+ New Course</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush text-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">Main Image</th>
+                    <th scope="col">PDF File</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let course of coursesList">
+                    <td>{{course.name}}</td>
+                    <td>{{course.service}}</td>
+                    <td>{{course.program}}</td>
+                    <td>
+                      <img *ngIf="course.image" src="https://cyberlawpioneers.org/file/download/{{course.image}}" alt="{{course.name}}" style="width: 100px; height: 100px;" />
+                      <span *ngIf="!course.image">No Image</span>
+                    </td>
+                    <td>
+                      <a *ngIf="course.file" href="https://cyberlawpioneers.org/file/download/{{course.file}}" target="_blank" class="btn btn-info btn-sm">View PDF</a>
+                      <span *ngIf="!course.file">No PDF</span>
+                    </td>
+                    <td>
+                      <a class="mx-3 btn btn-sm btn-danger" (click)="deleteCourse(course._id)"><i class="fas fa-trash"></i> </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

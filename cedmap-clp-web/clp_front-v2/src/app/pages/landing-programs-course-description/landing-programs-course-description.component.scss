@@ -1,0 +1,37 @@
+.course-card {
+    border-radius: 1rem;
+  
+    .video-thumb {
+      height: 100%;
+      position: relative;
+  
+      img {
+        object-fit: cover;
+        height: 100%;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+      }
+  
+      .video-play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transition: 0.3s;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+  
+        i {
+          font-size: 3rem;
+        }
+      }
+  
+      &:hover .video-play-overlay {
+        opacity: 1;
+      }
+    }
+  }
+  

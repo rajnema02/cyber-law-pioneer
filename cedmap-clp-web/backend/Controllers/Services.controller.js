@@ -8,7 +8,7 @@ module.exports = {
     create : async (req, res, next) => {
     try {
         upload(req, res, async (err) => {
-            if (err) {
+            if (err) { 
                 return res.status(501).json({ error: err });
             }
 

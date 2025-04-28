@@ -1,0 +1,73 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <h3 class="card-title col">Partner-Service Project List</h3>
+            <div class="col-3">
+              <span class="d-flex justify-content-end">
+                <a [routerLink]="['/content/create-partner-service']" class="btn btn-success btn-sm">
+                  + New Partner-Service-project
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Images</th>
+                  <th>PDF</th>
+                  <th>Partner</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let project of partnerServiceProjects">
+                  <td>{{ project.name }}</td>
+                  <td>{{ project.description }}</td>
+                  <td>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                      <img *ngIf="project.image" [src]="project.image" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <img *ngIf="project.image2" [src]="project.image2" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <img *ngIf="project.image3" [src]="project.image3" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <span *ngIf="!project.image && !project.image1 && !project.image2 && !project.image3">No Images</span>
+                    </div>
+                  </td>
+                  <td>
+                    <button *ngIf="project.file" class="btn btn-info btn-sm" (click)="openPdf(project.file)">
+                      View PDF
+                    </button>
+                  </td>
+                  <td>{{ project.partnerName || 'Loading...' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary me-2" (click)="editProject(project._id)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteProject(project._id)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

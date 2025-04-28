@@ -69,8 +69,5 @@ export class StudentIdComponent implements OnInit {
     document.body.innerHTML = printContents;
 
     window.print();
-    // window.removeEventListener("", this.print);
-
-    // document.body.innerHTML = originalContents;
   }
 }

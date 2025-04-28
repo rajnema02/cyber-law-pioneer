@@ -1,15 +1,206 @@
 <div>
-  <app-landing-header></app-landing-header>
-  <!-- page content  start -->
-  <section class="about-section">
-    <div class="overlay"></div>
-    <img
-      class="about-banner"
-      src="../../../../assets/img/j.jpg"
-      alt="Banner 2"
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<style>
+  .navbar-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+  .nav-link-custom {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link-custom:hover,
+  .nav-link-custom:focus {
+    color: rgb(33, 75, 150); /* Optional: adds subtle color change */
+    font-weight: 600 !important; /* Lock font weight on hover */
+  }
+
+  .nav-link-custom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(204, 0, 51, 0.6), rgba(33, 76, 150, 0.6));
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link-custom:hover::after,
+  .nav-link-custom.active::after {
+    width: 100%;
+  }
+
+  .nav-link-custom.active {
+    color: rgb(33, 75, 150);
+    font-weight: 600;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    .image-logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .experience-text {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .experience-text .years {
+      font-size: 16px;
+    }
+
+    .navbar .d-flex.align-items-center {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+
+
+<!-- Navbar -->
+<header
+  class="navbar navbar-expand-lg navbar-light bg-white navbar-sticky shadow-sm"
+  style="padding: 0.4rem 0"
+>
+  <div class="container-fluid">
+    <!-- Logo and Tagline -->
+    <!-- Logo and Tagline -->
+<div class="d-flex align-items-center">
+  <img
+    src="/assets/img/logo-home.png"
+    alt="Logo"
+    class="image-logo"
+    style="margin-right: 10px"
+  />
+  <div class="experience-text">
+    <div
+      class="years"
+      style="
+        font-weight: bold;
+        background: linear-gradient(to right, rgb(204, 0, 51), rgb(33, 75, 150));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      "
+    >
+      10 Years
+    </div>
+    <div style="color: rgb(119, 119, 119)">of Experience</div>
+  </div>
+</div>
+
+
+    <!-- Toggle Button for Mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom text-dark"
+            routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark " routerLink="/about-us"
+            >About Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/program"
+            >Cyber Security Programs</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/register"
+            >Registration</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/courses"
+            >Our Partners</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/services"
+            >Our Services</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark active" routerLink="/contact"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Bootstrap Bundle with Popper (required for navbar toggling) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<section class="hero-banner">
+  <!-- Banner Image Container -->
+  <div class="banner-container">
+    <img 
+      src="../../../../assets/img/j.jpg" 
+      alt="Cyber Law Pioneers About Us Banner" 
+      class="banner-image"
     />
-    <span class="about-text">Contact Us</span>
-  </section>
+    
+    <!-- Gradient Overlay -->
+    <div class="banner-overlay"></div>
+    
+    <!-- Content Container -->
+    <div class="banner-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="banner-title">Contact Us</h1>
+            <div class="banner-decoration">
+              <span class="line"></span>
+              <span class="diamond"></span>
+              <span class="line"></span>
+            </div>
+            <p class="banner-subtitle">Pioneers in Cyber Law & Security Solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <section>
     <div class="container-fluid p-5">
@@ -117,9 +308,10 @@
             </div>
             <div class="contact-media mb-5">
               <h5>Contact Us:</h5>
-              <a href="tel:+8770303862">+91 8770303862</a>
-              <a href="mailto:cyberlawpioneers.com">
-                info&#64;cyberlawpioneers.com</a
+              <a href="#" style="text-decoration: none;">+91 8770303862</a>
+              <br>
+              <a href="#" style="text-decoration: none;">
+                info&#64;cyberlawpioneersgmail.com</a
               >
             </div>
           </div>

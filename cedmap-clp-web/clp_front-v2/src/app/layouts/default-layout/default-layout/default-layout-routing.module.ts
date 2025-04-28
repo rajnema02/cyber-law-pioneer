@@ -16,6 +16,7 @@ import { LandingProgramsCoursesComponent } from "src/app/pages/landing-programs-
 import { LatestUpdatesHomeComponent } from "src/app/pages/latest-updates-home/latest-updates-home.component";
 import { LandingProjectComponent } from "src/app/pages/landing-project/landing-project.component";
 import { LandingServiceDetailComponent } from "src/app/pages/landing-service-detail/landing-service-detail.component";
+import { LandingProgramsCourseDescriptionComponent } from "src/app/pages/landing-programs-course-description/landing-programs-course-description.component";
 
 const routes: Routes = [
   // { path: "home", component: HomeComponent },
@@ -27,6 +28,12 @@ const routes: Routes = [
   { path: "services", component: LandingServicesComponent },
   { path: "practices/:title", component: LandingPracticeComponent },
   { path: "programs/:title", component: LandingProgramsCoursesComponent },
+  // { path: "programs/:title/course/:name", component: LandingProgramsCourseDescriptionComponent},
+  {
+    path: 'program-course-description/:program',
+    component: LandingProgramsCourseDescriptionComponent
+  },
+  
   { path: "latestUpdates", component: LatestUpdatesHomeComponent },
   { path: "projects/:title", component: LandingProjectComponent },
   { path: "serviceDetail/:title", component: LandingServiceDetailComponent },

@@ -1,817 +1,377 @@
 <div>
-  <app-landing-header></app-landing-header>
-  <!-- page content  start -->
-  <section class="about-section">
-    <div class="overlay"></div>
-    <img
-      class="about-banner"
-      src="../../../../assets/img/j.jpg"
-      alt="Banner 2"
+  <!-- Navbar -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<style>
+  .nav-link-custom {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link-custom:hover,
+  .nav-link-custom:focus {
+    color: rgb(33, 75, 150); /* Optional: adds subtle color change */
+    font-weight: 600 !important; /* Lock font weight on hover */
+  }
+
+  .nav-link-custom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(204, 0, 51, 0.6), rgba(33, 76, 150, 0.6));
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link-custom:hover::after,
+  .nav-link-custom.active::after {
+    width: 100%;
+  }
+
+  .nav-link-custom.active {
+    color: rgb(33, 75, 150);
+    font-weight: 600;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    .image-logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .experience-text {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .experience-text .years {
+      font-size: 16px;
+    }
+
+    .navbar .d-flex.align-items-center {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+
+
+<!-- Navbar -->
+<header
+  class="navbar navbar-expand-lg navbar-light bg-white navbar-sticky"
+  style="padding: 0.4rem 0; "
+>
+  <div class="container-fluid" >
+    <!-- Logo and Tagline -->
+    <!-- Logo and Tagline -->
+<div class="d-flex align-items-center">
+  <img
+    src="/assets/img/logo-home.png"
+    alt="Logo"
+    class="image-logo"
+    style="margin-right: 10px"
+  />
+  <div class="experience-text">
+    <div
+      class="years"
+      style="
+        font-weight: bold;
+        background: linear-gradient(to right, rgb(204, 0, 51), rgb(33, 75, 150));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      "
+    >
+      10 Years
+    </div>
+    <div style="color: rgb(119, 119, 119)">of Experience</div>
+  </div>
+</div>
+
+
+    <!-- Toggle Button for Mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom  text-dark"
+            routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark active" routerLink="/about-us"
+            >About Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/program"
+            >Cyber Security Programs</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/register"
+            >Registration</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/courses"
+            >Our Partners</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/services"
+            >Our Services</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom text-dark" routerLink="/contact"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Bootstrap Bundle with Popper (required for navbar toggling) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- About Section -->
+<section class="hero-banner">
+  <!-- Banner Image Container -->
+  <div class="banner-container">
+    <img 
+      src="../../../../assets/img/j.jpg" 
+      alt="Cyber Law Pioneers About Us Banner" 
+      class="banner-image"
     />
-    <span class="about-text">About us</span>
-  </section>
-  <!-- <section>
-    <div class="container p-5" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
-      <div class="row justify-content-center">
-        <div class="col-lg-9 col-md-10 col-12">
-          <div class="section-title text-center">
-            <h6 class="text-uppercase fw-bold mb-4" style="color: #5f6368; font-size: 1.2rem; letter-spacing: 2px;">
-              About Us
-            </h6>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              Cyber Law Pioneers Pvt. Ltd. is a leading company in the field of cyber education, Cyber Law, IPR & Cyber security solutions,
-              training, awareness, and Techno-legal consultancy. Established under the Company Act, 2013, we are a registered company working
-              for the last 10 years, dedicated to providing efficient and effective services to combat the rising threat of cybercrime.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              As technology continues to advance at an unprecedented pace, our society has become increasingly reliant on digital platforms for
-              communication, business transactions, and daily activities. However, this growth in technology has also led to an increase in cyber
-              threats such as hacking, phishing scams, online frauds, and identity theft. In order to protect individuals and organizations from
-              these crimes, Cyber Law Pioneers was founded with the mission to provide comprehensive solutions in the ever-evolving landscape of
-              cyber law.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              Our team consists of highly qualified experts with diverse backgrounds in software development, network engineering, hardware
-              engineering, cyber security, and cyber law. This group of professionals has extensive experience in handling various types of
-              cybercrimes and is well-equipped to handle any challenges that may arise.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              At Cyber Law Pioneers, we offer a range of services including IT Act 2000 compliance for organizations and websites. We also
-              specialize in drafting national and international notices, agreements, contracts, and covenants for our clients' legal protection
-              (CLP). Our team provides expert guidance on how to handle cybercrime cases as well as issues related to Intellectual Property Rights
-              (IPR), E-contract disputes, online frauds involving e-banking or e-commerce platforms, and other crimes happening in the digital
-              world.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              Our commitment to providing efficient solutions is further evidenced by our comprehensive approach towards cybercrime. Cyber Law
-              Pioneers assists you with all types of remedies available in the world of cybercrime, including criminal, civil, and administrative
-              actions. Our team works closely with our clients to understand their unique situation and develop a personalized plan of action for
-              maximum results.
-            </p>
-  
-            <p
-              class="text-muted mb-0"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #333;"
-            >
-              In conclusion, Cyber Law Pioneers Pvt. Ltd. is a pioneer in the field of cyber education, Cyber Law, IPR & Cyber security solutions,
-              training, awareness, and Techno-legal consultancy. We are proud to serve as a reliable partner for individuals and organizations
-              looking for top-notch assistance in combating cybercrimes globally. Trust us to protect your digital world.
-            </p>
+    
+    <!-- Gradient Overlay -->
+    <div class="banner-overlay"></div>
+    
+    <!-- Content Container -->
+    <div class="banner-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="banner-title">About Us</h1>
+            <div class="banner-decoration">
+              <span class="line"></span>
+              <span class="diamond"></span>
+              <span class="line"></span>
+            </div>
+            <p class="banner-subtitle">Pioneers in Cyber Law & Security Solutions</p>
           </div>
         </div>
       </div>
     </div>
-  </section> -->
-  <section>
-    <div class="container p-5" style="background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <div class="row justify-content-center">
-        <div class="col-lg-9 col-md-10 col-12">
-          <div class="section-title text-center">
-            <h6 class="text-uppercase fw-bold mb-4" style="color: #007bff; font-size: 1.5rem; letter-spacing: 1.5px;">
-              About Company
-            </h6>
-  
-            <!-- First Paragraph -->
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              Cyber Law Pioneers Pvt. Ltd. is a leading company in the field of cyber education, Cyber Law, IPR & Cyber security solutions,
-              training, awareness, and Techno-legal consultancy. Established under the Company Act, 2013, we are a registered company working
-              for the last 10 years, dedicated to providing efficient and effective services to combat the rising threat of cybercrime.
-            </p>
-  
-            <!-- Centered Paragraphs -->
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              As technology continues to advance at an unprecedented pace, our society has become increasingly reliant on digital platforms for
-              communication, business transactions, and daily activities. However, this growth in technology has also led to an increase in cyber
-              threats such as hacking, phishing scams, online frauds, and identity theft. Cyber Law Pioneers was founded with the mission to provide
-              comprehensive solutions in the ever-evolving landscape of cyber law.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              Our team consists of highly qualified experts with diverse backgrounds in software development, network engineering, hardware
-              engineering, cyber security, and cyber law. This group of professionals has extensive experience in handling various types of
-              cybercrimes and is well-equipped to handle any challenges that may arise.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              At Cyber Law Pioneers, we offer a range of services including IT Act 2000 compliance for organizations and websites. We also
-              specialize in drafting national and international notices, agreements, contracts, and covenants for our clients' legal protection
-              (CLP). Our team provides expert guidance on handling cybercrime cases, as well as issues related to Intellectual Property Rights
-              (IPR), E-contract disputes, online frauds involving e-banking or e-commerce platforms, and other crimes in the digital world.
-            </p>
-  
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              Our commitment to providing efficient solutions is further evidenced by our comprehensive approach toward cybercrime. Cyber Law
-              Pioneers assists you with all types of remedies available in the world of cybercrime, including criminal, civil, and administrative
-              actions. Our team works closely with our clients to understand their unique situations and develop personalized plans of action for
-              maximum results.
-            </p>
-  
-            <p
-              class="text-muted mb-0"
-              style="font-size: 1.1rem; line-height: 1.8; text-align: justify; color: #4a4a4a;">
-              In conclusion, Cyber Law Pioneers Pvt. Ltd. is a pioneer in the field of cyber education, Cyber Law, IPR & Cyber security solutions,
-              training, awareness, and Techno-legal consultancy. We are proud to serve as a reliable partner for individuals and organizations
-              looking for top-notch assistance in combating cybercrimes globally. Trust us to protect your digital world.
-            </p>
-          </div>
-        </div>
-      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <section class=" row section" data-aos="fade-right">
+    <div class="col-lg-6 col-md-4">
+      <h2 class="section-title"><i class="fas fa-bullseye me-2"></i>Company Mission</h2>
+      <p><span class="col-lg-6 col-md-4 highlight">Mission:</span>Our mission is to empower organizations to navigate the digital landscape securely, by offering expert cybersecurity solutions and up-to-date legal guidance. We protect businesses, governments, and individuals from cyber threats while ensuring full legal compliance with evolving regulations."</p>
+    </div>
+    <div class="col-lg-6 col-md-4">
+      <h2 class=" section-title"><i class="fas fa-bullseye me-2"></i>Company Vision</h2>
+      <p><span class=" col-lg-6 col-md-4  highlight">Vision:</span>To create a secure digital environment where businesses and government agencies thrive without the fear of cyber-attacks, data breaches, or legal pitfalls."</p>
     </div>
   </section>
-  <!-- <section>
-    <div class="container p-4">
-      <div class="row justify-content-center">
-        <div class="col-lg-9 col-md-10 col-12">
-          <div class="section-title text-center">
-            <h6 class="text-uppercase fw-bold mb-4" style="color: #5f6368">
-              About Company
-            </h6>
+</div>
 
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              Cyber Law Pioneers Pvt. Ltd. is a leading company in the field of
-              cyber education, Cyber Law, IPR & Cyber security solutions,
-              training, awareness, and Techno-legal consultancy. Established
-              under the Company Act, 2013, we are a registered company working
-              for the last 10 years, dedicated to providing efficient and
-              effective services to combat the rising threat of cybercrime.
-            </p>
-
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              As technology continues to advance at an unprecedented pace, our
-              society has become increasingly reliant on digital platforms for
-              communication, business transactions, and daily activities.
-              However, this growth in technology has also led to an increase in
-              cyber threats such as hacking, phishing scams, online frauds, and
-              identity theft. In order to protect individuals and organizations
-              from these crimes, Cyber Law Pioneers was founded with the mission
-              to provide comprehensive solutions in the ever-evolving landscape
-              of cyber law.
-            </p>
-
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              Our team consists of highly qualified experts with diverse
-              backgrounds in software development, network engineering, hardware
-              engineering, cyber security, and cyber law. This group of
-              professionals has extensive experience in handling various types
-              of cybercrimes and is well-equipped to handle any challenges that
-              may arise.
-            </p>
-
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              At Cyber Law Pioneers, we offer a range of services including IT
-              Act 2000 compliance for organizations and websites. We also
-              specialize in drafting national and international notices,
-              agreements, contracts, and covenants for our clients' legal
-              protection (CLP). Our team provides expert guidance on how to
-              handle cybercrime cases as well as issues related to Intellectual
-              Property Rights (IPR), E-contract disputes, online frauds
-              involving e-banking or e-commerce platforms, and other crimes
-              happening in the digital world.
-            </p>
-
-            <p
-              class="text-muted mb-4"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              Our commitment to providing efficient solutions is further
-              evidenced by our comprehensive approach towards cybercrime. Cyber
-              Law Pioneers assists you with all types of remedies available in
-              the world of cybercrime, including criminal, civil, and
-              administrative actions. Our team works closely with our clients to
-              understand their unique situation and develop a personalized plan
-              of action for maximum results.
-            </p>
-
-            <p
-              class="text-muted mb-0"
-              style="font-size: 1.1rem; line-height: 1.8"
-            >
-              In conclusion, Cyber Law Pioneers Pvt. Ltd. is a pioneer in the
-              field of cyber education, Cyber Law, IPR & Cyber security
-              solutions, training, awareness, and Techno-legal consultancy. We
-              are proud to serve as a reliable partner for individuals and
-              organizations looking for top-notch assistance in combating
-              cybercrimes globally. Trust us to protect your digital world.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <section>
-    <div class="container-fluid p-4">
-      <div class="row">
-        <!-- Section Heading -->
-        <div class="col-12 text-center mb-5">
-          <h2 class="font-weight-bold" style="color: #5f6368">Our Work</h2>
-          <!-- <p class="text-muted" style="font-size: 1.1rem;">Dedicated to enhancing cyber safety through education, training, and support.</p> -->
-        </div>
-
-        <!-- Education and Training Programs Section -->
-        <div class="col-lg-12 col-12">
-          <div class="section-title">
-            <h3 class="font-weight-bold" style="color: #5f6368">
-              I. Education and Training Programs
-            </h3>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                1. Special Training Program
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                We initiate a comprehensive cyber training program for
-                government employees of various government organizations,
-                tailored to the specific needs of the organization in
-                association with MPCON. We deliver the materials and curriculum
-                for the training program to assess the current cybersecurity
-                skills and knowledge of the employees.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                We also provide online Cyber Security Solutions, Cyber Safety
-                Tips, Cyber News, and updates for which we create an online user
-                account for a year so users will stay updated on cybercrime and
-                related incidents.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Each and every user/official is awarded a Certificate, which
-                will be issued by MPCON, a Government of India Undertaking.
-              </p>
-            </div>
-
-            <!-- Image after the last paragraph -->
-            <div class="text-center mt-4">
-              <img
-                src="../../../../assets/img/about1.jpg"
-                alt="Training Program Image"
-                class="img-fluid"
-              />
-            </div>
-            <div class="mt-5">
-              <h3 class="font-weight-bold" style="color: #5f6368">
-                Highlights
-              </h3>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙
-                  Since 2020, over 10,000+ professionals from various Government
-                  Departments have participated in more than 200+ training
-                  batches and awarded certificates conducted by Cyber Law
-                  Pioneers in association with MPCON Cyber Excellence Division.
-                </li>
-                <li>◙ 
-                  Trained more than 4,000 officials from the Department of
-                  Public Instructions (DPI), MP High Court, Rajiv Gandhi
-                  Proudyogiki Vishwavidyalaya, Madhya Pradesh Professional
-                  Examination Board, and other Government Departments on Cyber
-                  Security Compliance and Etiquettes.
-                </li>
-                <li>◙ 
-                  Trained more than 500 officials from the Department of Public
-                  Instructions (DPI), wardens of various schools on Children
-                  Protection, Cyber Crime, and POCSO Act 2012.
-                </li>
-                <li>◙ 
-                  Trained more than 500 officials from the Department of Public
-                  Instructions (DPI), wardens of various schools on Children
-                  Protection, Cyber Crime, and POCSO Act 2012.
-                </li>
-                <li>◙ 
-                  Trained more than 1,000 officials, including Judges, DPOs,
-                  ADPOs from MP Prosecution Department and other Government
-                  Departments on Cyber Crime Investigation and Admissibility of
-                  Electronic Evidence.
-                </li>
-                <li>◙ 
-                  Trained more than 1,000 bank officials from various banks on
-                  Cyber law relating to E-Banking.
-                </li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                2. Cyber Certification Programs
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                We have trained 5000+ students and professionals for Cyber
-                Certification Programs. We are dedicated to building a stronger
-                cybersecurity workforce by offering comprehensive certification
-                courses that prepare students and professionals for real-world
-                challenges. Our courses are designed to be practical, hands-on,
-                and relevant to the needs of today's cybersecurity industry
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                At Cyber Certification Courses, we not only provide top-notch
-                training and certification, but we also offer exciting career
-                opportunities for our graduates. We offer various Cyber
-                Certification Programs for professionals and students who are
-                graduates, post graduates and also for pursuing students. These
-                Cyber Certification Courses provide valuable hands-on experience
-                and allow to apply their skills in real-world scenarios. Every
-                professional and students awarded with certificate by MPCON.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Here are the list of Courses which We Offer:
-              </p>
-            </div>
-            <div class="text-center mt-4">
-              <img
-                src="../../../../assets/img/about2.jpg"
-                alt="Training Program Image"
-                class="img-fluid"
-              />
-            </div>
-            <div class="mt-5">
-              <h3 class="font-weight-bold" style="color: #5f6368">
-                Highlights
-              </h3>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ 
-                  Since 2020, over 10,000+ professionals from various Government
-                  Departments have participated in more than 200+ training
-                  batches and awarded certificates conducted by Cyber Law
-                  Pioneers in association with MPCON Cyber Excellence Division.
-                </li>
-                <li>◙ 
-                  Trained more than 4,000 officials from the Department of
-                  Public Instructions (DPI), MP High Court, Rajiv Gandhi
-                  Proudyogiki Vishwavidyalaya, Madhya Pradesh Professional
-                  Examination Board, and other Government Departments on Cyber
-                  Security Compliance and Etiquettes.
-                </li>
-                <li>◙ 
-                  Trained more than 500 officials from the Department of Public
-                  Instructions (DPI), wardens of various schools on Children
-                  Protection, Cyber Crime, and POCSO Act 2012.
-                </li>
-                <li>◙ 
-                  Trained more than 500 officials from the Department of Public
-                  Instructions (DPI), wardens of various schools on Children
-                  Protection, Cyber Crime, and POCSO Act 2012.
-                </li>
-                <li>◙ 
-                  Trained more than 1,000 officials, including Judges, DPOs,
-                  ADPOs from MP Prosecution Department and other Government
-                  Departments on Cyber Crime Investigation and Admissibility of
-                  Electronic Evidence.
-                </li>
-                <li>◙ 
-                  Trained more than 1,000 bank officials from various banks on
-                  Cyber law relating to E-Banking.
-                </li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                3. Internship and Industrial Training Program
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                We have trained 5000+ students and professionals for Cyber
-                Certification Programs. We are dedicated to building a stronger
-                cybersecurity workforce by offering comprehensive certification
-                courses that prepare students and professionals for real-world
-                challenges. Our courses are designed to be practical, hands-on,
-                and relevant to the needs of today's cybersecurity industry
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Our internship program is designed to provide students with
-                hands-on experience in their field of study. We offer a variety
-                of courses that cover a range of topics related to Cyber
-                Security, Cyber Crime and Law, Digital Forensics, Ethical
-                Hacking, VAPT and many more. Each course is taught by industry
-                professionals who bring real-world experience to the classroom.
-                Our internship courses provide students with hands-on experience
-                in their desired field. By working alongside professionals in
-                the industry, interns gain valuable skills and knowledge that
-                cannot be learned in a classroom setting.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Here are the list of Courses which We Offer:
-              </p>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ 
-                  Real-world projects and assignments that simulate actual job
-                  responsibilities.
-                </li>
-                <li>◙ 
-                  Access to industry-standard tools and technologies used in the
-                  field.
-                </li>
-                <li>◙ 
-                  Opportunities to work on cross-functional teams and
-                  collaborate with professionals from different departments.
-                </li>
-              </ul>
+    <section class="about-section text-white py-5 mt-0" style="background-image: url('https://www.michalsons.com/wp-content/uploads/2018/10/cyber-security-3374252_1920-e1540908572393.jpg');  background-size: cover; background-position: center;">
+      <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-5">
+          Solved about <span class="highlight">5000+</span> Cyber Threats!
+        </h2>
+        <div class="row justify-content-center g-4">
+          <!-- Users Trained -->
+          <div class="col-md-3 col-sm-6">
+            <div class="stat-card p-4 rounded shadow text-center" style="background-color: rgba(81, 81, 82, 0.575);">
+              <div class="stat-icon mb-3">
+                <!-- ChatGPT-style globe -->
+                <svg width="50" height="50" fill="none" stroke="#0dcaf0" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 010 20"/>
+                </svg>
+              </div>
+              <h3 class="stat-value text-info">{{ usersCount  }}+</h3>
+              <p class="mb-0">People Trained</p>
             </div>
           </div>
-        </div>
-        <!-- Legal and consultancy service -->
-        <div class="col-lg-12 col-12">
-          <div class="section-title">
-            <h3 class="font-weight-bold" style="color: #5f6368">
-              II. Legal and Consultancy Services
-            </h3>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                1. Legal litigation in matter of Cyber Crimes & Online and
-                Banking frauds.
-              </h4>
-              <p style="font-size: 1.1rem">
-                We handle cybercrimes and online frauds such as:
-              </p>
-            </div>
-            <div>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ Social Media Networking crimes</li>
-                <li>◙ Mobile Phone and SMS crimes</li>
-                <li>◙ ATM Card Skimming, Credit Card and Debit Card Frauds</li>
-                <li>◙ Internet banking frauds</li>
-                <li>◙ Digital Identity fraud</li>
-                <li>◙ Payment Gateway frauds</li>
-                <li>◙ Matrimonial website frauds</li>
-                <li>◙ Unauthorized access and hacking</li>
-                <li>◙ Breach of Privacy and Confidentiality</li>
-                <li>◙ Crypto Currency and AI Based Fraud</li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                2. Civil Dispute under the IT Act, 2000
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                We handle adjudication matters falling under IT Act. Matters
-                that can be admitted by the adjudicator are credit fraud, data
-                theft, hacking, defamation, identity theft, computer theft,
-                domain theft, etc. We draft for cybercrimes, electronic evidence
-                and matter for adjudicating officer. We provide Expert Opinion
-                on Digital Crime, which is based on the collection, analysis and
-                investigation of digital evidence and cyber trails. These
-                digital evidence and cyber trails may be found in computer hard
-                disks, cell phones, CDs, DVDs, pen drives, computer networks,
-                the Internet etc. We assist and draft Section 65B Certification
-                and related services.
-              </p>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                3. Digital Forensic & Investigation Support
-              </h4>
-            </div>
-            <div>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ Cybercrime investigation</li>
-                <li>◙ Digital evidence analysis</li>
-                <li>◙ Mobile forensics</li>
-                <li>◙ Computer forensic</li>
-                <li>◙ Forensics data recovery</li>
-                <li>◙ CCTV analysis</li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                4. IT Domain Consultancy
-              </h4>
-            </div>
-            <div>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ E-Contacts and Polices</li>
-                <li>◙ Software Licenses</li>
-                <li>◙ User Agreements</li>
-                <li>◙ Internet usage Policy</li>
-                <li>◙ Cyber Security & IT Security Policies</li>
-                <li>◙ End User License Agreement</li>
-                <li>◙ Distributor Agreement</li>
-                <li>◙ Software Development & Distribution Agreements</li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                5. Penetration Testing & Compliance
-              </h4>
-            </div>
-            <div>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ Web Application penetration testing.</li>
-                <li>◙ Network penetration testing.</li>
-                <li>◙ Website Security Audit</li>
-                <li>◙ 
-                  Implementation of Information security management system as
-                  per Information Technology Act.
-                </li>
-                <li>◙ Single Window IT Solution.</li>
-              </ul>
+    
+          <!-- Clients Served -->
+          <div class="col-md-3 col-sm-6" >
+            <div class="stat-card p-4 rounded shadow text-center" style="background-color: rgba(81, 81, 82, 0.575);">
+              <div class="stat-icon mb-3">
+                <!-- ChatGPT-style people -->
+                <svg width="50" height="50" fill="none" stroke="#198754" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="8" cy="8" r="3"/>
+                  <circle cx="16" cy="8" r="3"/>
+                  <path d="M2 21v-1a4 4 0 014-4h4a4 4 0 014 4v1"/>
+                  <path d="M14 21v-1a4 4 0 014-4h2"/>
+                </svg>
+              </div>
+              <h3 class="stat-value text-success">{{ clientsCount }}+</h3>
+              <p class="mb-0">Clients Served</p>
             </div>
           </div>
-        </div>
-        <!-- Our Initiative and projects -->
-        <div class="col-lg-12 col-12">
-          <div class="section-title">
-            <h3 class="font-weight-bold" style="color: #5f6368">
-              III. Our Initiative/Projects
-            </h3>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                1. Cyber Security Awareness Campaign.
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                It is first of its kind Cyber Security Awareness Campaign in
-                central India for school students. An initiative of MPCON Cyber
-                Excellence Division (MPCED) This project is approved by
-                Department of School Education, Government of Madhya Pradesh to
-                MPCED.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Under this project it is for all the schools (Govt. /Private) of
-                Madhya Pradesh to make the students from 10th onwards, appear
-                for the Cyber Security Awareness Test under Cyber Security
-                Awareness Campaign. The Cyber Security Awareness Campaign is
-                bound to attract thousands of students and their guardians (for
-                registrations through the web portal).
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                10000+ students have registered in the program. Therefore, the
-                range of the campaign is significantly wide. This campaign is
-                organized to spread awareness about cyber security in the
-                students and is a free of cost.
-              </p>
+    
+          <!-- Uptime -->
+          <div class="col-md-3 col-sm-6">
+            <div class="stat-card p-4 rounded shadow text-center" style="background-color: rgba(81, 81, 82, 0.575);">
+              <div class="stat-icon mb-3">
+                <!-- ChatGPT-style arrow up -->
+                <svg width="50" height="50" fill="
+                 none" stroke="#ffc107" stroke-width="2" viewBox="0 0 24 24">
+                 <path d="M12 19V5"/>
+                 <path d="M5 12l7-7 7 7"/>
+                </svg>
+              </div>
+              <h3 class="stat-value text-warning">{{ uptimeCount }}+</h3>
+              <p class="mb-0">Cyber Crime Cases</p>
             </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                2. Seminar/ Workshop
-              </h4>
-            </div>
-            <div>
-              <ul
-                class="list-unstyled"
-                style="font-size: 1.1rem; line-height: 1.8"
-              >
-                <li>◙ 
-                  Workshop on “Cyber Care: Safe use of Computer Science
-                  application” for students organized by Madhya Pradesh Science
-                  & Technology at Govt. Jawahar Lal Krashi Mahavidhyalaya,
-                  Tikamgarh.
-                </li>
-                <li>◙ 
-                  Workshop on “SECURE USE OF COMPUTER SCIENCE & ONLINE
-                  APPLICATION (CYBER CARE): Protection of Children from Cyber
-                  Crime” for students organized at Madhav Rao Sapre Government
-                  College, Pathariya, Dist. Damoh.
-                </li>
-                <li>◙ 
-                  Workshop on “SECURE USE OF COMPUTER SCIENCE & ONLINE
-                  APPLICATION (CYBER CARE): Protection of Children from Cyber
-                  Crime” for students organized at Mangal Bhawan, Banda, Dist.
-                  Sagar
-                </li>
-                <li>◙ 
-                  One day workshop on “Cybercrimes, cyber security and IT laws”
-                  at SRI SATHYA SAI WOMEN COLLEGE, BHOPAL MP
-                </li>
-                <li>◙ 
-                  Workshop on “CHILD CARE: POCSO ACT & Cyber Crimes against
-                  Children” organized by MAHILA SASHKTIKARAN DEPARTMENT, BETUL,
-                  MADHYA PRADESH on Workshop on “PROTECTION OF WOMEN AND
-                  CHILDREN AGAINST CYBER CRIME” organized by MAHILA SASHKTIKARAN
-                  DEPARTMENT, Tikamgarh, MADHYA PRADESH.
-                </li>
-                <li>◙ 
-                  Workshop on “IT LAWS: IT’S ROLE IN SECURE REGULATION OF IT
-                  SERVICES IN INDUSTRIES” organized by PHD, CHAMBER OF COMMERCE.
-                </li>
-                <li>◙ 
-                  Workshop on “TECHNO-LEGAL ISSUE IN PROJECT MANAGEMENT”
-                  organized by PHD, CHAMBER OF COMMERCE.
-                </li>
-                <li>◙ 
-                  Workshop on “PROTECTION OF WOMENS AGAINST CYBER CRIME &
-                  PREVENTION OF SEXUAL ABUSE AGAINST WOMEN AT WORK PLACE”
-                  organized by MAHILA SASHKTIKARAN DEPARTMENT, NARSINGHPUR,
-                  MADHYA PRADESH.
-                </li>
-                <li>◙ 
-                  Workshop on “Cyber Security and Cyber Law” organized by Cyber
-                  Law Pioneers, SISTECH ENGINEERING COLLEGE, GANDHINAGAR, and
-                  BHOPAL.
-                </li>
-                <li>◙ 
-                  Workshop on “PROTECT WOMEN & CHILDREN AGAINST CYBER RIME” FOR
-                  POLICE/NGO/WOMENS/ STAFF organized by MAHILA SASHKTIKARAN
-                  DEPARTMENT, MADHYA PRADESH .
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER SECURITY, ACTION AGAINST CYBER CRIME” FOR
-                  STAFF organized by SOUTH EASTERN COALFIELD LIMITED, BILASPUR,
-                  and Chhattisgarh.
-                </li>
-                <li>◙ 
-                  Workshop on “SAFE USE OF COMPUTER SCIENCE & CYBER CARE” for
-                  students organized by Madhya Pradesh Science & Technology.
-                </li>
-                <li>◙ 
-                  Workshop on “IPR [INTELECTUAL PROPERTY RIGHT]” for students
-                  organized by Madhya Pradesh Science & Technology.
-                </li>
-                <li>◙ 
-                  Workshop on “SEXUAL HARASSMENT OF WOMEN AT WORK PLACE,” FOR
-                  POLICE/NGO/WOMENS/ STAFF organized by MAHILA SASHKTIKARAN
-                  DEPARTMENT, MADHYA PRADESH.
-                </li>
-                <li>◙ 
-                  Workshop on “PROTECTION OF CHILDREN FROM SEXUAL OFFENCES ACT,
-                  2012 PROTECTION OF WOMEN FROM DOMESTIC VIOLENCE ACT, 2005” FOR
-                  POLICE/NGO/WOMENS/ STAFF organized by MAHILA SASHKTIKARAN
-                  DEPARTMENT, MADHYA PRADESH.
-                </li>
-                <li>◙ 
-                  Workshop on “UNDERSTANDING SAFE USE OF CYBERWORLD: CYBER
-                  SECURITY, CRIME & LAW” FOR POLICE/NGO/WOMENS/ STAFF organized
-                  by MAKHANLAL CHATURVEDI NATIONAL UNIVERSITY OF JOURNALISM &
-                  COMMUNICATION, BHOPAL, MADHYA PRADESH.
-                </li>
-                <li>◙ 
-                  Workshop on “IT Laws: its role in Secure Regulation of
-                  E-Governance” organized by E-Governance Society, Vidisha at
-                  Collector Office, Vidisha.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER AWARNESS: CYBER CRIME & ONLINE BANKING
-                  FRAUD, PROTECTION OF CHILDREN FROM CYBER CRIME, CYBER CRIME
-                  INVESTIGATION” FOR SCHOOL TEACHERS, POLICE, COMMON PEOPLE
-                  organized by ADITYA SEVA SANSTHAN, BILASPUR, CHHATTISGARH
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER AWARNESS: CYBER CRIME & ONLINE BANKING
-                  FRAUD, PROTECTION OF CHILDREN FROM CYBER CRIME,” for Teacher
-                  at Sanjivani Hospital, Bilaspur, organized by ADITYA SEVA
-                  SANSTHAN, BILASPUR, CHHATTISGARH.
-                </li>
-                <li>◙ 
-                  Workshop on “PREVENTION OF CYBER CRIME AND CONSUMER RIGHTS IN
-                  CYBER SPACE” organized by ADITYA UPBHOGTA SANRAKSHAN KALYAN
-                  SEVA SAMITI, Bhopal.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER AWARNESS,CYBER LAW,CYBER CRIME,FORENSIC
-                  &CARRIER OPPORTUNITIES” organized by SAM ,GROUP OF INSTITUTE
-                  RAISEN ROAD,BHOPAL, Bhopal.
-                </li>
-                <li>◙ 
-                  Workshop on “CHILD CARE: PROTECTION OF CHILDREN IN CYBERSPACE”
-                  for students organized by VINDHYA SHIKSHA PRACHAR SAMITI
-                  supported by Madhya Pradesh Science & Technology.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER SECURITY: DATA THEFT, DIGITAL SIGNATURE &
-                  CYBERCRIME” for students organized by VINDHYA SHIKSHA PRACHAR
-                  SAMITI supported by Madhya Pradesh Science & Technology.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER AWARENES, CYBER CRIME, CYBER LAW &
-                  SECURITY” for students organized by MITTAL INSTITUTE OF
-                  TECHNOLOGY, BHOPAL.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER LAW, CYBER CRIME & CHILD ABUSE” for Staff
-                  organized by Cyber Law Pioneers at Govt. S. V. POLYTECHNIC
-                  BHOPAL MP.
-                </li>
-                <li>◙ 
-                  Workshop on “SECURE IT: THROUGH ETHICAL HACKING AND CYBER LAW”
-                  for students organized by Cyber Law Pioneers at Apex bank,
-                  Samanvay Bhawan, BHOPAL, MP.
-                </li>
-                <li>◙ 
-                  Workshop on “CYBER CRIME & PROTECTION OF WOMEN &CHILDREN IN
-                  SOCIAL MEDIA” for Staff & students organized by Govt. Women’s
-                  Polytechnic, College, Bhopal.
-                </li>
-              </ul>
-            </div>
-            <div class="mb-4">
-              <h4 class="font-weight-bold" style="color: #4e5d6c">
-                3. Cyber Affairs
-              </h4>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                CYBER AFFAIRS is a Product of Cyber Law Pioneers. Cyber Law
-                Pioneers provides you a “Cyber Affairs” magazine with the best
-                knowledge and information about cyber space. It’s India’s first
-                magazine which covers legal aspect of all technical things. ADGP
-                and IG of state Cyber police praise this magazine and taking
-                support of CyberLawPioneers team in his work. The information
-                based on computer, internet, Hacking, online fraud, banking
-                fraud, E commerce issues, cyber security, cyber law and
-                cybercrime. Through this magazine we are trying to deliver
-                awareness among the people about the electronic/cyber world, how
-                the people can safe himself on the internet and know the
-                activities, disputes etc, of cyberspace. Magazine delivers the
-                updates like the current scenario, news, article, security
-                guidelines, cyber security tool (hardware and software tools).
-                We provide the complete information on the activities of
-                internet or cyberspace like internet banking disputes, credit
-                card fraud, cybercrime, mobile phone crime, IPR issues, domain
-                name disputes etc., with technical as well as legal aspect.
-              </p>
+          </div>
+    
+          <!-- Team Experts -->
+          <div class="col-md-3 col-sm-6">
+            <div class="stat-card p-4 rounded shadow text-center" style="background-color: rgba(81, 81, 82, 0.575);">
+              <div class="stat-icon mb-3">
+                <!-- ChatGPT-style team -->
+                <svg width="50" height="50" fill="none" stroke="#dc3545" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="6" r="3"/>
+                  <circle cx="6" cy="18" r="3"/>
+                  <circle cx="18" cy="18" r="3"/>
+                  <path d="M12 9v6"/>
+                  <path d="M6 15v-2c0-1.1.9-2 2-2h2"/>
+                  <path d="M18 15v-2c0-1.1-.9-2-2-2h-2"/>
+                </svg>
+              </div>
+              <h3 class="stat-value text-danger">{{ expertsCount }}+</h3>
+              <p class="mb-0">Experts Teams</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <div class="container">
 
-  <!-- <p class="font-w-6">
-              Cyber Law Pioneers PVT LTD is the registered company under the
-              company act , 2013 is working and providing the service in the
-              field of cyber education, Cyber Law, IPR & Cyber security
-              solutions, training, awareness and Techno-legal consultancy.We do
-              IT Act, 2000 Compliance for organizations and websites. We draft
-              national & international notices, agreements, contracts, covenants
-              (CLP) a group of experts who Provides proper guidance to handle
-              cybercrime, Intellectual Property Rights issues, E-contract
-              disputes, online frauds, e-banking issues, e-commerce, and other
-              Crime happening in digital world. We provide assistance with any
-              possible civil disputes or criminal cases arising due to the
-              stated crimes too. Our group is composed Of expert software
-              developers, network engineers, hardware engineers, cyber security
-              professionals and cyber law professionals.
-            </p>
-            <p>
-              Cyber Law Pioneers assists you with all type of remedies available
-              in the world of cybercrime(criminal, civil & administrative). We
-              provide a systematic approach in a disciplined manner to fight
-              back the reported cybercrime, this may include, lodging a
-              complaint, mining admissible E-evidences, forensic assistance,
-              pre-court procedure assistance, legal writing for prosecution &
-              vice versa and an all-time intellectual support for further
-              proceedings. The main aim of Cyber Law Pioneers is to create
-              awareness about cybercrime, in the mind of people. Because mostly
-              cybercrime happened due to lack of awareness and the victim of
-              cybercrime not know that how to face cybercrime.
-            </p>
-            <p>
-              The Cyber Law Pioneers is able to help the Police to handle the
-              cybercrime and electronic evidence. All the member of CL Pioneers
-              is well qualified and certified in techno-legal field. Members are
-              able to provide expert opinion..
-            </p> -->
-  <app-landing-footer></app-landing-footer>
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-cogs me-2"></i>Comprehensive Service Overview</h2>
+      <ul class="list-styled">
+        <li><h4>Cybersecurity Consultation</h4>We provide a wide range of cybersecurity services designed to protect your digital assets, including security audits, risk assessments, and tailored cybersecurity strategies.</li><br>
+        <li><h4>Cyber Law Consultation</h4>We offer specialized legal guidance to help businesses comply with data protection laws, cyber regulations, intellectual property protections, and more.</li> <br>
+        <li><h4>Data Recovery Services</h4>Our data recovery services ensure that your critical business information is restored quickly and securely after a cyber attack or system failure.</li><br>
+        <li><h4>Data Wipe Service</h4>We provide secure data wiping services to help your organization dispose of outdated equipment or data, ensuring that sensitive information cannot be retrieved or misused. </li><br>
+        <li><h4>Network Security Services</h4>With advanced solutions like Sophos Firewall and Antivirus Implementation, we offer comprehensive network security strategies to protect your systems from external and internal threats.</li><br>
+        <li><h4>Cybersecurity Certification Programs</h4>We offer cybersecurity certification programs designed to enhance the skills of your IT staff, ensuring they are up to date on the latest security best practices and technologies.</li><br>
+        <li><h4>Training Programs for Government Organizations</h4>Our specialized training programs are tailored for government agencies to help them improve their cybersecurity posture and understand cyber laws in a regulatory framework.</li><br>
+      </ul>
+    </section>
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Why Choose Us?</h2>
+      <ul class="list-styled">
+        <li><h4>End-to-End Protection </h4>We offer a complete suite of cybersecurity services that ensure your organization is protected from cyber threats at every level—from your network to your data storage.</li><br>
+        <li><h4>Expert Team</h4>Our team of certified cybersecurity professionals and cyber law consultants bring years of experience in both technology and legal fields, ensuring top-tier protection and compliance. </li> <br>
+        <li><h4>Data Recovery Services</h4>Our data recovery services ensure that your critical business information is restored quickly and securely after a cyber attack or system failure.</li><br>
+        <li><h4>Cutting-Edge Solutions</h4>We implement state-of-the-art solutions like Sophos Firewall and Antivirus programs, and our data recovery techniques are aligned with industry best practices.</li><br>
+        <li><h4>Tailored Approach</h4>We don’t believe in one-size-fits-all solutions. Our services are customized to meet the unique security and legal needs of your organization.</li><br>
+      </ul>
+    </section>
+
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Detailed Service Descriptions</h2>
+      <ul class="list-styled">
+        <li><h4>Data Recovery Services</h4>In the event of a data loss due to a breach, system failure, or human error, our experienced recovery team helps you restore critical business data swiftly and securely, minimizing downtime</li><br>
+        <li><h4>Data Wipe Services: </h4>When it's time to dispose of old hardware or secure sensitive information, our certified data wiping service ensures that data is completely destroyed, meeting or exceeding industry standards for data protection.</li> <br>
+        <li><h4>Network Security (Sophos Firewall & Antivirus Implementation):</h4>We offer comprehensive network security setups using Sophos Firewall and Sophos Antivirus, designed to protect your organization from malicious attacks and unauthorized access while maintaining smooth business operations</li><br>
+        <li><h4>Cybersecurity Certification Program:</h4>Our Cybersecurity Certification Program equips IT professionals with the necessary skills and certifications to tackle the challenges of modern cybersecurity, improving your team’s ability to respond to threats effectively.</li><br>
+        <li><h4>Training Programs for Government Organizations:</h4>Tailored specifically for government agencies, our Cybersecurity and Cyber Law Training Programs provide the knowledge and tools necessary to combat cyber threats while ensuring adherence to national and international legal frameworks.</li><br>
+      </ul>
+    </section>  
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Expert Team</h2>
+      <ul class="list-styled">
+        <li><h4>Credentials:</h4>Our team consists of highly qualified professionals holding leading cybersecurity and legal certifications.</li><br>
+        <li><h4>Team Experience:</h4>With decades of collective experience in the cybersecurity and legal industries, our experts are committed to staying ahead of emerging threats and evolving regulations.</li> <br>
+      </ul>
+    </section>  
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Industry Recognition & Certifications</h2>
+      <ul class="list-styled">
+        <li><h4>Partnerships</h4>We are certified by leading cybersecurity organizations and partners like Sophos & Stellar, ensuring our solutions are aligned with global standards.</li><br>
+        <li><h4>Industry Certifications: Certified Expertise: </h4>We are proud to offer a variety of certifications in association with prominent organizations such as NASSCOM, DSCI, MPSOS, CEDMAP, and MPCON. These partnerships enable us to provide globally recognized certifications that enhance the skills and knowledge of professionals in the cybersecurity and cyber law domains.</li> <br>
+        <li><h4>Recognized Thought Leaders: </h4>Our consultants are frequently featured in industry conferences, webinars, and publications, sharing insights into emerging cybersecurity trends and regulatory developments.</li><br>
+      </ul>
+    </section>  
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Commitment to Privacy and Security</h2>
+      <ul class="list-styled">
+        <li><h4>Data Confidentiality</h4>We understand the importance of privacy and confidentiality. Our consultation services and solutions are designed to prioritize your data protection and comply with all relevant legal frameworks.</li><br>
+        <li><h4>Security First: </h4>"We practice what we preach—using the same robust cybersecurity measures we recommend to ensure your organization's security.</li> <br>
+      </ul>
+    </section>  
+
+    <section class="section" data-aos="fade-left">
+      <h2 class="section-title"><i class="fas fa-users me-2"></i>Thought Leadership & Education</h2>
+      <ul class="list-styled">
+        <li><h4>Cybersecurity Blog & Resources: </h4>Stay up to date with the latest in cybersecurity and cyber law through our regularly updated blog, webinars, and educational resources.</li><br>
+        <li><h4>Ongoing Education: </h4>We are committed to helping you stay informed about the latest threats, technologies, and regulations through our ongoing education programs and industry insights.</li> <br>
+      </ul>
+    </section>  
+    
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
+<app-landing-footer></app-landing-footer>
 </div>

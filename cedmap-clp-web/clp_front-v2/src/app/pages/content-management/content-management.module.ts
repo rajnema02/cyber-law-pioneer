@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContentManagementRoutingModule } from './content-management-routing.module';
-import { TeamDetailListComponent } from './team-detail-list/team-detail-list.component';
 import { CreateTeamDetailComponent } from './create-team-detail/create-team-detail.component';
 import { ServicesOfferListComponent } from './services-offer-list/services-offer-list.component';
 // import { CreateServicesOfferComponent } from './create-services-offer/create-services-offer.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 import { CreateBannerComponent } from './create-banner/create-banner.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateServicesOfferComponent } from './create-services-offer/create-services-offer.component';
 import { CreateOurPracticeComponent } from './our-practice/create-our-practice/create-our-practice.component';
 import { OurPracticeListComponent } from './our-practice/our-practice-list/our-practice-list.component';
@@ -28,6 +27,14 @@ import { ServiceDetailsListComponent } from './service-details/service-details-l
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { UpdateServiceDetailsComponent } from './service-details/update-service-details/update-service-details.component';
 import { UpdateOurPartnerComponent } from './our-partner/update-our-partner/update-our-partner.component';
+import { ServiceOfferListCourseComponent } from './service-offer-list-course/service-offer-list-course.component';
+import { CreateServiceOfferCourseComponent } from './create-service-offer-course/create-service-offer-course.component';
+import { TeamDetailListComponent } from './team-detail-list/team-detail-list.component';
+import { RouterModule } from '@angular/router';
+import { CreatePartnerServiceProjectComponent } from './partner-service-project/create-partner-service-project/create-partner-service-project.component';
+import { ListPartnerServiceProjectComponent } from './partner-service-project/list-partner-service-project/list-partner-service-project.component';
+import { ListPartnerServiceDescProjectComponent } from './partner-service-desc-project/list-partner-service-desc-project/list-partner-service-desc-project.component';
+import { CreatePartnerServiceDescProjectComponent } from './partner-service-desc-project/create-partner-service-desc-project/create-partner-service-desc-project.component';
 
 @NgModule({
   declarations: [
@@ -54,12 +61,20 @@ import { UpdateOurPartnerComponent } from './our-partner/update-our-partner/upda
     UpdateOurPartnerComponent,
     CreateServiceDetailsComponent,
     ServiceDetailsListComponent,
-    ContactListComponent
+    ContactListComponent,
+    ServiceOfferListCourseComponent,
+    CreateServiceOfferCourseComponent,
+    CreatePartnerServiceProjectComponent,
+    ListPartnerServiceProjectComponent,
+    ListPartnerServiceDescProjectComponent,
+    CreatePartnerServiceDescProjectComponent
   ],
   imports: [
     CommonModule,
     ContentManagementRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class ContentManagementModule { }

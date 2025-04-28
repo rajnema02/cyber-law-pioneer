@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ServicesOffersSchema = new mongoose.Schema({
+const ServicesOffersCoursesSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -53,6 +53,6 @@ const ServicesOffersSchema = new mongoose.Schema({
     }
 });
 
-const ServicesOffers = mongoose.model('ServicesOffers', ServicesOffersSchema);
+const ServicesOffersCourses = mongoose.model('ServicesOffers', ServicesOffersCoursesSchema);
 
-module.exports = ServicesOffers;
+module.exports = ServicesOffersCourses;

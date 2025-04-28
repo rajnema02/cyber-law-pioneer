@@ -24,6 +24,13 @@ import { CreateServiceDetailsComponent } from './service-details/create-service-
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { UpdateServiceDetailsComponent } from './service-details/update-service-details/update-service-details.component';
 import { UpdateOurPartnerComponent } from './our-partner/update-our-partner/update-our-partner.component';
+import { CreateServiceOfferCourseComponent } from './create-service-offer-course/create-service-offer-course.component';
+import { ServiceOfferListCourseComponent } from './service-offer-list-course/service-offer-list-course.component';
+import { CreatePartnerServiceProjectComponent } from './partner-service-project/create-partner-service-project/create-partner-service-project.component';
+import { ListPartnerServiceProjectComponent } from './partner-service-project/list-partner-service-project/list-partner-service-project.component';
+import { CreatePartnerServiceDescProjectComponent } from './partner-service-desc-project/create-partner-service-desc-project/create-partner-service-desc-project.component';
+import { ListPartnerServiceDescProjectComponent } from './partner-service-desc-project/list-partner-service-desc-project/list-partner-service-desc-project.component';
+
 
 const routes: Routes = [
   {
@@ -41,6 +48,14 @@ const routes: Routes = [
   {
     path: 'create-service-offers',
     component: CreateServicesOfferComponent
+  },
+  {
+    path: 'service-offers-course',
+    component: ServiceOfferListCourseComponent
+  },
+  {
+    path: 'create-service-course-offers',
+    component: CreateServiceOfferCourseComponent
   },
   {
     path: 'create-banner',
@@ -65,6 +80,22 @@ const routes: Routes = [
   {
     path: 'partner-list',
     component: OurPartnerListComponent
+  },
+  {
+    path: 'create-partner-service',
+    component: CreatePartnerServiceProjectComponent
+  },
+  {
+    path: 'partner-service-list',
+    component: ListPartnerServiceProjectComponent
+  },
+  {
+    path: 'create-partner-service-desc',
+    component: CreatePartnerServiceDescProjectComponent
+  },
+  {
+    path: 'partner-service-desc-list',
+    component: ListPartnerServiceDescProjectComponent
   },
   {
     path: 'update-partner/:id',

@@ -1,33 +1,175 @@
-.custom-carousel {
-  height: 400px; /* Set this to your desired fixed height */
+
+
+
+.white-bg1 {
+
+  background-color: #fff;
+}
+/* === Carousel Section === */
+
+.carousel-wrapper {
+  position: relative;
 }
 
-.custom-carousel img {
-  object-fit: cover;
-  height: 100%;
+.project-slide-row {
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.project-box {
+  position: relative;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 160px;
+  max-width: 23%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.project-box:hover {
+  transform: scale(1.03);
+}
+
+.project-img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.custom-carousel {
-  /* Add any custom styles for your carousel here */
+.project-title {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-.custom-carousel .item {
-  /* Ensure proper styling for items */
+/* Carousel Navigation Arrows */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.custom-carousel .testimonial-img img {
-  /* Make sure the images are styled correctly */
-  max-width: 100px; /* Adjust size as needed */
-  margin: 0 auto;
+.carousel-nav.left {
+  left: 10px;
 }
 
-.card-practice {
-  border: 1px dashed;
-  border-color: #f35353;
-  height: 165px;
-  //   border-style: dashed;
+.carousel-nav.right {
+  right: 10px;
 }
+
+.carousel-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive tweak */
+@media (max-width: 992px) {
+  .project-box {
+    max-width: 48%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-box {
+    max-width: 100%;
+  }
+}
+
+
+
+/* === Right-Side Thumbnail Section === */
+.right-projects {
+  width: 100%;
+  max-width: 340px;
+  flex-shrink: 0;
+  gap: 13px;
+}
+
+.project-box1 {
+  position: relative;
+  border-radius: 1px;
+  overflow: hidden;
+  height: 160px;
+ 
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.project-box:hover {
+  transform: scale(1.03);
+}
+
+.project-img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.project-title {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+
+.project-slide-row {
+  gap: 1rem;
+}
+
+.project-card {
+  width: 100%;
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.project-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+/* Fixing layout inside carousel */
+ngb-carousel .carousel-inner {
+  display: flex;
+  align-items: center;
+}
+
 
 .featured-icon {
   display: flex;
@@ -71,12 +213,12 @@
   color: #ffffff;
 }
 .btn {
-  background: none;
-  padding: 16px 35px;
-  overflow: hidden;
-  border-radius: 0;
+  // background: none;
+  padding: 16px 25px;
+  // overflow: hidden;
+  // border-radius: 0;
   position: relative;
-  position: relative;
+  // position: relative;
   display: inline-block;
   cursor: pointer;
   outline: none;
@@ -84,6 +226,8 @@
   vertical-align: middle;
   text-decoration: none;
   font-weight: 700;
+  color: white;
+  font-size: 15px;
 }
 .nav-logo {
   height: 60px;
@@ -92,4 +236,31 @@
 .bg-fullnav {
   background-color: #0d0f33;
   position: fixed;
+}
+
+//client carousel
+.client-logo {
+  max-height: 100px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 15px;
+}
+
+.carousel-indicators {
+  bottom: -50px;
+}
+
+.carousel-indicators button {
+  background-color: #888;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.carousel-indicators .active {
+  background-color: #333;
+}
+
+.client-section {
+  padding-bottom: 60px;
 }

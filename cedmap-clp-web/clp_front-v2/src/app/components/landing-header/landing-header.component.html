@@ -1,196 +1,80 @@
-<header id="site-header" class="header">
-  <div class="container-fluid p-0">
-    <div class="row no-gutters">
-      <!-- <div class="col-lg-auto col-12 d-lg-block d-none">
-            <a
-              class="navbar-brand logo text-black white-bg px-4 h-100"
-              href="index.html"
-            >
-              <img src="../../../../assets/img/logo-home.png"
-            /></a>
-          </div> -->
-      <!-- Navbar -->
-      <div class="col-lg col-12">
-        <!-- <div class="header-top bg-danger d-flex align-items-center">
-              <div
-                class="topbar-link d-none d-sm-flex align-items-center justify-content-between"
-              >
-                <ul class="list-inline">
-                  <li>
-                    <i class="las la-phone text-theme2"></i> +91735433333 |
-                    +917869115912
-                  </li>
-                </ul>
-              </div>
-              <div class="social-icons d-none d-md-inline-block">
-                <ul class="list-inline">
-                  <li>
-                    <a
-                      target="_blank"
-                      href="https://m.facebook.com/CyberLawPioneers/"
-                      ><i class="lab la-facebook-f"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#"
-                      ><i class="fab fa-dribbble"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#"
-                      ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-            </div> -->
-        <div id="header-wrap">
-          <nav class="navbar w-100 navbar-expand-lg bg-fullnav">
-            <!-- <a
-                  class="navbar-brand logo text-black white-bg px-4 h-100 logo-sticky"
-                  href="index.html"
-                >
-                  <img src="../../../../assets/img/logo-home.png" />
-                </a>
+<style>
+  .nav-link-custom {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
 
-                <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarNavDropdown"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button> -->
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <!-- Home -->
-                <img
-                  class="nav-logo"
-                  src="/assets/img/logo-home.png"
-                />
-                <li class="nav-item">
-                  <a class="nav-link active" routerLink="/home">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                    >About Us</a
-                  >
-                  <ul class="dropdown-menu">
-                    <li><a routerLink="/about-us">About us</a></li>
-                    <!-- <li><a href="#">News & Updates</a></li>
-                      <li>
-                        <a href="directors.html">Directors</a>
-                      </li> -->
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/program">Cyber security programs</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="/content/service-offers">Our Programs</a>
-                  <a href="landing-header.component.html">new</a>
-                </li> -->
-                
-                <!-- <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    routerLink="/services"
-                    data-toggle="dropdown"
-                    >Services</a
-                  >
-                  <ul class="dropdown-menu">
-                    <li class="dropdown">
-                      <a routerLink="/services"> Services </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#"> Cyeber Law Consultancy </a>
-                      </li>
-                    <li class="dropdown dropdown-submenu">
-                            <a
-                              href="#"
-                              class="dropdown-toggle"
-                              data-toggle="dropdown"
-                            >
-                              Awareness Programme
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Workshop / Seminars</a></li>
-                            </ul>
-                          </li>
-                  </ul>
-                </li> -->
-                <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="/login">Login</a>
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/register">Registration</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/courses">Our Partners</a>
-                </li>
-                <!-- <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    routerLink="/courses"
-                    data-toggle="dropdown"
-                    >Courses</a
-                  >
-                  <ul class="dropdown-menu">
-                    
-                    <li>
-                      <a href="/assets/docs/CLP-Course-list.pdf"  target="_blank">Certification Courses</a>
-                    </li>
-                  </ul>
-                </li> -->
-               
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/services">Our Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/contact">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <!-- <div
-                  class="right-nav align-items-center d-md-flex justify-content-end d-none"
-                >
-                  <div
-                    class="d-xl-flex d-none align-items-center header-call mr-2"
-                  >
-                    <a
-                      class="text-white font-w-7 red"
-                      href="https://mpced.mpconsultancy.org/"
-                      target="_blank"
-                    >
-                      MPCON CYBER <br />
-                      EXCELLANCE DEVISION
-                      <span class="las la-long-arrow-alt-right"></span
-                    ></a>
-                  </div>
-                  <a
-                    target="_blank"
-                    class="btn-theme d-md-inline-block d-none"
-                    href="https://mpced.mpconsultancy.org/"
-                    ><img
-                      src="../../../../assets/img/logompcon.png"
-                      class="mplogo"
-                  /></a>
-                </div> -->
-          </nav>
+  .nav-link-custom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(204, 0, 51, 0.6), rgba(33, 76, 150, 0.6));
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link-custom:hover::after,
+  .nav-link-custom.active::after {
+    width: 100%;
+  }
+
+  .nav-link-custom.active {
+    color: rgb(33, 75, 150); /* Optional: color tweak for active */
+  }
+</style>
+
+
+<header style="background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 0.4rem 0;">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <!-- Logo and Tagline -->
+    <div class="d-flex align-items-center">
+      <img src="/assets/img/logo-home.png" alt="Logo" style="height: 85px; width: 200px; margin-right: 10px;" />
+      <div style="padding: 0.5rem 0; text-align: left;">
+        <div style="font-size: 20px; font-weight: bold;
+                    background: linear-gradient(to right, rgb(204, 0, 51), rgb(33, 75, 150));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;">
+          10 Years
+        </div>
+        <div style="font-size: 16px; color: rgb(119, 119, 119);">
+          of Experience
         </div>
       </div>
     </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom active" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/about-us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/program">Cyber Security Programs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/register">Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/courses">Our Partners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/services">Our Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/contact">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
   </div>
 </header>

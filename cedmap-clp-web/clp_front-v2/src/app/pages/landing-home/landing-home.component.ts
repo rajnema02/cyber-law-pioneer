@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ["./landing-home.component.scss", "./base.css"],
 })
 export class LandingHomeComponent implements OnInit {
+
+  
   latestUpdateList:any
   teamList: any;
   runningProjectList:any

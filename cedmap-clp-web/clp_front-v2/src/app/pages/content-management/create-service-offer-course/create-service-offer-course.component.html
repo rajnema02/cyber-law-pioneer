@@ -1,0 +1,125 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card card-profil shadow">
+        <div class="card-body">
+          <h3 class="mb-0">Create Cyber Security Course</h3>
+          <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+            <div class="row">
+              <div class="col-xl-12 order-xl-1">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-name">Name*</label>
+                        <div class="hh">
+                          <input ngModel required name="name" class="form-control form-control-alternative" type="text"
+                            placeholder="Enter course name" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-service">Service*</label>
+                        <select ngModel required name="service" class="form-control form-control-alternative" id="input-service" (change)="onServiceChange($event)">
+                          <option value="">Select Service</option>
+                          <option value="Training Program for govt. organization">Training Program for govt. organization</option>
+                          <option value="Certification Courses">Certification Courses</option>
+                          <option value="Internship & Industrial Training">Internship & Industrial Training</option>  
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-program">Program*</label>
+                        <select ngModel required name="program" class="form-control form-control-alternative" id="input-program">
+                          <option value="">Select Program</option>
+                          <option *ngFor="let program of programs" [value]="program.name">{{ program.name }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-googleForm">Google Form Link</label>
+                        <input ngModel name="googleFormLink" class="form-control form-control-alternative" 
+                          type="text" id="input-googleForm" placeholder="https://docs.google.com/forms/..." />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Description*</label>
+                        <textarea ngModel required name="description" rows="3" class="form-control form-control-alternative"
+                          placeholder="Enter course description"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-pdf">Upload PDF</label>
+                        <input type="file" id="pdf" class="form-control" (change)="onPdfSelected($event)" accept=".pdf">
+                        <small *ngIf="file_link" class="text-success">PDF uploaded successfully</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="image" class="form-label">Main Image*</label>
+                        <input type="file" id="image" class="form-control" (change)="onImageSelected($event)" accept="image/*">
+                        <small *ngIf="img_link" class="text-success">Main image uploaded</small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-youtubeLink">YouTube Video Link</label>
+                        <input ngModel name="youtubeLink" class="form-control form-control-alternative"
+                          type="text" id="input-youtubeLink" placeholder="https://www.youtube.com/watch?v=..." />
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <!-- <div class="row"> -->
+                    <!-- <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="image2" class="form-label">Additional Image 2</label>
+                        <input type="file" id="image2" class="form-control" (change)="onImageSelected2($event)" accept="image/*">
+                        <small *ngIf="img_link2" class="text-success">Image 2 uploaded</small>
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="image3" class="form-label">Additional Image 3</label>
+                        <input type="file" id="image3" class="form-control" (change)="onImageSelected3($event)" accept="image/*">
+                        <small *ngIf="img_link3" class="text-success">Image 3 uploaded</small>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="row justify-content-center" style="padding-top: 100px">
+                    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+                      <span *ngIf="!isLoading">Create Course</span>
+                      <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <span *ngIf="isLoading"> Creating...</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

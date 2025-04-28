@@ -9,8 +9,6 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
-
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { MatStepperModule } from "@angular/material/stepper";
@@ -49,27 +47,42 @@ import { LandingProjectComponent } from './pages/landing-project/landing-project
 import { LandingServiceDetailComponent } from './pages/landing-service-detail/landing-service-detail.component';
 import { UpdateServiceDetailsComponent } from './pages/content-management/service-details/update-service-details/update-service-details.component';
 import { UpdateOurPartnerComponent } from './pages/content-management/our-partner/update-our-partner/update-our-partner.component';
-// import { LandingPartnersComponent } from './pages/landing-partners/landing-partners.component';
-// import { CenterRegistrationComponent } from "./pages/center-registration/center-registration.component";
+import { LandingProgramsCourseDescriptionComponent } from './pages/landing-programs-course-description/landing-programs-course-description.component';
 
-
-
-// import { DefaultLayoutComponent } from './layouts/default-layout/default-layout/default-layout.component';
+// Content Management Components
+import { TeamDetailListComponent } from './pages/content-management/team-detail-list/team-detail-list.component';
+import { BannerListComponent } from './pages/content-management/banner-list/banner-list.component';
+import { CreateBannerComponent } from './pages/content-management/create-banner/create-banner.component';
+import { CreateServicesOfferComponent } from './pages/content-management/create-services-offer/create-services-offer.component';
+import { CreateTeamDetailComponent } from './pages/content-management/create-team-detail/create-team-detail.component';
+import { CreateLatestUpdatesComponent } from './pages/content-management/latest-updates/create-latest-updates/create-latest-updates.component';
+import { LatestUpdatesListComponent } from './pages/content-management/latest-updates/latest-updates-list/latest-updates-list.component';
+import { CreateOurPartnerComponent } from './pages/content-management/our-partner/create-our-partner/create-our-partner.component';
+import { OurPartnerListComponent } from './pages/content-management/our-partner/our-partner-list/our-partner-list.component';
+import { CreateOurPracticeComponent } from './pages/content-management/our-practice/create-our-practice/create-our-practice.component';
+import { OurPracticeListComponent } from './pages/content-management/our-practice/our-practice-list/our-practice-list.component';
+import { CreatePartnerProjectComponent } from './pages/content-management/partner-project/create-partner-project/create-partner-project.component';
+import { PartnerProjectListComponent } from './pages/content-management/partner-project/partner-project-list/partner-project-list.component';
+import { CreateRunningProjectComponent } from './pages/content-management/running-projects/create-running-project/create-running-project.component';
+import { RunningProjectListComponent } from './pages/content-management/running-projects/running-project-list/running-project-list.component';
+import { CreateServiceDetailsComponent } from './pages/content-management/service-details/create-service-details/create-service-details.component';
+import { ServiceDetailsListComponent } from './pages/content-management/service-details/service-details-list/service-details-list.component';
+import { CreateServicesHomeComponent } from './pages/content-management/services-home/create-services-home/create-services-home.component';
+import { ServicesHomeListComponent } from './pages/content-management/services-home/services-home-list/services-home-list.component';
+import { ServicesOfferListComponent } from './pages/content-management/services-offer-list/services-offer-list.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
     AppRoutingModule,
     MatStepperModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     NgxPaginationModule,
     CKEditorModule,
@@ -108,7 +121,30 @@ import { UpdateOurPartnerComponent } from './pages/content-management/our-partne
     LatestUpdatesHomeComponent,
     LandingProjectComponent,
     LandingServiceDetailComponent,
-    UpdateServiceDetailsComponent
+    UpdateServiceDetailsComponent,
+    // UpdateOurPartnerComponent,
+    LandingProgramsCourseDescriptionComponent,
+    
+    // Content Management Components
+    // BannerListComponent,
+    // CreateBannerComponent,
+    // CreateServicesOfferComponent,
+    // CreateTeamDetailComponent,
+    // CreateLatestUpdatesComponent,
+    // LatestUpdatesListComponent,
+    // CreateOurPartnerComponent,
+    // OurPartnerListComponent,
+    // CreateOurPracticeComponent,
+    // OurPracticeListComponent,
+    // CreatePartnerProjectComponent,
+    // PartnerProjectListComponent,
+    // CreateRunningProjectComponent,
+    // RunningProjectListComponent,
+    // CreateServiceDetailsComponent,
+    // ServiceDetailsListComponent,
+    // CreateServicesHomeComponent,
+    // ServicesHomeListComponent,
+    // ServicesOfferListComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

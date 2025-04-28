@@ -183,6 +183,11 @@ export const AdminROUTES: RouteInfo[] = [
         icon: "ni-tv-2  ",
       },
       {
+        path: "/content/service-offers-course",
+        title: "Cyber security programs course",
+        icon: "ni-tv-2  ",
+      },
+      {
         path: "/content/banner-list",
         title: "Banner",
         icon: "ni-tv-2  ",
@@ -190,6 +195,16 @@ export const AdminROUTES: RouteInfo[] = [
       {
         path: "/content/partner-list",
         title: "Our Partner",
+        icon: "ni-tv-2  ",
+      },
+      {
+        path: "/content/partner-service-list",
+        title: "Partner Service",
+        icon: "ni-tv-2  ",
+      },
+      {
+        path: "/content/partner-service-desc-list",
+        title: "Partner Service Description",
         icon: "ni-tv-2  ",
       },
       {
