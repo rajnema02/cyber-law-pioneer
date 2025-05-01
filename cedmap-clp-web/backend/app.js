@@ -1,40 +1,38 @@
 const express = require('express')
 const morgan = require('morgan')
-require('dotenv').config()
-require('./Helpers/init_mongodb')
-// require('./Helpers/init_db_data')
-// require('./Helpers/init_cron')
+const mongoose = require('mongoose')
 const cors = require('cors')
 const debug = require('debug')(process.env.DEBUG + 'server')
 const path = require('path')
 const compression = require('compression')
 const createError = require('http-errors')
-const XLSX = require('xlsx');
+require('dotenv').config()
 
+// Set Mongoose strictQuery to suppress warning
+mongoose.set('strictQuery', true)
+
+// Connect to MongoDB
+require('./Helpers/init_mongodb')
 
 const app = express()
-const router = express.Router()
 
-if (process.env.ENV == 'development') {
+if (process.env.ENV === 'development') {
   app.use(morgan('dev'))
 }
+
 app.use(cors())
 app.use(compression({ filter: shouldCompress }))
-
-function shouldCompress(req, res) {
-  if (req.headers['x-no-compression']) {
-    // don't compress responses with this request header
-    return false
-  }
-
-  // fallback to standard filter function
-  return compression.filter(req, res)
-}
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// API Routes Start ------
+function shouldCompress(req, res) {
+  if (req.headers['x-no-compression']) {
+    return false
+  }
+  return compression.filter(req, res)
+}
+
+// Routes
 app.use('/auth', require('./Routes/Auth.route'))
 app.use('/user', require('./Routes/User.route'))
 app.use('/file', require('./Routes/File.route'))
@@ -74,43 +72,33 @@ app.use('/partnerService', require('./Routes/PartnerService.route'))
 app.use('/partnerServiceDesc', require('./Routes/PartnerServiceDesc.route'))
 app.use('/practice', require('./Routes/Practice.route'))
 app.use('/service', require('./Routes/Services.route'))
+app.use('/serviceProject', require('./Routes/ServiceProject.route'))
+app.use('/serviceProjectDesc', require('./Routes/ServiceProjectDesc.route'))
 app.use('/runningProjects', require('./Routes/RunningProjects.route'))
 app.use('/latestUpdate', require('./Routes/LatestUpdates.route'))
 app.use('/project', require('./Routes/Project.route'))
 app.use('/servicedetail', require('./Routes/ServiceDetails.route'))
 app.use('/contact', require('./Routes/Contact.route'))
-// API Routes End --------
-// API Routes End --------
 
-
-
-
+// View engine and static files
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-
-
-// app.use(express.static(path.join(__dirname, 'public/test/dist')))
 app.use(express.static(path.join(__dirname, 'public/dist')))
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = process.env.ENV === 'development' ? err : {};
+// Catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError.NotFound())
+})
 
-  // render the error page
-  res.status(err.status || 500);
-  res.send({
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err)
+  res.status(err.status || 500).json({
     error: {
       status: err.status || 500,
       message: err.message,
     },
   })
-})
-
-app.use(async (err, req, res, next) => {
-  console.log(err);
-  next(createError.NotFound(err))
 })
 
 const PORT = process.env.PORT || 3051

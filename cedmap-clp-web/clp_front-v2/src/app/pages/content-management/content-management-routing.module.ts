@@ -30,6 +30,10 @@ import { CreatePartnerServiceProjectComponent } from './partner-service-project/
 import { ListPartnerServiceProjectComponent } from './partner-service-project/list-partner-service-project/list-partner-service-project.component';
 import { CreatePartnerServiceDescProjectComponent } from './partner-service-desc-project/create-partner-service-desc-project/create-partner-service-desc-project.component';
 import { ListPartnerServiceDescProjectComponent } from './partner-service-desc-project/list-partner-service-desc-project/list-partner-service-desc-project.component';
+import { ListServiceHomeProjectComponent } from './services-home-project/list-service-home-project/list-service-home-project.component';
+import { CreateServiceHomeProjectComponent } from './services-home-project/create-service-home-project/create-service-home-project.component';
+import { ListServiceHomeProjectDescComponent } from './service-home-project-desc/list-service-home-project-desc/list-service-home-project-desc.component';
+import { CreateServiceHomeProjectDescComponent } from './service-home-project-desc/create-service-home-project-desc/create-service-home-project-desc.component';
 
 
 const routes: Routes = [
@@ -112,6 +116,22 @@ const routes: Routes = [
   {
     path: 'create-service',
     component: CreateServicesHomeComponent
+  },
+  {
+    path: 'service-project-list',
+    component: ListServiceHomeProjectComponent
+  },
+  {
+    path: 'create-service-project',
+    component: CreateServiceHomeProjectComponent
+  },
+  {
+    path: 'service-project-desc-list',
+    component: ListServiceHomeProjectDescComponent
+  },
+  {
+    path: 'create-service-project-desc',
+    component: CreateServiceHomeProjectDescComponent
   },
   {
     path: 'create-running-project',

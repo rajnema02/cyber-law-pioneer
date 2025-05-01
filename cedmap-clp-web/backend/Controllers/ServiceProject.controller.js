@@ -1,14 +1,14 @@
 const Model = require('../Models/ServiceProject.model')
 const createError = require('http-errors')
 const mongoose = require('mongoose')
-const ModelName = 'ServicesProject'
+const ModelName = 'ServicesPoject'
 const { upload } = require('../Helpers/helper_functions')
 
 module.exports = {
     create : async (req, res, next) => {
     try {
         upload(req, res, async (err) => {
-            if (err) {
+            if (err) { 
                 return res.status(501).json({ error: err });
             }
 
@@ -105,17 +105,33 @@ module.exports = {
             next(error)
         }
     },
+    // getById: async (req, res, next) => {
+    //     try {
+    //         const { id } = req.params;
+    //         if (!mongoose.Types.ObjectId.isValid(id)) {
+    //             throw createError.BadRequest('Invalid ID');
+    //         }
+    //         const result = await Model.findById(id);
+    //         if (!result) {
+    //             throw createError.NotFound(`${ModelName} not found`);
+    //         }
+    //         res.json(result);
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
 
     getById: async (req, res, next) => {
         try {
             const { id } = req.params;
-    
             if (!id || !mongoose.Types.ObjectId.isValid(id)) {
                 return res.status(400).json({ error: "Invalid ID provided" });
             }
     
-            // Populate the associated service details using the correct field name
-            const result = await Model.findById(id).populate('serviceId');
+            // Populate both partner and partnerService fields
+            const result = await Model.findById(id)
+                .populate('serviceId').exec() // replace with the actual field name
+                // .populate('serviceProjectId'); // replace with the actual field name
     
             if (!result) {
                 return res.status(404).json({ error: "Service-Project not found" });

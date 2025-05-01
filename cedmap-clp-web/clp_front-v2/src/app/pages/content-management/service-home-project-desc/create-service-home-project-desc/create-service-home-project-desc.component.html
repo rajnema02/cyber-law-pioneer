@@ -1,0 +1,67 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="mb-4">Create Service Home Description</h3>
+            <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Project Name</label>
+                    <input ngModel required name="name" class="form-control" placeholder="Enter name" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea ngModel required name="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <ng-container *ngFor="let i of [0,1,2,3]; let idx = index">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Upload Image {{ idx + 1 }}</label>
+                      <input type="file" class="form-control" (change)="handleImageUpload($event, idx)" />
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+  
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Upload PDF</label>
+                    <input type="file" class="form-control" (change)="onPdfSelected($event)" />
+                  </div>
+                </div>
+  
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Select Service</label>
+                    <select ngModel required name="serviceId" class="form-control">
+                      <option value="">-- Select Service --</option>
+                      <option *ngFor="let service of allServices" [value]="service._id">{{ service.name }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="text-center pt-4">
+                <button class="btn btn-success" type="submit">Create Service Home Description</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

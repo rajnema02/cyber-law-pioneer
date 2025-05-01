@@ -35,6 +35,10 @@ import { CreatePartnerServiceProjectComponent } from './partner-service-project/
 import { ListPartnerServiceProjectComponent } from './partner-service-project/list-partner-service-project/list-partner-service-project.component';
 import { ListPartnerServiceDescProjectComponent } from './partner-service-desc-project/list-partner-service-desc-project/list-partner-service-desc-project.component';
 import { CreatePartnerServiceDescProjectComponent } from './partner-service-desc-project/create-partner-service-desc-project/create-partner-service-desc-project.component';
+import { CreateServiceHomeProjectComponent } from './services-home-project/create-service-home-project/create-service-home-project.component';
+import { ListServiceHomeProjectComponent } from './services-home-project/list-service-home-project/list-service-home-project.component';
+import { CreateServiceHomeProjectDescComponent } from './service-home-project-desc/create-service-home-project-desc/create-service-home-project-desc.component';
+import { ListServiceHomeProjectDescComponent } from './service-home-project-desc/list-service-home-project-desc/list-service-home-project-desc.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +71,11 @@ import { CreatePartnerServiceDescProjectComponent } from './partner-service-desc
     CreatePartnerServiceProjectComponent,
     ListPartnerServiceProjectComponent,
     ListPartnerServiceDescProjectComponent,
-    CreatePartnerServiceDescProjectComponent
+    CreatePartnerServiceDescProjectComponent,
+    CreateServiceHomeProjectComponent,
+    ListServiceHomeProjectComponent,
+    CreateServiceHomeProjectDescComponent,
+    ListServiceHomeProjectDescComponent
   ],
   imports: [
     CommonModule,

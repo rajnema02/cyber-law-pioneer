@@ -1,0 +1,98 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card card-profile shadow">
+          <div class="card-body">
+            <h3 class="mb-0">Create Service Home Project</h3>
+            <form (ngSubmit)="submit(infoForm)" #infoForm="ngForm">
+              <div class="row">
+                <div class="col-xl-12 order-xl-1">
+                  <div class="card-body">
+                    <div class="row">
+                      <!-- Name and Image Upload -->
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-name">Name</label>
+                          <input ngModel required name="name" class="form-control form-control-alternative" type="text" placeholder="Enter name" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image" class="form-label">Upload Image</label>
+                          <input type="file" id="image" class="form-control" (change)="onImageSelected($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <!-- Image 1 and Image 2 Uploads -->
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image1" class="form-label">Upload Image</label>
+                          <input type="file" id="image1" class="form-control" (change)="onImageSelected1($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image2" class="form-label">Upload Image</label>
+                          <input type="file" id="image2" class="form-control" (change)="onImageSelected2($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <!-- Image 3 and PDF Uploads -->
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="image3" class="form-label">Upload Image</label>
+                          <input type="file" id="image3" class="form-control" (change)="onImageSelected3($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="pdf" class="form-label">Upload PDF</label>
+                          <input type="file" id="pdf" class="form-control" (change)="onPdfSelected($event)" accept="uploads/*">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <!-- Description and Service Name -->
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">Description</label>
+                          <textarea ngModel required name="description" rows="3" class="form-control form-control-alternative" placeholder="Enter a brief description"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-service">Service Name</label>
+                          <select ngModel required name="serviceName" class="form-control form-control-alternative">
+                            <option value="" disabled selected>Select Service Name</option>
+                            <option *ngFor="let service of serviceList" [value]="service.name">{{ service.name }}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row justify-content-center" style="padding-top: 100px">
+                      <button type="submit" class="btn btn-primary">
+                        Create Service Home Project
+                      </button>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -218,6 +218,16 @@ export const AdminROUTES: RouteInfo[] = [
         icon: "ni-tv-2  ",
       },
       {
+        path: "/content/service-project-list",
+        title: "Service Project",
+        icon: "ni-tv-2  ",
+      },
+      {
+        path: "/content/service-project-desc-list",
+        title: "Service Project Description",
+        icon: "ni-tv-2  ",
+      },
+      {
         path: "/content/running-project-list",
         title: "Running Project",
         icon: "ni-tv-2  ",

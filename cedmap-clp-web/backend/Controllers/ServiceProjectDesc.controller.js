@@ -105,21 +105,21 @@ module.exports = {
             next(error)
         }
     },
-    getById: async (req, res, next) => {
-        try {
-            const { id } = req.params;
-            if (!mongoose.Types.ObjectId.isValid(id)) {
-                throw createError.BadRequest('Invalid ID');
-            }
-            const result = await Model.findById(id);
-            if (!result) {
-                throw createError.NotFound(`${ModelName} not found`);
-            }
-            res.json(result);
-        } catch (error) {
-            next(error);
-        }
-    },
+    // getById: async (req, res, next) => {
+    //     try {
+    //         const { id } = req.params;
+    //         if (!mongoose.Types.ObjectId.isValid(id)) {
+    //             throw createError.BadRequest('Invalid ID');
+    //         }
+    //         const result = await Model.findById(id);
+    //         if (!result) {
+    //             throw createError.NotFound(`${ModelName} not found`);
+    //         }
+    //         res.json(result);
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
 
     getById: async (req, res, next) => {
         try {
@@ -134,7 +134,7 @@ module.exports = {
                 .populate('serviceProjectId'); // replace with the actual field name
     
             if (!result) {
-                return res.status(404).json({ error: "Partner-Service Description not found" });
+                return res.status(404).json({ error: "Service-Project Description not found" });
             }
     
             res.json({ success: true, data: result });
