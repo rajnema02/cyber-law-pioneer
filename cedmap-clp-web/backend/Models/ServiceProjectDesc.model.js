@@ -23,14 +23,11 @@ const ServiesProjectDescSchema = new mongoose.Schema({
     description: {
         type: String,
     },
-    serviceId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Services' // assuming your Partner model is named 'Partner'
-    },
-    serviceProjectId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ServicesProject' // assuming your Partner model is named 'Partner'
-    },
+
+    serviceId: { type: mongoose.Schema.Types.ObjectId, ref: 'Services' },
+    
+    serviceProjectId: { type: mongoose.Schema.Types.ObjectId, ref: 'ServicesProject' },
+    
     disabled: {
         type: Boolean,
         default: false

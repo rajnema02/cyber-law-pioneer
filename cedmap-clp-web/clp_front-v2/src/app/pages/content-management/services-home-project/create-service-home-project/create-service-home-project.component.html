@@ -70,15 +70,16 @@
                           <textarea ngModel required name="description" rows="3" class="form-control form-control-alternative" placeholder="Enter a brief description"></textarea>
                         </div>
                       </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-service">Service Name</label>
-                          <select ngModel required name="serviceName" class="form-control form-control-alternative">
-                            <option value="" disabled selected>Select Service Name</option>
-                            <option *ngFor="let service of serviceList" [value]="service.name">{{ service.name }}</option>
-                          </select>
-                        </div>
+                     <!-- In create-service-home-project.component.html -->
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-service">Service</label>
+                        <select ngModel required name="serviceId" class="form-control form-control-alternative">
+                          <option value="" disabled selected>Select Service</option>
+                          <option *ngFor="let service of serviceList" [value]="service._id">{{ service.name }}</option>
+                        </select>
                       </div>
+                    </div>
                     </div>
   
                     <div class="row justify-content-center" style="padding-top: 100px">

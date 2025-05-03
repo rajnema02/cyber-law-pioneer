@@ -1,0 +1,518 @@
+<div>
+    <!-- <app-landing-header></app-landing-header>
+      -->
+      <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    <style>
+      .navbar-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+  }
+      .nav-link-custom {
+        position: relative;
+        padding: 0.5rem 0.75rem;
+        font-weight: 600;
+        color: #000;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+    
+      .nav-link-custom:hover,
+      .nav-link-custom:focus {
+        color: rgb(33, 75, 150); /* Optional: adds subtle color change */
+        font-weight: 600 !important; /* Lock font weight on hover */
+      }
+    
+      .nav-link-custom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(to right, rgba(204, 0, 51, 0.6), rgba(33, 76, 150, 0.6));
+        transition: width 0.3s ease-in-out;
+      }
+    
+      .nav-link-custom:hover::after,
+      .nav-link-custom.active::after {
+        width: 100%;
+      }
+    
+      .nav-link-custom.active {
+        color: rgb(33, 75, 150);
+        font-weight: 600;
+      }
+    
+      /* Mobile styles */
+      @media (max-width: 767px) {
+        .image-logo {
+          height: 50px;
+          width: auto;
+        }
+    
+        .experience-text {
+          font-size: 14px;
+          text-align: left;
+        }
+    
+        .experience-text .years {
+          font-size: 16px;
+        }
+    
+        .navbar .d-flex.align-items-center {
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+    
+    
+    
+    <!-- Navbar -->
+    <header
+      class="navbar navbar-expand-lg navbar-light bg-white navbar-sticky"
+      style="padding: 0.4rem 0"
+    >
+      <div class="container-fluid">
+        <!-- Logo and Tagline -->
+        <!-- Logo and Tagline -->
+    <div class="d-flex align-items-center">
+      <img
+        src="/assets/img/logo-home.png"
+        alt="Logo"
+        class="image-logo"
+        style="margin-right: 10px"
+      />
+      <div class="experience-text">
+        <div
+          class="years"
+          style="
+            font-weight: bold;
+            background: linear-gradient(to right, rgb(204, 0, 51), rgb(33, 75, 150));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          "
+        >
+          10 Years
+        </div>
+        <div style="color: rgb(119, 119, 119)">of Experience</div>
+      </div>
+    </div>
+    
+    
+        <!-- Toggle Button for Mobile -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link nav-link-custom  text-dark"
+                routerLink="/home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark " routerLink="/about-us"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark" routerLink="/program"
+                >Cyber Security Programs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark" routerLink="/register"
+                >Registration</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark active" routerLink="/partner"
+                >Our Partners</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark" routerLink="/services"
+                >Our Services</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom text-dark" routerLink="/contact"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Bootstrap Bundle with Popper (required for navbar toggling) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+  
+    <section class="hero-banner">
+      <!-- Banner Image Container -->
+      <div class="banner-container">
+        <img 
+          src="../../../../assets/img/j.jpg" 
+          alt="Cyber Law Pioneers About Us Banner" 
+          class="banner-image"
+        />
+        
+        <!-- Gradient Overlay -->
+        <div class="banner-overlay"></div>
+        
+        <!-- Content Container -->
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <h1 class="banner-title">Our Partners</h1>
+                <div class="banner-decoration">
+                  <span class="line"></span>
+                  <span class="diamond"></span>
+                  <span class="line"></span>
+                </div>
+                <p class="banner-subtitle">Pioneers in Cyber Law & Security Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <section class="about-section">
+      <div class="overlay"></div>
+      <img
+        class="about-banner"
+        src="../../../../assets/img/j.jpg"
+        alt="Banner 2"
+      />
+      <span class="about-text">Certification Course</span>
+    </section>
+  
+    <section>
+      <div class="container-fluid p-5">
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-12 mt-6 mt-lg-0">
+            <div class="col-md-12" style="overflow-x: auto">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th>SR. NO.</th>
+                    <th>COURSE CODE</th>
+                    <th>COURSE TITLE</th>
+                    <th>MINIMUM CRITERIA</th>
+                    <th>DURATION</th>
+                    <th>FEES (INR)</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>MPCED110</td>
+                    <td>Diploma Of Computer Application And Cyber Etiquettes</td>
+                    <td>10th pass</td>
+                    <td>6 months</td>
+                    <td>10500/-</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>MPCED107</td>
+                    <td>Diploma In DTP& Cyber Etiquettes</td>
+                    <td>12th Pass</td>
+                    <td>6 Months</td>
+                    <td>10500/-</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>MPCEDR202</td>
+                    <td>Diploma In Cyber Security & Cyber Etiquettes</td>
+                    <td>12th Pass</td>
+                    <td>12 months</td>
+                    <td>75000/-</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>MPCEDR203</td>
+                    <td>Diploma In Cyber Forensics & Digital Evidence</td>
+                    <td>Graduation</td>
+                    <td>6 months</td>
+                    <td>30,000/-</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>MPCEDR206</td>
+                    <td>Certificate In Ethical Hacking & Cyber Etiquettes</td>
+                    <td>12th Pass</td>
+                    <td>6 Months</td>
+                    <td>35000/-</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>MPCEDR201</td>
+                    <td>Diploma In Cyber Law</td>
+                    <td>Graduation</td>
+                    <td>6 Months</td>
+                    <td>14000/-</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>MPCED108</td>
+                    <td>
+                      Diploma In Financial Accounting, Taxation & Cyber Etiquettes
+                    </td>
+                    <td>12th Pass</td>
+                    <td>6 Months</td>
+                    <td>10500/-</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>MPCEDSEF301</td>
+                    <td>Certificate In Cyber Security Essentials (Foundation)</td>
+                    <td>10th pass</td>
+                    <td>10 Months</td>
+                    <td>10,500/-</td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>MPCEDIN405</td>
+                    <td>Internship/Certificate In Cyber Security Management</td>
+                    <td>Graduation</td>
+                    <td>6 Months</td>
+                    <td>13599/-</td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>MPCED109</td>
+                    <td>
+                      Certificate In Cyber Security Compliance And Digital
+                      Applications
+                    </td>
+                    <td>12th Pass</td>
+                    <td>6 month</td>
+                    <td>11500/-</td>
+                  </tr>
+                  <tr>
+                    <td>11</td>
+                    <td>MPCEDR205</td>
+                    <td>Certified Digital Marketing And Cyber Etiquettes</td>
+                    <td>12th Pass</td>
+                    <td>12 Months</td>
+                    <td>25424/-</td>
+                  </tr>
+  
+                  <tr>
+                    <td>12</td>
+                    <td>MPCED104</td>
+                    <td>
+                      Certified Vulnerability Assessor And Penetration Tester
+                    </td>
+                    <td>Graduation</td>
+                    <td>3 month</td>
+                    <td>9500/-</td>
+                  </tr>
+  
+                  <tr>
+                    <td>13</td>
+                    <td>MPCED105</td>
+                    <td>
+                      Certificate In Computer Networking And Cyber Etiquettes
+                    </td>
+                    <td>12th pass</td>
+                    <td>45days</td>
+                    <td>6000/</td>
+                  </tr>
+  
+                  <tr>
+                    <td>14</td>
+                    <td>MPCED111</td>
+                    <td>Certificate In Digital Literacy And Cyber Security</td>
+                    <td>10th Pass</td>
+                    <td>45 days</td>
+                    <td>4000/-</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="note" style="margin-bottom: 0">
+                <b>Note : </b> EXAM FEE: 450 AND REGISTRATION FEE: 200 FOR ALL
+                COURSES
+              </p>
+              <p class="note">
+                <b>Note : </b> GST(18%) Is not included in Course fees.
+              </p>
+              <p class="last_note">
+                Police Department, Government Employees, Private employees and
+                professionals also take an admission in this Above Programmes.
+              </p>
+              <p class="note">
+                <a
+                  target="_blank"
+                  routerLink="/register"
+                  >CLICK HERE FOR ADMISSION
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- <section>
+      <div class="container text-center pt-6">
+        <h2 class="display-5 fw-bold ">Our Partners</h2>
+      </div>  
+      <div class="container mt-5">
+        <div class="row" *ngIf="partnerList.length > 0; else noPartners">
+          <div class="col-md-12 mb-4" *ngFor="let partner of partnerList">
+            <div class="card shadow border-0">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                  <img 
+                    src="https://cyberlawpioneers.org/file/download/{{partner.image}}" 
+                    class="img-fluid rounded" 
+                    alt="{{ partner.name }}"
+                    style="max-width: 250px;"
+                  />
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                  <img 
+                    src="https://cyberlawpioneers.org/file/download/{{partner.image1}}" 
+                    class="img-fluid rounded" 
+                    alt="{{ partner.name }}"
+                    style="max-width: 250px;"
+                  />
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                  <img 
+                    src="https://cyberlawpioneers.org/file/download/{{partner.image2}}" 
+                    class="img-fluid rounded" 
+                    alt="{{ partner.name }}"
+                    style="max-width: 250px;"
+                  />
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                  <img 
+                    src="https://cyberlawpioneers.org/file/download/{{partner.image3}}" 
+                    class="img-fluid rounded" 
+                    alt="{{ partner.name }}"
+                    style="max-width: 250px;"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h3 class="card-title mb-3">{{ partner.name }}</h3>
+                    <p class="card-text text-muted mb-3">
+                      {{ partner.description }}
+                    </p>
+                    <div *ngIf="partner.file">
+                      <a 
+                        href="https://cyberlawpioneers.org/file/download/{{partner.file}}" 
+                        target="_blank" 
+                        class="btn btn-primary btn-sm"
+                      >
+                        View Uploaded File
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <ng-template #noPartners>
+          <div class="text-center">
+            <h4>No Partners Available</h4>
+          </div>
+        </ng-template>
+      </div>
+    </section> -->
+    <div class="container py-5">
+      <div class="row g-4">
+        <div
+          class="col-md-4"
+          *ngFor="let partner of partnerList"
+        >
+          <div class="card h-100 text-center shadow-lg border-0 rounded-4 partner-card p-4">
+            <!-- Partner Image -->
+            <div class="partner-img-container mb-4">
+              <img
+                *ngIf="partner.image"
+                [src]="'https://cyberlawpioneers.org/file/download/' + partner.image"
+                alt="{{ partner.name }}"
+                class="img-fluid partner-img"
+              />
+            </div>
+    
+            <!-- Partner Name -->
+            <h5 class="fw-semibold text-dark mt-auto">
+              {{ partner.name }}
+            </h5>
+          </div>
+        </div>
+      </div>
+    
+      <div *ngIf="partnerList.length === 0" class="text-center mt-5">
+        <p class="text-muted">No partners available currently.</p>
+      </div>
+    </div>
+    
+    
+    <!-- Required CSS/JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .partner-card {
+    transition: all 0.3s ease;
+    background: #ffffff;
+    border-radius: 1rem;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
+    }
+  
+    .partner-img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 160px;
+    }
+  
+    .partner-img {
+      max-height: 100%;
+      max-width: 80%;
+      object-fit: contain;
+    }
+  }
+  
+    </style>
+    
+    
+    
+    
+    
+    
+    <app-landing-footer></app-landing-footer>
+  </div>
+  

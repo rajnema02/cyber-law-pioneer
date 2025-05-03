@@ -35,31 +35,36 @@ export class CreateServiceHomeProjectComponent implements OnInit {
     this.getServiceList();
   }
 
-  submit(frm: NgForm) {
-    const f = frm.form;
-    if (f.invalid) {
-      alert("Please fill all the necessary details");
-    } else {
-      const formData = new FormData();
-      formData.append('name', f.value.name);
-      formData.append('description', f.value.description);
-      formData.append('serviceName', f.value.serviceName);
-
-      if (this.img_link) formData.append('image', this.img_link);
-      if (this.img_link1) formData.append('image1', this.img_link1);
-      if (this.img_link2) formData.append('image2', this.img_link2);
-      if (this.img_link3) formData.append('image3', this.img_link3);
-      if (this.file_link) formData.append('file', this.file_link);
-
-      this.api.post("serviceProject", formData).subscribe((resp: any) => {
-        if (resp) {
-          console.log(resp);
-          alert("Service Home Project created successfully");
-          this.router.navigate(["/content/service-project-list"]);
-        }
-      });
+ // In create-service-home-project.component.ts
+submit(frm: NgForm) {
+  const f = frm.form;
+  if (f.invalid) {
+    alert("Please fill all the necessary details");
+  } else {
+    const formData = new FormData();
+    formData.append('name', f.value.name);
+    formData.append('description', f.value.description);
+    // Change from serviceName to serviceId
+    const selectedService = this.serviceList.find(s => s._id === f.value.serviceId);
+    if (selectedService) {
+      formData.append('serviceId', selectedService._id);
     }
+
+    if (this.img_link) formData.append('image', this.img_link);
+    if (this.img_link1) formData.append('image1', this.img_link1);
+    if (this.img_link2) formData.append('image2', this.img_link2);
+    if (this.img_link3) formData.append('image3', this.img_link3);
+    if (this.file_link) formData.append('file', this.file_link);
+
+    this.api.post("serviceProject", formData).subscribe((resp: any) => {
+      if (resp) {
+        console.log(resp);
+        alert("Service Home Project created successfully");
+        this.router.navigate(["/content/service-project-list"]);
+      }
+    });
   }
+}
 
   getServiceList() {
     this.api.get("service", {}).subscribe((resp: any) => {

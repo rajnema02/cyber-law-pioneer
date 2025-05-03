@@ -40,7 +40,7 @@ import { LandingCoursesComponent } from './pages/landing-courses/landing-courses
 import { LandingHomeComponent } from './pages/landing-home/landing-home.component';
 import { LandingProgramComponent } from './pages/landing-program/landing-program.component';
 import { LandingServicesComponent } from './pages/landing-services/landing-services.component';
-import { LandingPracticeComponent } from './pages/landing-practice/landing-practice.component';
+// import { LandingPartnerComponent } from './pages/landing-partner/landing-partner.component';
 import { LandingProgramsCoursesComponent } from './pages/landing-programs-courses/landing-programs-courses.component';
 import { LatestUpdatesHomeComponent } from './pages/latest-updates-home/latest-updates-home.component';
 import { LandingProjectComponent } from './pages/landing-project/landing-project.component';
@@ -70,6 +70,13 @@ import { ServiceDetailsListComponent } from './pages/content-management/service-
 import { CreateServicesHomeComponent } from './pages/content-management/services-home/create-services-home/create-services-home.component';
 import { ServicesHomeListComponent } from './pages/content-management/services-home/services-home-list/services-home-list.component';
 import { ServicesOfferListComponent } from './pages/content-management/services-offer-list/services-offer-list.component';
+import { LandingPartnerProjectComponent } from './pages/landing-partner-project/landing-partner-project.component';
+import { LandingPartnerProjectDescComponent } from './pages/landing-partner-project-desc/landing-partner-project-desc.component';
+import { LandingServiceProjectComponent } from './pages/landing-service-project/landing-service-project.component';
+import { LandingServiceProjectDescComponent } from './pages/landing-service-project-desc/landing-service-project-desc.component';
+import { LandingPracticeComponent } from "./pages/landing-practice/landing-practice.component";
+import { LandingPartnerComponent } from './pages/landing-partner/landing-partner.component';
+// import { LandingpartnerComponent } from "./pages/landing-practice/landing-partner.component";
 
 @NgModule({
   imports: [
@@ -116,6 +123,7 @@ import { ServicesOfferListComponent } from './pages/content-management/services-
     LandingHomeComponent,
     LandingProgramComponent,
     LandingServicesComponent,
+    // LandingPartnerComponent,
     LandingPracticeComponent,
     LandingProgramsCoursesComponent,
     LatestUpdatesHomeComponent,
@@ -124,6 +132,11 @@ import { ServicesOfferListComponent } from './pages/content-management/services-
     UpdateServiceDetailsComponent,
     // UpdateOurPartnerComponent,
     LandingProgramsCourseDescriptionComponent,
+    LandingPartnerProjectComponent,
+    LandingPartnerProjectDescComponent,
+    LandingServiceProjectComponent,
+    LandingServiceProjectDescComponent,
+    LandingPartnerComponent,
     
     // Content Management Components
     // BannerListComponent,

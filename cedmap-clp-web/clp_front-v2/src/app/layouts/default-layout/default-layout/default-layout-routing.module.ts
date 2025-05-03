@@ -11,24 +11,29 @@ import { LandingCoursesComponent } from "src/app/pages/landing-courses/landing-c
 import { LandingContactComponent } from "src/app/pages/landing-contact/landing-contact.component";
 import { LandingProgramComponent } from "src/app/pages/landing-program/landing-program.component";
 import { LandingServicesComponent } from "src/app/pages/landing-services/landing-services.component";
-import { LandingPracticeComponent } from "src/app/pages/landing-practice/landing-practice.component";
+import { LandingPracticeComponent } from "src/app/pages/landing-practice/landing-practice.component"; 
 import { LandingProgramsCoursesComponent } from "src/app/pages/landing-programs-courses/landing-programs-courses.component";
 import { LatestUpdatesHomeComponent } from "src/app/pages/latest-updates-home/latest-updates-home.component";
 import { LandingProjectComponent } from "src/app/pages/landing-project/landing-project.component";
 import { LandingServiceDetailComponent } from "src/app/pages/landing-service-detail/landing-service-detail.component";
 import { LandingProgramsCourseDescriptionComponent } from "src/app/pages/landing-programs-course-description/landing-programs-course-description.component";
+import { LandingPartnerProjectComponent } from "src/app/pages/landing-partner-project/landing-partner-project.component";
+import { LandingPartnerProjectDescComponent } from "src/app/pages/landing-partner-project-desc/landing-partner-project-desc.component";
+import { LandingPartnerComponent } from "src/app/pages/landing-partner/landing-partner.component";
 
 const routes: Routes = [
   // { path: "home", component: HomeComponent },
   { path: "home", component: LandingHomeComponent },
   { path: "about-us", component: LandingAboutComponent },
   { path: "courses", component: LandingCoursesComponent },
+  { path: "partner", component: LandingPartnerComponent },
+  { path: "partners-project/:title", component: LandingPartnerProjectComponent },
+  { path: "Partners-project-desc", component: LandingPartnerProjectDescComponent },
   { path: "contact", component: LandingContactComponent },
   { path: "program", component: LandingProgramComponent },
   { path: "services", component: LandingServicesComponent },
   { path: "practices/:title", component: LandingPracticeComponent },
   { path: "programs/:title", component: LandingProgramsCoursesComponent },
-  // { path: "programs/:title/course/:name", component: LandingProgramsCourseDescriptionComponent},
   {
     path: 'program-course-description/:program',
     component: LandingProgramsCourseDescriptionComponent

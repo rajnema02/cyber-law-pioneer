@@ -12,11 +12,14 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateServiceHomeProjectDescComponent implements OnInit {
   id: string | null = null;
+
   allServices: any[] = [];
+  allServicesProjects: any[] = [];
 
   name: any;
   description: any;
   serviceId: any;
+  serviceProjectId: any;
 
   img_link: any;
   img_link1: any;
@@ -42,13 +45,19 @@ export class CreateServiceHomeProjectDescComponent implements OnInit {
       this.allServices = resp?.data;
     });
 
-    // Fetch service home desc if updating
+    // Fetch all service projects
+    this.api.get('serviceProject', {}).subscribe((resp: any) => {
+      this.allServicesProjects = resp?.data;
+    });
+
+    // If editing, fetch existing record by ID
     if (this.id) {
-      this.api.getById('serviceHomeDesc', this.id).subscribe((resp: any) => {
+      this.api.getById('serviceProjectDesc', this.id).subscribe((resp: any) => {
         const data = resp?.data;
         this.name = data?.name;
         this.description = data?.description;
         this.serviceId = data?.serviceId?._id;
+        this.serviceProjectId = data?.serviceProjectId?._id;
         this.img_link = data?.image;
         this.img_link1 = data?.image1;
         this.img_link2 = data?.image2;
@@ -69,6 +78,7 @@ export class CreateServiceHomeProjectDescComponent implements OnInit {
     formData.append('name', f.value.name);
     formData.append('description', f.value.description);
     formData.append('serviceId', f.value.serviceId);
+    formData.append('serviceProjectId', f.value.serviceProjectId);
 
     if (this.img_link) formData.append('image', this.img_link);
     if (this.img_link1) formData.append('image1', this.img_link1);
@@ -77,14 +87,14 @@ export class CreateServiceHomeProjectDescComponent implements OnInit {
     if (this.file_link) formData.append('file', this.file_link);
 
     if (this.id) {
-      this.api.put('serviceHomeDesc', this.id, formData).subscribe((resp: any) => {
+      this.api.put('serviceProjectDesc', this.id, formData).subscribe((resp: any) => {
         alert('Service Home Description updated successfully');
         this.router.navigate(['/content/service-home-desc-list']);
       });
     } else {
-      this.api.post('serviceHomeDesc', formData).subscribe((resp: any) => {
+      this.api.post('serviceProjectDesc', formData).subscribe((resp: any) => {
         alert('Service Home Description created successfully');
-        this.router.navigate(['/content/service-home-desc-list']);
+        this.router.navigate(['/content/service-project-desc-list']);
       });
     }
   }
@@ -92,6 +102,7 @@ export class CreateServiceHomeProjectDescComponent implements OnInit {
   handleImageUpload(event: any, index: number) {
     const file = event.target.files[0];
     if (!file) return;
+
     this.selectedImage = file;
     this.fs.uploadFile(this.selectedImage).subscribe((res: any) => {
       if (res.type === HttpEventType.Response) {
@@ -120,6 +131,3 @@ export class CreateServiceHomeProjectDescComponent implements OnInit {
     }
   }
 }
-
-
-

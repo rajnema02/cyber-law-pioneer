@@ -55,6 +55,18 @@
                   </div>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Select Service Partner</label>
+                    <select ngModel required name="partnerServiceId" class="form-control">
+                      <option value="">-- Select Partner Service --</option>
+                      <option *ngFor="let service of allServicesProjects" [value]="service._id">{{ service.name }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
   
               <div class="text-center pt-4">
                 <button class="btn btn-success" type="submit">Create Service Home Description</button>

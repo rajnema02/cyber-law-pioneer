@@ -17,7 +17,7 @@ export class ListServiceHomeProjectDescComponent implements OnInit {
   }
 
   getServiceHomeProjectDescs() {
-    this.api.get('serviceHomeProjectdesc', {}).subscribe((res: any) => {
+    this.api.get('serviceProjectDesc', {}).subscribe((res: any) => {
       this.allData = res?.data || [];
 
       this.allData.forEach((item: any) => {
@@ -28,10 +28,10 @@ export class ListServiceHomeProjectDescComponent implements OnInit {
           });
         }
 
-        // Fetch program name
-        if (item.programId) {
-          this.api.getById('program', item.programId).subscribe((programRes: any) => {
-            item.programName = programRes?.data?.name || 'Unknown Program';
+        // Fetch project name
+        if (item.serviceProjectId) {
+          this.api.getById('serviceProject', item.serviceProjectId).subscribe((projectRes: any) => {
+            item.projectName = projectRes?.data?.name || 'Unknown Project';
           });
         }
       });
@@ -44,12 +44,10 @@ export class ListServiceHomeProjectDescComponent implements OnInit {
 
   delete(id: string) {
     if (confirm('Are you sure you want to delete this?')) {
-      this.api.delete('serviceHomeProjectDesc', id).subscribe((resp: any) => {
+      this.api.delete('serviceProjectDesc', id).subscribe((resp: any) => {
         alert('Deleted successfully');
         this.getServiceHomeProjectDescs();
       });
     }
   }
 }
-
-
