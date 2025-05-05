@@ -134,7 +134,7 @@
             </li>
             <li class="nav-item">
               <a
-                class="nav-link nav-link-custom text-dark active"
+                class="nav-link nav-link-custom text-dark "
                 routerLink="/program"
                 >Cyber Security Programs</a
               >
@@ -145,7 +145,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-custom text-dark" routerLink="/partner"
+              <a class="nav-link nav-link-custom text-dark active" routerLink="/partner"
                 >Our Partners</a
               >
             </li>
@@ -168,40 +168,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
     <div class="container mt-5">
-        <div class="row">
-          <div class="col-12">
-            <h2>Projects by {{ partner.name || 'Partner' }}</h2>
-            <p *ngIf="partner.description">{{ partner.description }}</p>
-          </div>
+        <!-- Partner Name Header -->
+        <div class="mb-4 text-center">
+          <h2 class="fw-bold text-primary">
+            Projects by {{ partner.name || 'Partner' }}
+          </h2>
         </div>
       
-        <div class="row mt-4">
-          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let project of projects">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">{{ project.name }}</h5>
-                <p class="card-text">{{ project.description }}</p>
-                
-                <div class="d-flex flex-wrap gap-2 mb-3">
-                  <img *ngIf="project.image" [src]="project.image" class="img-thumbnail" style="width: 80px; height: 80px;" />
-                  <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 80px; height: 80px;" />
-                </div>
-                
-                <button *ngIf="project.file" class="btn btn-info btn-sm" (click)="openPdf(project.file)">
-                  View PDF
-                </button>
-              </div>
-            </div>
+        <!-- Loading Spinner -->
+        <div *ngIf="isLoading" class="text-center py-4">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
+          <p>Loading projects...</p>
+        </div>
       
-          <div class="col-12" *ngIf="projects.length === 0">
-            <div class="alert alert-info">
-              No projects found for this partner.
+        <!-- Project List -->
+        <div *ngIf="!isLoading && projects.length > 0">
+          <div *ngFor="let project of projects" class="bg-gray rounded-4 p-3 mb-4 shadow-sm" (click)="redirectToPartnerProjectDesc(project._id)" style="cursor: pointer;">
+            <div class="d-flex align-items-center gap-4 flex-column flex-md-row">
+              <!-- Image Section -->
+              <div class="flex-shrink-0">
+                <img
+                  *ngIf="project.image"
+                  [src]="'https://cyberlawpioneers.org/file/download/' + project.image"
+                  [alt]="project.name"
+                  class="rounded-3"
+                  style="width: 200px; height: 150px; object-fit: cover;"
+                />
+                <img
+                  *ngIf="!project.image && project.image1"
+                  [src]="'https://cyberlawpioneers.org/file/download/' + project.image1"
+                  [alt]="project.name"
+                  class="rounded-3"
+                  style="width: 200px; height: 150px; object-fit: cover;"
+                />
+                <div *ngIf="!project.image && !project.image1" class="text-muted small">No Image</div>
+              </div>
+      
+              <!-- Title Section -->
+              <div class="flex-grow-1">
+                <h4 class="mb-0 fw-bold text-uppercase text-dark text-decoration-underline">
+                  {{ project.name }}
+                </h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
-  
+      
+      
+      
     <app-landing-footer></app-landing-footer>
-  </div>
   

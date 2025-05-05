@@ -29,11 +29,11 @@ const PartnerServiceDescPageSchema = new mongoose.Schema({
 
     disabled: {
         type: Boolean,
-        default: false
+        default: true
     },
     is_inactive: {
         type: Boolean,
-        default: false
+        default: true
     },
     created_at: {
         type: Date,

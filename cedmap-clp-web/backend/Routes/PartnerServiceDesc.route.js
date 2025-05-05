@@ -15,4 +15,12 @@ router.put('/:id', verifyAccessToken, Controller.update);
 // DELETE (soft delete) service by ID
 router.delete('/:id', verifyAccessToken, Controller.delete);
 
+// Add this after all your routes
+router.use((err, req, res, next) => {
+    res.status(err.status || 500).json({
+        success: false,
+        error: err.message || 'Internal Server Error'
+    });
+});
+
 module.exports = router

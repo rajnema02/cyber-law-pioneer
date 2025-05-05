@@ -9,11 +9,12 @@ import { NgForm } from '@angular/forms';
   selector: 'app-create-partner-service-desc-project',
   templateUrl: './create-partner-service-desc-project.component.html',
   styleUrls: ['./create-partner-service-desc-project.component.scss']
-  })
-  export class CreatePartnerServiceDescProjectComponent implements OnInit {
+})
+export class CreatePartnerServiceDescProjectComponent implements OnInit {
   id: string | null = null;
   allPartners: any[] = [];
   allPartnerServices: any[] = [];
+  filteredPartnerServices: any[] = [];
 
   name: any;
   description: any;
@@ -44,9 +45,10 @@ import { NgForm } from '@angular/forms';
       this.allPartners = resp?.data;
     });
 
-    // Fetch all partner services
+    // Fetch all partner services (we'll filter them later based on selected partner)
     this.api.get('partnerService', {}).subscribe((resp: any) => {
       this.allPartnerServices = resp?.data;
+      this.filteredPartnerServices = [...this.allPartnerServices];
     });
 
     // Fetch service desc if updating
@@ -62,8 +64,24 @@ import { NgForm } from '@angular/forms';
         this.img_link2 = data?.image2;
         this.img_link3 = data?.image3;
         this.file_link = data?.file;
+
+        // Filter services based on the partnerId when editing
+        if (this.partnerId) {
+          this.filterServicesByPartner(this.partnerId);
+        }
       });
     }
+  }
+
+  onPartnerChange(partnerId: string) {
+    this.partnerServiceId = null; // Reset the service selection
+    this.filterServicesByPartner(partnerId);
+  }
+
+  filterServicesByPartner(partnerId: string) {
+    this.filteredPartnerServices = this.allPartnerServices.filter(
+      service => service.partnerId === partnerId
+    );
   }
 
   submit(frm: NgForm) {
@@ -130,5 +148,3 @@ import { NgForm } from '@angular/forms';
     }
   }
 }
-
-

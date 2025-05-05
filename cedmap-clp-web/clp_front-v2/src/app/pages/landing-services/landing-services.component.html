@@ -149,7 +149,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom text-dark" routerLink="/courses"
+          <a class="nav-link nav-link-custom text-dark" routerLink="/partner"
             >Our Partners</a
           >
         </li>
@@ -397,92 +397,7 @@
 }
 
   </style>
-   <section class="py-5" style="background-color: #f9fafa;">
-    <div class="container text-center mb-5">
-      <h2 class="display-6 fw-bold text-dark mb-3">🛠️ Our Services</h2>
-      <p class="text-muted fs-5">Delivering impactful solutions through innovation, expertise, and collaboration.</p>
-    </div>
   
-    <div class="container">
-      <div *ngIf="serviceList.length > 0; else noServices">
-        <div class="row gy-5">
-          <div class="col-12" *ngFor="let service of serviceList">
-            <div class="row align-items-center bg-white shadow-sm rounded p-4 mx-1">
-              
-              <!-- Image Grid -->
-              <div class="col-md-6 mb-4 mb-md-0">
-                <div class="row g-3">
-                  <div class="col-6" *ngIf="service.image1">
-                    <img
-                      [src]="'https://cyberlawpioneers.org/file/download/' + service.image1"
-                      [alt]="service.name"
-                      class="img-fluid rounded border"
-                      style="height: 150px; object-fit: cover;"
-                    />
-                  </div>
-                  <div class="col-6" *ngIf="service.image2">
-                    <img
-                      [src]="'https://cyberlawpioneers.org/file/download/' + service.image2"
-                      [alt]="service.name"
-                      class="img-fluid rounded border"
-                      style="height: 150px; object-fit: cover;"
-                    />
-                  </div>
-                  <div class="col-6" *ngIf="service.image3">
-                    <img
-                      [src]="'https://cyberlawpioneers.org/file/download/' + service.image3"
-                      [alt]="service.name"
-                      class="img-fluid rounded border"
-                      style="height: 150px; object-fit: cover;"
-                    />
-                  </div>
-                  <div class="col-6" *ngIf="service.image4">
-                    <img
-                      [src]="'https://cyberlawpioneers.org/file/download/' + service.image4"
-                      [alt]="service.name"
-                      class="img-fluid rounded border"
-                      style="height: 150px; object-fit: cover;"
-                    />
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Text Content -->
-              <div class="col-md-6">
-                <div class="ps-md-4">
-                  <h4 class="fw-bold text-dark mb-2">{{ service.name }}</h4>
-                  <p class="text-muted mb-3">{{ service.description }}</p>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a
-                      *ngIf="service.file"
-                      [href]="'https://cyberlawpioneers.org/file/download/' + service.file"
-                      target="_blank"
-                      class="btn btn-outline-secondary btn-sm"
-                    >
-                      📄 View File
-                    </a>
-                    <a
-                      [routerLink]="['/serviceDetail', service.name]"
-                      class="btn btn-primary btn-sm text-white fw-semibold"
-                    >
-                      🔍 View More
-                    </a>
-                  </div>
-                </div>
-              </div>
-  
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <ng-template #noServices>
-        <div class="text-center py-5">
-          <h5 class="text-muted">🚫 No Services Available at the Moment</h5>
-        </div>
-      </ng-template>
-    </div>
-  </section>
   
   
   <app-landing-footer></app-landing-footer>

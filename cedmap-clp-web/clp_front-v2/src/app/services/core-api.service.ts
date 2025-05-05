@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { observable, Observable, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
+
+import { catchError } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -21,9 +23,46 @@ export class CoreApiService {
     });
   }
 
-  // ✅ Get item by ID
-  getById(apiRoute: String, id: any): Observable<any> {
-    return this.http.get(`${environment.url}/${apiRoute}/${id}`);
+   // ✅ Get item by ID with enhanced error handling
+   getById(apiRoute: String, id: any): Observable<any> {
+    return this.http.get(`${environment.url}/${apiRoute}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An unknown error occurred';
+        let errorDetails: any = null;
+
+        if (error.error instanceof ErrorEvent) {
+          // Client-side error
+          errorMessage = `Error: ${error.error.message}`;
+        } else {
+          // Server-side error
+          errorDetails = error.error;
+          
+          switch (error.status) {
+            case 400:
+              errorMessage = error.error?.message || 'Invalid request';
+              break;
+            case 404:
+              errorMessage = error.error?.message || 'Resource not found';
+              break;
+            case 410:
+              errorMessage = error.error?.message || 'Resource is inactive';
+              break;
+            case 500:
+              errorMessage = error.error?.message || 'Server error';
+              break;
+            default:
+              errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          }
+        }
+
+        return throwError({
+          status: error.status,
+          message: errorMessage,
+          details: errorDetails,
+          originalError: process.env.production ? undefined : error
+        });
+      })
+    );
   }
 
   // ✅ Create item

@@ -112,9 +112,9 @@ module.exports = {
                 throw createError.BadRequest('Invalid ID');
             }
             const result = await Model.findById(id);
-            if (!result) {
-                throw createError.NotFound(`${ModelName} not found`);
-            }
+            // if (!result) {
+            //     throw createError.NotFound(`${ModelName} not found`);
+            // }
             res.json(result);
         } catch (error) {
             next(error);
