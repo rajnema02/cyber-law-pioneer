@@ -17,10 +17,10 @@ module.exports = {
                 console.log(data);
 
                 // Check if an entry with the same name already exists and is not inactive
-                const dataExists = await Model.findOne({ name: data.name, is_inactive: false });
-                if (dataExists) {
-                    throw createError.Conflict('Service or offer already exists');
-                }
+                // const dataExists = await Model.findOne({ name: data.name, is_inactive: false });
+                // if (dataExists) {
+                //     throw createError.Conflict('Service or offer already exists');
+                // }
 
                 // Populate additional fields
                 data.created_at = Date.now();

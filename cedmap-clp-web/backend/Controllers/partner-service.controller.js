@@ -22,25 +22,38 @@ module.exports = {
                     throw createError.Conflict('Service or offer already exists');
                 }
 
+                // Validate YouTube URL if provided
+                if (data.youtubeVideoLink) {
+                    const youtubeRegex = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+                    if (!youtubeRegex.test(data.youtubeVideoLink)) {
+                        throw createError.BadRequest('Invalid YouTube URL format');
+                    }
+                }
+
                 // Populate additional fields
                 data.created_at = Date.now();
                 data.created_by = req.user._id; // Assume the logged-in user is accessible via `req.user._id`
 
                 // Handle image and file
-                // Assuming `image` and `file` are the form field names for the image and file inputs
                 if (req.files) {
                     if (req.files.image) {
-                        // Save image path to the data
-                        data.image_url = req.files.image[0].path; // Adjust according to your file upload structure
+                        data.image = req.files.image[0].path;
                     }
-
+                    if (req.files.image1) {
+                        data.image1 = req.files.image1[0].path;
+                    }
+                    if (req.files.image2) {
+                        data.image2 = req.files.image2[0].path;
+                    }
+                    if (req.files.image3) {
+                        data.image3 = req.files.image3[0].path;
+                    }
                     if (req.files.file) {
-                        // Save file path to the data
-                        data.file_url = req.files.file[0].path; // Adjust according to your file upload structure
+                        data.file = req.files.file[0].path;
                     }
                 }
 
-                // Create a new ServicesOffers document
+                // Create a new PartnerServicePage document
                 const newData = new Model(data);
 
                 // Save the document to the database
@@ -65,9 +78,8 @@ module.exports = {
             if (name) {
                 query.name = new RegExp(name, 'i'); // Case-insensitive regex for name
             }
-             query.disabled = disabled == "true" ? true : false;
+            query.disabled = disabled == "true" ? true : false;
             
-       
             query.is_inactive = is_inactive === 'true' ? true : false;
 
             const result = await Model.aggregate([
@@ -100,6 +112,7 @@ module.exports = {
             next(error);
         }
     },
+
     getById: async (req, res, next) => {
         try {
             const { id } = req.params;
@@ -108,7 +121,7 @@ module.exports = {
                 return res.status(400).json({ error: "Invalid ID provided" });
             }
     
-            // Populate the associated partner details using the correct field name
+            // Populate the associated partner details
             const result = await Model.findById(id).populate('partnerId');
     
             if (!result) {
@@ -121,7 +134,6 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error" });
         }
     },
-      
 
     update: async (req, res, next) => {
         try {
@@ -136,21 +148,43 @@ module.exports = {
     
                 const data = req.body;
                 data.updated_at = Date.now();
-                data.updated_by = req.user ? req.user._id : null; // Ensure user ID is set properly
+                data.updated_by = req.user ? req.user._id : null;
+    
+                // Validate YouTube URL if provided
+                if (data.youtubeVideoLink) {
+                    const youtubeRegex = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+                    if (!youtubeRegex.test(data.youtubeVideoLink)) {
+                        return res.status(400).json({ error: "Invalid YouTube URL format" });
+                    }
+                }
     
                 // Handle file uploads
                 if (req.files) {
                     if (req.files.image) {
-                        data.image_url = req.files.image[0].path;
+                        data.image = req.files.image[0].path;
+                    }
+                    if (req.files.image1) {
+                        data.image1 = req.files.image1[0].path;
+                    }
+                    if (req.files.image2) {
+                        data.image2 = req.files.image2[0].path;
+                    }
+                    if (req.files.image3) {
+                        data.image3 = req.files.image3[0].path;
                     }
                     if (req.files.file) {
-                        data.file_url = req.files.file[0].path;
+                        data.file = req.files.file[0].path;
                     }
                 }
     
-                const result = await Model.findByIdAndUpdate(id, { $set: data }, { new: true });
+                const result = await Model.findByIdAndUpdate(
+                    id, 
+                    { $set: data }, 
+                    { new: true, runValidators: true } // Ensure validators run on update
+                );
+                
                 if (!result) {
-                    return res.status(404).json({ error: "Partner not found" });
+                    return res.status(404).json({ error: "Partner Service not found" });
                 }
     
                 res.json({ success: true, data: result });
@@ -160,7 +194,6 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error" });
         }
     },
-      
 
     delete: async (req, res, next) => {
         try {

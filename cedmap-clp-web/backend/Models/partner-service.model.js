@@ -23,11 +23,20 @@ const PartnerServicePageSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    youtubeVideoLink: {  // New field for YouTube video link
+        type: String,
+        validate: {
+            validator: function(v) {
+                // Simple validation for YouTube URL
+                return /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/.test(v);
+            },
+            message: props => `${props.value} is not a valid YouTube URL!`
+        }
+    },
     partnerId: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'PartnerPage' // assuming your Partner model is named 'Partner'
-},
-
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PartnerPage'
+    },
     disabled: {
         type: Boolean,
         default: false

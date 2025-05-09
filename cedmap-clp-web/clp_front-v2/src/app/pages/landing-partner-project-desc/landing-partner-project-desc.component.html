@@ -169,10 +169,11 @@
 <!-- Header -->
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
-      <div class="header-body">
+      <div class="header-body d-flex align-items-center justify-content-evenly">
         <h2 class="text-white text-center">
           Service Descriptions for {{ partnerService?.name || 'Service' }}
         </h2>
+        <a [routerLink]="['/contact']" class="btn btn-success btn-sm">Enquiry Now</a>
       </div>
     </div>
   </div>
@@ -192,7 +193,7 @@
       <div *ngFor="let desc of descriptions" class="card mb-4 shadow-sm border-0 rounded-4 p-4">
         <div class="row align-items-center g-4">
           <!-- Images -->
-          <div class="col-md-3 text-center">
+          <!-- <div class="col-md-3 text-center">
             <div class="d-flex flex-column gap-2">
               <img *ngIf="desc.image"
                 [src]="'https://cyberlawpioneers.org/file/download/' + desc.image"
@@ -206,7 +207,7 @@
                 style="object-fit: cover; height: 150px;" />
               <div *ngIf="!desc.image && !desc.image1" class="text-muted small">No Images</div>
             </div>
-          </div>
+          </div> -->
   
           <!-- Details -->
           <div class="col-md-6">
@@ -214,15 +215,10 @@
             <p class="mb-1 text-muted">
               {{ desc.description || 'No description provided.' }}
             </p>
-            <div class="text-muted small mb-2">
+            <!-- <div class="text-muted small mb-2">
               <strong>Partner:</strong> {{ desc.partnerId?.name || 'N/A' }}
-            </div>
-            <div>
-              <span class="badge"
-                [ngClass]="{ 'bg-success': !desc.disabled, 'bg-danger': desc.disabled }">
-                {{ desc.disabled ? 'Inactive' : 'Active' }}
-              </span>
-            </div>
+            </div> -->
+            
           </div>
   
           <!-- Actions & Docs -->

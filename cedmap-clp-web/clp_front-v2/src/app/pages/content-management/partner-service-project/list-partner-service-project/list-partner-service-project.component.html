@@ -26,37 +26,53 @@
             <table class="table align-items-center table-flush text-center">
               <thead class="thead-light">
                 <tr>
-                  <th>Name</th>
-                  <th>Description</th>
+                  <th>Project Name</th>
+                  <!-- <th>Description</th> -->
                   <th>Images</th>
-                  <th>PDF</th>
-                  <th>Partner</th>
+                  <!-- <th>PDF</th> -->
+                  <th>Partner Name</th>
+                  <!-- <th scope="col">YouTube Link</th> -->
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let project of partnerServiceProjects">
                   <td>{{ project.name }}</td>
-                  <td>{{ project.description }}</td>
+                  <!-- <td>{{ project.description }}</td> -->
                   <td>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                       <img *ngIf="project.image" [src]="project.image" class="img-thumbnail" style="width: 60px; height: 60px;" />
-                      <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <!-- <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 60px; height: 60px;" />
                       <img *ngIf="project.image2" [src]="project.image2" class="img-thumbnail" style="width: 60px; height: 60px;" />
-                      <img *ngIf="project.image3" [src]="project.image3" class="img-thumbnail" style="width: 60px; height: 60px;" />
-                      <span *ngIf="!project.image && !project.image1 && !project.image2 && !project.image3">No Images</span>
+                      <img *ngIf="project.image3" [src]="project.image3" class="img-thumbnail" style="width: 60px; height: 60px;" /> -->
+                      <!-- <span *ngIf="!project.image && !project.image1 && !project.image2 && !project.image3">No Images</span> -->
                     </div>
                   </td>
-                  <td>
-                    <button *ngIf="project.file" class="btn btn-info btn-sm" (click)="openPdf(project.file)">
+                  
+                    <!-- <button *ngIf="project.file" class="btn btn-info btn-sm" (click)="openPdf(project.file)">
                       View PDF
-                    </button>
-                  </td>
+                    </button> -->
+                  
                   <td>{{ project.partnerName || 'Loading...' }}</td>
+                  <!-- <td>
+                    <div *ngIf="project.youtubeVideoLink; else noVideo">
+                      <a [href]="project.youtubeVideoLink" 
+                         target="_blank" 
+                         class="btn btn-sm btn-danger">
+                        <i class="fab fa-youtube me-1"></i> Watch
+                      </a>
+                      <small class="d-block text-muted mt-1">
+                        {{ project.youtubeVideoLink | truncate:30 }}
+                      </small>
+                    </div>
+                    <ng-template #noVideo>
+                      <span class="text-muted">No video</span>
+                    </ng-template>
+                  </td> -->
                   <td>
-                    <button class="btn btn-sm btn-primary me-2" (click)="editProject(project._id)">
+                    <!-- <button class="btn btn-sm btn-primary me-2" (click)="editProject(project._id)">
                       <i class="fas fa-edit"></i>
-                    </button>
+                    </button> -->
                     <button class="btn btn-sm btn-danger" (click)="deleteProject(project._id)">
                       <i class="fas fa-trash"></i>
                     </button>
@@ -66,7 +82,6 @@
             </table>
           </div> 
         </div>
-
       </div>
     </div>
   </div>

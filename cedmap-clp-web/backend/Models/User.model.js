@@ -15,6 +15,19 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    age: {  // New field to store calculated age
+        type: Number,
+        trim: true
+    },
+    ageStatus: {  // New field to store age status
+        type: String,
+        enum: ['below_18', '18_or_above'],
+        trim: true
+    },
+    dob: {
+        type: Date,
+        trim: true
+    },
     role: {
         type: String,
         enum: process.env.ROLES.split(','),
@@ -83,10 +96,6 @@ const UserSchema = new mongoose.Schema({
         trim: true
     },
 
-    dob: {
-        type: Date,
-        trim: true
-    },
 
     email: {
         type: String,

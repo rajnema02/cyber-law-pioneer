@@ -6,51 +6,37 @@ const { upload } = require('../Helpers/helper_functions');
 module.exports = {
     create: async (req, res, next) => {
         try {
-            // Upload multiple files (assuming upload function handles multiple files)
             upload(req, res, async (err) => {
                 if (err) {
                     return res.status(501).json({ error: err });
                 }
 
-                // Extract data from the request body
                 const data = req.body;
                 console.log(data);
 
-                // Check if an entry with the same name already exists and is not inactive
                 const dataExists = await Model.findOne({ name: data.name, is_inactive: false });
-                if (dataExists) {
-                    throw createError.Conflict('Service or offer already exists');
-                }
+                // if (dataExists) {
+                //     throw createError.Conflict('Service or offer already exists');
+                // }
 
-                // Populate additional fields
                 data.created_at = Date.now();
-                data.created_by = req.user._id; // Assume the logged-in user is accessible via `req.user._id`
+                data.created_by = req.user._id;
 
-                // Handle image and file
-                // Assuming `image` and `file` are the form field names for the image and file inputs
+                // Handle file uploads
                 if (req.files) {
-                    if (req.files.image) {
-                        // Save image path to the data
-                        data.image_url = req.files.image[0].path; // Adjust according to your file upload structure
-                    }
-
-                    if (req.files.file) {
-                        // Save file path to the data
-                        data.file_url = req.files.file[0].path; // Adjust according to your file upload structure
-                    }
+                    if (req.files.image1) data.image1 = req.files.image1[0].path;
+                    if (req.files.image2) data.image2 = req.files.image2[0].path;
+                    if (req.files.image3) data.image3 = req.files.image3[0].path;
+                    if (req.files.image4) data.image4 = req.files.image4[0].path;
+                    if (req.files.file) data.file = req.files.file[0].path;
                 }
 
-                // Create a new ServicesOffers document
                 const newData = new Model(data);
-
-                // Save the document to the database
                 const result = await newData.save();
-
-                // Return the newly created document as a response
                 res.json(result);
             });
         } catch (error) {
-            next(error); // Pass the error to the error handling middleware
+            next(error);
         }
     },
 
@@ -63,11 +49,9 @@ module.exports = {
             const query = {};
 
             if (name) {
-                query.name = new RegExp(name, 'i'); // Case-insensitive regex for name
+                query.name = new RegExp(name, 'i');
             }
-             query.disabled = disabled == "true" ? true : false;
-            
-       
+            query.disabled = disabled == "true" ? true : false;
             query.is_inactive = is_inactive === 'true' ? true : false;
 
             const result = await Model.aggregate([
@@ -100,6 +84,7 @@ module.exports = {
             next(error);
         }
     },
+
     getById: async (req, res, next) => {
         try {
             const { id } = req.params;
@@ -108,7 +93,6 @@ module.exports = {
                 return res.status(400).json({ error: "Invalid ID provided" });
             }
     
-            // Populate the associated service details using the correct field name
             const result = await Model.findById(id).populate('serviceId');
     
             if (!result) {
@@ -121,7 +105,6 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error" });
         }
     },
-      
 
     update: async (req, res, next) => {
         try {
@@ -136,16 +119,15 @@ module.exports = {
     
                 const data = req.body;
                 data.updated_at = Date.now();
-                data.updated_by = req.user ? req.user._id : null; // Ensure user ID is set properly
+                data.updated_by = req.user ? req.user._id : null;
     
                 // Handle file uploads
                 if (req.files) {
-                    if (req.files.image) {
-                        data.image_url = req.files.image[0].path;
-                    }
-                    if (req.files.file) {
-                        data.file_url = req.files.file[0].path;
-                    }
+                    if (req.files.image1) data.image1 = req.files.image1[0].path;
+                    if (req.files.image2) data.image2 = req.files.image2[0].path;
+                    if (req.files.image3) data.image3 = req.files.image3[0].path;
+                    if (req.files.image4) data.image4 = req.files.image4[0].path;
+                    if (req.files.file) data.file = req.files.file[0].path;
                 }
     
                 const result = await Model.findByIdAndUpdate(id, { $set: data }, { new: true });
@@ -160,7 +142,6 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error" });
         }
     },
-      
 
     delete: async (req, res, next) => {
         try {

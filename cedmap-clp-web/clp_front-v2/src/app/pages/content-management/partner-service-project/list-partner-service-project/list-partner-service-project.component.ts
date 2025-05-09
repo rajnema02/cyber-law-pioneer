@@ -103,6 +103,8 @@ export class ListPartnerServiceProjectComponent implements OnInit {
     }
   }
 
+  
+
   openPdf(filePath: string) {
     if (filePath) {
       window.open(filePath, '_blank');

@@ -20,9 +20,28 @@ const {
 } = require("./../Helpers/smsCalls");
 const preUser = require("../Models/preUser.model");
 const { json } = require("express");
+const calculateAgeAndStatus = (dob) => {
+  if (!dob) return { age: null, ageStatus: null };
+  
+  const today = new Date();
+  const birthDate = new Date(dob);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  return {
+    age,
+    ageStatus: age >= 18 ? '18_or_above' : 'below_18'
+  };
+};
+
 module.exports = {
 
   //////////////////  pre register user  ////////////////////
+
 
   reg: async (req, res, next) => {
     try {
@@ -42,29 +61,32 @@ module.exports = {
               `${ModelName} already exists with email/mobile`
             );
           }
-          // const smsResponse = await smsReg(data.mobile);
-          // console.log("REG_SMS ", smsResponse.data);
+
+          // Calculate age and ageStatus if dob is provided
+          if (data.dob) {
+            const { age, ageStatus } = calculateAgeAndStatus(data.dob);
+            data.age = age;
+            data.ageStatus = ageStatus;
+          }
+
+          console.log("Received data:", {
+            dob: data.dob,
+            age: data.age,
+            ageStatus: data.ageStatus
+        });
 
           const otp = generateOTP()
           if (data.mobile) {
             console.log("OTP_SMS ", otp);
-            // return
-
             const smsResponse = await smsOTP(data.mobile, otp)
             console.log("OTP_SMS ", smsResponse.data);
-            // ********************
           }
-          // return
+          
           data.created_at = Date.now();
           data.mobileOtp = otp
           const newData = new preUserModel(data);
           const result = await newData.save();
-          // if (data.mobile) {
-          //   const smsResponse = await smsReg(data.mobile);
-          //   console.log("REG_SMS ", smsResponse.data);
-          // }
           res.json(newData);
-
           return;
         } catch (error) {
           next(error);
@@ -83,58 +105,37 @@ module.exports = {
           return res.status(501).json({ error: err });
         }
         const data = req.body;
-        // console.log('???????????????', data);
-        // return
         try {
           const user = await preUser.findOne({ _id: mongoose.Types.ObjectId(data.userId) })
-          // console.log('>>>>>>>>>>', user);
-          // return
           let newUserData = {}
           if (user) {
             if (data.otp == user.mobileOtp) {
-              // console.log('verified successfully');
-              newUserData.full_name = user.full_name,
-                newUserData.email = user.email,
-                newUserData.mobile = user.mobile,
-                newUserData.role = user.role,
-                newUserData.password = data.password,
-                newUserData.is_profileVerified = user.is_profileVerified,
-                newUserData.is_profileRejected = user.is_profileRejected,
-                newUserData.formStatus = user.formStatus,
-                newUserData.disabled = user.disabled,
-                newUserData.is_inactive = user.is_inactive,
-                newUserData.disabled = user.disabled,
-                newUserData.is_spam = user.is_spam,
-                newUserData.created_at = user.created_at
-              // newUserData.__v = user.__v
-              // return
+              newUserData = {
+                full_name: user.full_name,
+                email: user.email,
+                mobile: user.mobile,
+                role: user.role,
+                password: data.password,
+                age: user.age,  // Ensure age is included
+                ageStatus: user.ageStatus,  // Ensure ageStatus is included
+                is_profileVerified: user.is_profileVerified,
+                is_profileRejected: user.is_profileRejected,
+                formStatus: user.formStatus,
+                disabled: user.disabled,
+                is_inactive: user.is_inactive,
+                is_spam: user.is_spam,
+                created_at: user.created_at,
+                dob: user.dob  // Include dob as well
+              };
             } else {
               res.json({ success: false, res: 'Wrong OTP' })
-              // console.log('wrong otp');
               return
             }
           }
-          // const dataExists = await Model.findOne({
-          //   $or: [{ email: data.email }, { mobile: data.mobile }],
-          //   is_inactive: false,
-          // }).lean();
-          // if (dataExists) {
-          //   throw createError.Conflict(
-          //     `${ModelName} already exists with email/mobile`
-          //   );
-          // }
-
-          // data.created_at = Date.now();
-          // console.log('==========', newUserData);
-          // return
+          
           const newData = new Model(newUserData);
           const result = await newData.save();
-          // if (data.mobile) {
-          //   const smsResponse = await smsReg(data.mobile);
-          //   console.log("REG_SMS ", smsResponse.data);
-          // }
           res.json({ success: true, res: newData });
-
           return;
         } catch (error) {
           next(error);
@@ -476,8 +477,8 @@ module.exports = {
   update: async (req, res, next) => {
     try {
       const { id } = req.params;
-
       const data = req.body;
+      
       console.log("updateupdateupdateupdateupdateupdateupdateupdate!!!!!!", data);
       if (!id) {
         throw createError.BadRequest("Invalid Parameters");
@@ -485,16 +486,25 @@ module.exports = {
       if (!data) {
         throw createError.BadRequest("Invalid Parameters");
       }
+
+      // Calculate age and ageStatus if dob is being updated
+      if (data.dob) {
+        const { age, ageStatus } = calculateAgeAndStatus(data.dob);
+        data.age = age;
+        data.ageStatus = ageStatus;
+      }
+
       data.is_profileRejected = false;
       data.updated_at = Date.now();
-      // if (data.transaction_id) {
-      //   data.transaction_at = Date.now();
-      // }
+      
       const result = await Model.findByIdAndUpdate(
         { _id: mongoose.Types.ObjectId(id) },
-        { $set: data }
+        { $set: data },
+        { new: true } // Return the updated document
       );
+      
       console.log("UUUSSEER RESULT", result);
+      
       if (result.mobile && data.is_profileVerified) {
         try {
           const smsProfileVerfy = await smsProfileVerfied(result.mobile);
@@ -504,25 +514,27 @@ module.exports = {
         }
         try {
           const smsOnlineClass = await smsOnlineClassInstruction(result.mobile);
-
         } catch (error) {
-
+          console.log(error);
         }
         try {
           const smsOnlineInstruction = await smsTeamsInstruction(result.mobile);
-
         } catch (error) {
-
+          console.log(error);
         }
-        // console.log("smsProfileVerfied,smsFormAccept ", smsProfileVerfy.data);
       }
+      
       if (result.mobile && data.formStatus) {
         console.log(data.formStatus);
         console.log("FORM SMS CALLED");
-        const smsFromFilled = await smsFormFilled(result.mobile);
-
-        console.log("smsReject", smsFromFilled.data);
+        try {
+          const smsFromFilled = await smsFormFilled(result.mobile);
+          console.log("smsReject", smsFromFilled.data);
+        } catch (error) {
+          console.log(error);
+        }
       }
+      
       res.json(result);
       return;
     } catch (error) {

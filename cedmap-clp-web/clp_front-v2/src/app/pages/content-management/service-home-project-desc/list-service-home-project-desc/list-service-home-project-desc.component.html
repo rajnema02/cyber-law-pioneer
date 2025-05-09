@@ -30,8 +30,8 @@
                   <th>Description</th>
                   <th>Service Name</th>
                   <th>Project Name</th>
-                  <th>Images</th>
-                  <th>PDF</th>
+                  <!-- <th>Images</th> -->
+                  <th>Documentation</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -43,19 +43,19 @@
                   <td>{{ item.serviceName || 'Loading...' }}</td>
                   <td>{{ item.projectName || 'Loading...' }}</td>
 
-                  <td>
+                  <!-- <td>
                     <img *ngIf="item.image" [src]="item.image" width="50" height="50" class="mr-1" />
                     <img *ngIf="item.image1" [src]="item.image1" width="50" height="50" class="mr-1" />
                     <img *ngIf="item.image2" [src]="item.image2" width="50" height="50" class="mr-1" />
                     <img *ngIf="item.image3" [src]="item.image3" width="50" height="50" class="mr-1" />
+                  </td> -->
+
+                  <td>
+                    <a *ngIf="item.file" [href]="item.file" target="_blank" class="btn btn-sm btn-info">View Decumentation</a>
                   </td>
 
                   <td>
-                    <a *ngIf="item.file" [href]="item.file" target="_blank" class="btn btn-sm btn-info">View PDF</a>
-                  </td>
-
-                  <td>
-                    <button (click)="edit(item._id)" class="btn btn-primary btn-sm mr-1">Edit</button>
+                    <!-- <button (click)="edit(item._id)" class="btn btn-primary btn-sm mr-1">Edit</button> -->
                     <button (click)="delete(item._id)" class="btn btn-danger btn-sm">Delete</button>
                   </td>
                 </tr>
@@ -64,7 +64,6 @@
             </table>
           </div>
         </div>
-
       </div>
     </div>
   </div>

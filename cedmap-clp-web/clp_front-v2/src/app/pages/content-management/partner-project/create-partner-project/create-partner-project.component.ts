@@ -44,6 +44,7 @@ export class CreatePartnerProjectComponent implements OnInit {
       formData.append('name', f.value.name);
       formData.append('description', f.value.description);
       formData.append('partnerName', f.value.partnerName);
+      formData.append('youtubeVideoLink', f.value.youtubeVideoLink); // Add this line
       // Append image and PDF files if they are selected
       if (this.img_link) {
         formData.append('image', this.img_link);

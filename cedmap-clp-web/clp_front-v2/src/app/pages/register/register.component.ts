@@ -1,120 +1,138 @@
 import { Component, OnInit } from "@angular/core";
-import { AdminLayoutRoutes } from "../../layouts/admin-layout/admin-layout.routing";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { CoreApiService } from "src/app/services/core-api.service";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"],
+  providers: [DatePipe]
 })
 export class RegisterComponent implements OnInit {
-  // loginUserData = {
-  //   email: "",
-  //   password: "",
-  // };
-  // clickdis: any = true;
   showForm: Boolean = true;
-  email: any;
-  password: any;
-  userId: any;
+  email: string = '';
+  password: string = '';
+  userId: string = '';
+  ageStatus: string = '';
+  age: number | null = null;
+  minDate: string;
+  maxDate: string;
+  ageError: string = '';
+
   constructor(
     private auth: AuthService,
     private router: Router,
-    private api: CoreApiService
-  ) {}
+    private api: CoreApiService,
+    private datePipe: DatePipe
+  ) {
+    const today = new Date();
+    this.maxDate = this.datePipe.transform(today, 'yyyy-MM-dd'); // allow up to today
+    this.minDate = this.datePipe.transform(new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()), 'yyyy-MM-dd');
+  }
 
   ngOnInit() {}
-  ngOnDestroy() {}
-  // dis() {
-  //   this.clickdis = false;
-  // }
 
   regSubmit(frm: NgForm) {
     if (frm.form.invalid) {
       alert("Please fill all the necessary details");
-    } else {
-      // this.dis();
-      this.api.post("user", frm.form.value).subscribe((resp: any) => {
+      return;
+    }
+  
+    // Ensure age is calculated if not already done
+    if (frm.form.value.dob && !this.age) {
+      this.checkAge(frm.form.value.dob);
+    }
+  
+    const formData = {
+      ...frm.form.value,
+      dob: this.datePipe.transform(frm.form.value.dob, 'yyyy-MM-dd'),
+      age: this.age,
+      ageStatus: this.ageStatus
+    };
+  
+    this.api.post("user", formData).subscribe(
+      (resp: any) => {
         if (resp) {
           this.userId = resp._id;
-          alert("Otp have been send on mobile Number please verify.");
+          this.email = frm.form.value.email;
+          this.password = frm.form.value.password;
+          alert("OTP has been sent to your mobile number. Please verify.");
           this.showForm = false;
-          // // this.router.navigate(["/login"]);
-          // let loginUserData = {
-          //   authid: frm.form.value.email,
-          //   password: frm.form.value.password,
-          // };
-          // // this.clickdis = true;
-          // this.auth.login(loginUserData).subscribe((resp: any) => {
-          //   if (resp) {
-          //     localStorage.setItem("token", resp.token);
-          //     localStorage.setItem("user", JSON.stringify(resp));
-          //     this.router.navigate(["/dashboard"]);
-          //   }
-          // });
-        } else {
-          // this.clickdis = false;
         }
-        // },
-        // error: (err: any) => {
-        //   alert(err?.error?.error?.message || err?.message);
-        // }
-      });
-    }
+      },
+      (error) => {
+        alert(error?.error?.error?.message || error?.message || "Registration failed");
+      }
+    );
   }
+
   Submit(frm: NgForm) {
-    // console.log(this.userId);
-    // return;
-
     if (frm.form.invalid) {
-      alert("Please fill all the necessary details");
-    } else {
-      // this.dis();
-      const data = {
-        ...frm.form.value,
-        userId: this.userId,
-        password: this.password,
-      };
-      this.api.post("user/verify", data).subscribe((resp: any) => {
-        // console.log(resp);
-        // return;
-
-        if (resp.success == true) {
-          // this.router.navigate(["/login"]);
-          alert("User Registered !!!!");
-          let loginUserData = {
-            authid: this.email,
-            password: this.password,
-          };
-          // this.clickdis = true;
-          this.auth.login(loginUserData).subscribe((resp: any) => {
-            if (resp) {
-              localStorage.setItem("token", resp.token);
-              localStorage.setItem("user", JSON.stringify(resp));
-              this.router.navigate(["/dashboard"]);
-            }
-          });
-        } else {
-          // this.clickdis = false;
-          alert("Wrong OTP Entered");
-        }
-        // },
-        // error: (err: any) => {
-        //   alert(err?.error?.error?.message || err?.message);
-        // }
-      });
+      alert("Please enter the OTP");
+      return;
     }
+
+    const data = {
+      ...frm.form.value,
+      userId: this.userId,
+      password: this.password
+    };
+
+    this.api.post("user/verify", data).subscribe(
+      (resp: any) => {
+        if (resp.success) {
+          alert("Registration successful!");
+          this.loginAfterRegistration();
+        } else {
+          alert("Wrong OTP entered");
+        }
+      },
+      (error) => {
+        alert(error?.error?.error?.message || error?.message || "Verification failed");
+      }
+    );
   }
 
-  registerUserData = {
-    first_name: "",
-    last_name: "",
-    dob: "",
-    mobile: "",
-    email: "",
-    password: "",
-  };
+  private loginAfterRegistration() {
+    const loginUserData = {
+      authid: this.email,
+      password: this.password
+    };
+
+    this.auth.login(loginUserData).subscribe(
+      (resp: any) => {
+        if (resp) {
+          localStorage.setItem("token", resp.token);
+          localStorage.setItem("user", JSON.stringify(resp));
+          this.router.navigate(["/dashboard"]);
+        }
+      },
+      (error) => {
+        this.router.navigate(["/login"]);
+      }
+    );
+  }
+
+  checkAge(dob: string) {
+    if (!dob) {
+        this.age = null;
+        this.ageStatus = null;
+        return;
+    }
+
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    this.age = age;
+    this.ageStatus = age >= 18 ? '18_or_above' : 'below_18';
+}
 }

@@ -27,36 +27,43 @@
               <thead class="thead-light">
                 <tr>
                   <th>Name</th>
-                  <th>Description</th>
-                  <th>Images</th>
-                  <th>PDF</th>
-                  <th>service</th>
+                  <!-- <th>Description</th> -->
+                  <th>Image</th>
+                  <!-- <th>PDF</th> -->
+                  <th>YouTube</th>
+                  <!-- <th>service</th> -->
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let project of serviceProjects">
                   <td>{{ project.name }}</td>
-                  <td>{{ project.description }}</td>
+                  <!-- <td>{{ project.description }}</td> -->
                   <td>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                       <img *ngIf="project.image" [src]="project.image" class="img-thumbnail" style="width: 60px; height: 60px;" />
-                      <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <!-- <img *ngIf="project.image1" [src]="project.image1" class="img-thumbnail" style="width: 60px; height: 60px;" />
                       <img *ngIf="project.image2" [src]="project.image2" class="img-thumbnail" style="width: 60px; height: 60px;" />
-                      <img *ngIf="project.image3" [src]="project.image3" class="img-thumbnail" style="width: 60px; height: 60px;" />
+                      <img *ngIf="project.image3" [src]="project.image3" class="img-thumbnail" style="width: 60px; height: 60px;" /> -->
                       <span *ngIf="!project.image && !project.image1 && !project.image2 && !project.image3">No Images</span>
                     </div>
                   </td>
-                  <td>
+                  <!-- <td>
                     <button *ngIf="project.file" class="btn btn-info btn-sm" (click)="openPdf(project.file)">
                       View PDF
                     </button>
-                  </td>
-                  <td>{{ project.serviceName || 'Loading...' }}</td>
+                  </td> -->
                   <td>
-                    <button class="btn btn-sm btn-primary me-2" (click)="editProject(project._id)">
+                    <a *ngIf="project.youtube_link" [href]="project.youtube_link" target="_blank" class="btn btn-danger btn-sm">
+                      <i class="fab fa-youtube"></i> Watch
+                    </a>
+                    <span *ngIf="!project.youtube_link">No Video</span>
+                  </td>
+                  <!-- <td>{{ project.serviceName || 'Loading...' }}</td> -->
+                  <td>
+                    <!-- <button class="btn btn-sm btn-primary me-2" (click)="editProject(project._id)">
                       <i class="fas fa-edit"></i>
-                    </button>
+                    </button> -->
                     <button class="btn btn-sm btn-danger" (click)="deleteProject(project._id)">
                       <i class="fas fa-trash"></i>
                     </button>

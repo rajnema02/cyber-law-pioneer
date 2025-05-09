@@ -67,14 +67,15 @@ export class CreatePartnerServiceProjectComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('name', f.value.name);
-    formData.append('description', f.value.description);
+    // formData.append('description', f.value.description);
     formData.append('partnerId', f.value.partnerId);
+    formData.append('youtubeVideoLink', f.value.youtubeVideoLink); // Add this line
 
     if (this.img_link) formData.append('image', this.img_link);
-    if (this.img_link1) formData.append('image1', this.img_link1);
-    if (this.img_link2) formData.append('image2', this.img_link2);
-    if (this.img_link3) formData.append('image3', this.img_link3);
-    if (this.file_link) formData.append('file', this.file_link);
+    // if (this.img_link1) formData.append('image1', this.img_link1);
+    // if (this.img_link2) formData.append('image2', this.img_link2);
+    // if (this.img_link3) formData.append('image3', this.img_link3);
+    // if (this.file_link) formData.append('file', this.file_link);
 
     if (this.id) {
       this.api.put('partnerService', this.id, formData).subscribe((resp: any) => {
@@ -89,7 +90,26 @@ export class CreatePartnerServiceProjectComponent implements OnInit {
     }
   }
 
-  handleImageUpload(event: any, index: number) {
+  // submit(frm: NgForm) {
+  //   const f = frm.form;
+    
+
+  //   const formData = new FormData();
+  //   formData.append('name', f.value.name);
+  //   formData.append('description', f.value.description);
+  //   formData.append('partnerId', f.value.partnerId);
+  //   formData.append('youtubeVideoLink', f.value.youtubeVideoLink); // Add this line
+
+  //   if (this.img_link) formData.append('image', this.img_link);
+  //   if (this.img_link1) formData.append('image1', this.img_link1);
+  //   if (this.img_link2) formData.append('image2', this.img_link2);
+  //   if (this.img_link3) formData.append('image3', this.img_link3);
+  //   if (this.file_link) formData.append('file', this.file_link);
+
+    
+  // }
+
+  handleImageUpload(event: any) {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -97,12 +117,7 @@ export class CreatePartnerServiceProjectComponent implements OnInit {
     this.fs.uploadFile(this.selectedImage).subscribe((res: any) => {
       if (res.type === HttpEventType.Response) {
         const path = res.body.file.path;
-        switch (index) {
-          case 0: this.img_link = path; break;
-          case 1: this.img_link1 = path; break;
-          case 2: this.img_link2 = path; break;
-          case 3: this.img_link3 = path; break;
-        }
+        
       }
     });
   }

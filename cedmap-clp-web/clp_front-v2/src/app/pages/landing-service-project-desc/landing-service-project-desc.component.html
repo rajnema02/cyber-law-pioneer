@@ -156,10 +156,11 @@
 <!-- Header -->
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
-    <div class="header-body">
+    <div class="header-body d-flex justify-content-evenly align-items-center">
       <h2 class="text-white text-center">
         Project Details for {{ serviceProject?.name || 'Project' }}
       </h2>
+      <a [routerLink]="['/contact']" class="btn btn-success btn-sm">Enquiry Now</a>
     </div>
   </div>
 </div>

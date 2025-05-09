@@ -1,4 +1,5 @@
 const Model = require('../Models/partner-service-desc.model');
+const PartnerServiceModel = require('../Models/partner-service.model'); // Add this import
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const { upload } = require('../Helpers/helper_functions');

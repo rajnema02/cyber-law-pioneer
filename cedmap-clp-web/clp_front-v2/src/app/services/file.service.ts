@@ -13,6 +13,15 @@ export class FileService {
 
 
 
+
+  getFileUrl(fileId: string): string {
+    // Assuming your backend serves files at this endpoint
+    return `${environment.url}/file/download/${fileId}`;
+    
+    // Or if you're using S3 and have direct access:
+    // return `${environment.s3BaseUrl}/${fileId}`;
+  }
+  
   uploadFile(file: any) {
     const fd = new FormData();
     fd.append('file', file, file.name);

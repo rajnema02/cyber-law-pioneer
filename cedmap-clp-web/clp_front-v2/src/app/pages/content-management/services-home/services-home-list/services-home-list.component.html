@@ -24,7 +24,7 @@
                     <tr>
                       <th scope="col">Name</th>
                       <th scope="col">Image</th>
-                      <th scope="col">Uploaded File</th>
+                      <!-- <th scope="col">Uploaded File</th> -->
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -37,9 +37,9 @@
                         <img *ngIf="service.image1" src="https://cyberlawpioneers.org/file/download/{{service.image1}}" alt="{{service.name}}" style="width: 100px; height: 100px;" />
                         <span *ngIf="!service.image1">No Image</span>
                     </td>
-                      <td>
+                      <!-- <td>
                         <a href="https://cyberlawpioneers.org/file/download/{{service.file}}" target="_blank" class="btn btn-info btn-sm">View File</a>
-                      </td>
+                      </td> -->
                       <td>
                         <a class="mx-3 btn btn-sm btn-danger" (click)="deleteService(service._id)"><i class="fas fa-trash"></i> </a>
 

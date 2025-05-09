@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoreApiService } from 'src/app/services/core-api.service';
-import { Router} from "@angular/router";
+import { Router } from "@angular/router";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing-partner-project',
@@ -17,7 +18,8 @@ export class LandingPartnerProjectComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private api: CoreApiService,
-   private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +29,15 @@ export class LandingPartnerProjectComponent implements OnInit {
       this.getPartnerProjects();
     });
   }
-  
+
+  extractYoutubeId(url: string): string {
+    if (!url) return '';
+    
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    
+    return (match && match[2].length === 11) ? match[2] : '';
+  }
 
   getPartnerDetails() {
     this.api.getById('partner', this.partnerId).subscribe({
@@ -44,11 +54,9 @@ export class LandingPartnerProjectComponent implements OnInit {
     this.isLoading = true;
     this.api.get('partnerService', {}).subscribe({
       next: (res: any) => {
-        // Filter projects by partnerId (case-sensitive comparison)
         this.projects = (res?.data || []).filter((project: any) => 
           project.partnerId && project.partnerId.toString() === this.partnerId.toString()
         );
-        console.log('Filtered projects:', this.projects); // Debug log
         this.isLoading = false;
       },
       error: (err) => {
@@ -57,9 +65,8 @@ export class LandingPartnerProjectComponent implements OnInit {
       }
     });
   }
+
   redirectToPartnerProjectDesc(projectId: string): void {
     this.router.navigate(['partner-project-desc', projectId]);
   }
-  
-  
 }

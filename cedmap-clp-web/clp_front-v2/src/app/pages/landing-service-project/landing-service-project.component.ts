@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreApiService } from 'src/app/services/core-api.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing-service-project',
@@ -16,7 +17,8 @@ export class LandingServiceProjectComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private api: CoreApiService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class LandingServiceProjectComponent implements OnInit {
       }
     });
   }
-  
 
   getServiceProjects() {
     this.isLoading = true;
@@ -70,5 +71,14 @@ export class LandingServiceProjectComponent implements OnInit {
 
   redirectToServiceProjectDesc(projectId: string): void {
     this.router.navigate(['services-project-desc', projectId]);
+  }
+
+  extractVideoId(url: string): string {
+    if (!url) return '';
+    
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    
+    return (match && match[2].length === 11) ? match[2] : '';
   }
 }
