@@ -78,15 +78,7 @@
                         : '⚠ You are ' + age + ' years old (below 18)' }}
                   </small>
                 </div>
-                <div *ngIf="ageStatus" class="ml-4">
-                  <small 
-                    [class.text-success]="ageStatus === '18_or_above'" 
-                    [class.text-warning]="ageStatus === 'below_18'">
-                    {{ ageStatus === '18_or_above' 
-                        ? '✓ You are ' + age + ' years old (18 or above)' 
-                        : '⚠ You are ' + age + ' years old (below 18)' }}
-                  </small>
-                </div>
+                
                 
                 <div class="d-flex align-items-center mt-2">
                   <span class="fa fa-mobile mr-3 pl-1"></span>

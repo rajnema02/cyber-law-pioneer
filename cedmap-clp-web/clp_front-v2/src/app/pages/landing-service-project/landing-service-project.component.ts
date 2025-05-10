@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class LandingServiceProjectComponent implements OnInit {
   serviceId: string = '';
-  serviceName: string = '';
+  serviceName: string = 'Service'; // Initialize with default
   projects: any[] = [];
   isLoading: boolean = true;
 
@@ -24,8 +24,12 @@ export class LandingServiceProjectComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.serviceId = params.get('id') || '';
-      this.fetchServiceName();
-      this.getServiceProjects();
+      if (this.serviceId) {
+        this.fetchServiceName();
+        this.getServiceProjects();
+      } else {
+        this.isLoading = false;
+      }
     });
   }
 
@@ -33,22 +37,12 @@ export class LandingServiceProjectComponent implements OnInit {
     this.api.getById('service', this.serviceId).subscribe({
       next: (res: any) => {
         const service = res?.data;
-  
-        // Only accept if not deleted or disabled
-        if (
-          service &&
-          !service.deleted_at &&
-          !service.disabled &&
-          !service.is_inactive
-        ) {
+        if (service && !service.deleted_at && !service.disabled && !service.is_inactive) {
           this.serviceName = service.name || 'Service';
-        } else {
-          this.serviceName = 'Service (Unavailable)';
         }
       },
       error: (err) => {
         console.error('Error fetching service name:', err);
-        this.serviceName = 'Service';
       }
     });
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreApiService } from 'src/app/services/core-api.service';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-partner-service-desc-project',
@@ -11,47 +11,55 @@ import { Router } from '@angular/router';
 export class ListPartnerServiceDescProjectComponent implements OnInit {
   allData: any[] = [];
 
-  constructor(private api: CoreApiService, private router: Router) {}
+  constructor(
+    private api: CoreApiService, 
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.getPartnerServiceDescProjects();
+    this.getPartnerServiceDescs();
   }
 
-  getPartnerServiceDescProjects() {
-    this.api.get('partnerServicedesc', {}).subscribe((res: any) => {
-      this.allData = res?.data || [];
-  
-      this.allData.forEach((item: any) => {
-        // Fetch partner name
-        if (item.partnerId) {
-          this.api.getById('partner', item.partnerId).subscribe((partnerRes: any) => {
-            item.partnerName = partnerRes?.data?.name || 'Unknown Partner';
-          });
-        }
-  
-        // Fetch partner service name
-        if (item.partnerServiceId) {
-          this.api.getById('partnerService', item.partnerServiceId).subscribe((serviceRes: any) => {
-            item.partnerServiceName = serviceRes?.data?.name || 'Unknown Service';
-          });
-        }
-      });
+  getPartnerServiceDescs() {
+    // Simple direct API call without parameters
+    this.http.get('http://localhost:3001/partnerServiceDesc').subscribe((res: any) => {
+      console.log('API Response:', res); // Debug log
+      if (res && res.data) {
+        this.allData = res.data;
+        
+        // Process file URLs if needed
+        this.allData.forEach(item => {
+          if (item.file) {
+            // Make sure the file path is a complete URL
+            if (!item.file.startsWith('http')) {
+              item.file = 'http://localhost:3001/' + item.file;
+            }
+          }
+        });
+      } else {
+        console.error('Invalid API response format:', res);
+        this.allData = [];
+      }
+    }, error => {
+      console.error('Error fetching data:', error);
+      this.allData = [];
     });
   }
-  
-  
 
   edit(id: string) {
-    this.router.navigate(['/content/create-partner-service-desc', id]);
+    this.router.navigate(['/content/create-partner-service-desc-project', id]);
   }
 
   delete(id: string) {
     if (confirm('Are you sure you want to delete this?')) {
-      this.api.delete('partnerServiceDesc', id).subscribe((resp: any) => {
+      this.api.delete('partnerServiceDesc', id).subscribe(() => {
         alert('Deleted successfully');
-        this.getPartnerServiceDescProjects();
+        this.getPartnerServiceDescs();
+      }, error => {
+        console.error('Delete error:', error);
+        alert('Error deleting record. Please try again.');
       });
     }
   }
 }
-

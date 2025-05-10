@@ -48,7 +48,7 @@ export class FileService {
     // fd.append('file',file, file.name);
     console.log(file);
     return this.http.post(environment.url + '/questionFile/uploadBulkQuestions', formData);
-  }
+  } 
 
   uploadDocument(file: File, student:any) {
     const fd = new FormData();

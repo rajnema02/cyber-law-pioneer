@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   // url: '//'+ window.location.hostname
   // url: "https://mpced.cyberlawpioneers.org",
-  // url: "https://cyberlawpioneers.org",
-  url: "http://localhost:3001",
+  url: "https://cyberlawpioneers.org",
+  // url: "http://localhost:3001",
   // url: "https://mpced.mpconsultancy.org",
   // url: "//" + window.location.hostname + ":3000",
 };

@@ -1,5 +1,5 @@
 const Model = require('../Models/partner-service-desc.model');
-const PartnerServiceModel = require('../Models/partner-service.model'); // Add this import
+const PartnerServiceModel = require('../Models/partner-service.model');
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const { upload } = require('../Helpers/helper_functions');
@@ -70,53 +70,62 @@ module.exports = {
             next(error);
         }
     },
-
+    
     list: async (req, res, next) => {
         try {
-            const { name, disabled, is_inactive, page, limit, sort } = req.query;
-            const _page = page ? parseInt(page) : 1;
-            const _limit = limit ? parseInt(limit) : 200;
-            const _skip = (_page - 1) * _limit;
-            const query = {};
-
-            if (name) {
-                query.name = new RegExp(name, 'i'); // Case-insensitive regex for name
-            }
-             query.disabled = disabled == "true" ? true : false;
+            // Find all records with all available data
+            const result = await Model.find()
+                .populate({
+                    path: 'partnerId',
+                    select: 'name image description'
+                })
+                .populate({
+                    path: 'partnerServiceId',
+                    select: 'name description images'
+                })
+                .populate({
+                    path: 'created_by',
+                    select: 'name email'
+                })
+                .populate({
+                    path: 'updated_by',
+                    select: 'name email'
+                })
+                .sort({ created_at: -1 }) // Always sort by newest first
+                .lean();
             
-       
-            query.is_inactive = is_inactive === 'true' ? true : false;
-
-            const result = await Model.aggregate([
-                {
-                    $match: query
-                },
-                {
-                    $skip: _skip
-                },
-                {
-                    $limit: _limit
-                },
-            ]);
-
-            const resultCount = await Model.countDocuments(query);
-
-            res.json({
-                data: result,
-                meta: {
-                    current_page: _page,
-                    from: _skip + 1,
-                    last_page: Math.ceil(resultCount / _limit),
-                    per_page: _limit,
-                    to: _skip + result.length,
-                    total: resultCount
-                }
+            console.log(`Found ${result.length} total records`);
+            
+            // Transform data for frontend
+            const transformedData = result.map(item => {
+                // Format file paths for frontend
+                const fileFields = ['image', 'image1', 'image2', 'image3', 'file'];
+                
+                fileFields.forEach(field => {
+                    if (item[field]) {
+                        // Replace backslashes with forward slashes for web URLs
+                        item[field] = item[field].replace(/\\/g, '/');
+                    }
+                });
+                
+                return {
+                    ...item,
+                    // Add computed fields for frontend
+                    partnerName: item.partnerId?.name || 'Unknown Partner',
+                    partnerServiceName: item.partnerServiceId?.name || 'Unknown Service'
+                };
             });
-            return;
+            
+            // Return simple response with all data
+            res.json({
+                data: transformedData
+            });
         } catch (error) {
+            console.error('Error in partnerServiceDesc list:', error);
             next(error);
         }
     },
+   
     getById: async (req, res, next) => {
         try {
             const { id } = req.params;
@@ -237,7 +246,6 @@ module.exports = {
         }
     },
       
-
     delete: async (req, res, next) => {
         try {
             const { id } = req.params;

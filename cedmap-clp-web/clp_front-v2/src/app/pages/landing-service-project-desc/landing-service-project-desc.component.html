@@ -192,11 +192,11 @@
               alt="Image"
               class="img-fluid rounded shadow"
               style="object-fit: cover; height: 150px;" />
-            <img *ngIf="!desc.image && desc.image1"
+            <!-- <img *ngIf="!desc.image && desc.image1"
               [src]="'https://cyberlawpioneers.org/file/download/' + desc.image1"
               alt="Image"
               class="img-fluid rounded shadow"
-              style="object-fit: cover; height: 150px;" />
+              style="object-fit: cover; height: 150px;" /> -->
             <div *ngIf="!desc.image && !desc.image1" class="text-muted small">No Images</div>
           </div>
         </div>
@@ -204,23 +204,24 @@
         <!-- Details -->
         <div class="col-md-6">
           <h5 class="fw-bold text-dark mb-2">{{ desc.name }}</h5>
-          <p class="mb-1 text-muted">
+          <!-- <p class="mb-1 text-muted">
             {{ desc.description || 'No description provided.' }}
-          </p>
-          <div class="text-muted small mb-2">
+          </p> -->
+          <!-- <div class="text-muted small mb-2">
             <strong>Service:</strong> {{ desc.serviceName || 'N/A' }}
-          </div>
+          </div> -->
         </div>
 
         <!-- Actions & Docs -->
         <div class="col-md-3 text-md-end text-center">
           <div class="d-flex flex-column align-items-end gap-2">
-            <a *ngIf="desc.file" 
+            
+            <h1><a *ngIf="desc.file" 
               [href]="'https://cyberlawpioneers.org/file/download/' + desc.file" 
               target="_blank"
-              class="btn btn-outline-primary btn-sm">
+              class="btn btn-outline-primary">
               View Document
-            </a>
+            </a></h1>
           </div>
         </div>
       </div>

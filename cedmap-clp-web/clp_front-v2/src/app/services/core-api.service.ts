@@ -96,4 +96,25 @@ export class CoreApiService {
       params: query,
     });
   }
+
+  // ✅ Get full file URL
+  getFileUrl(filePath: string): string {
+    if (!filePath) return '';
+    
+    // If already a full URL, return as-is
+    if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
+      return filePath;
+    }
+
+    // Normalize path (replace backslashes with forward slashes)
+    const normalizedPath = filePath.replace(/\\/g, '/');
+    
+    // Remove leading slash if present
+    const cleanPath = normalizedPath.startsWith('/') 
+      ? normalizedPath.substring(1) 
+      : normalizedPath;
+    
+    // Construct full URL using environment API URL
+    return `${environment.url}/${cleanPath}`;
+  }
 }

@@ -104,7 +104,7 @@ export class CreateServicesOfferComponent implements OnInit {
           if (res.type == HttpEventType.Response) {
             const body: any = res.body;
             this.img_link = body.file.path;
-            // this.as.successToast(res.msg)
+            
           }
         });
       } else {
